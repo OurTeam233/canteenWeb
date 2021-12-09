@@ -1,14 +1,9 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: 94001
-  Date: 2021/12/6
-  Time: 21:19
-  To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html lang="en">
 <head>
     <title></title>
 
@@ -18,10 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><!-- 页面自适应 -->
 </head>
 <body>
-
 <!--分层说明-->
-<h2>Hello World!你好呀</h2>
-
-
+<h1>run了</h1>
 </body>
 </html>
