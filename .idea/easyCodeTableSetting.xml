@@ -51,37 +51,62 @@
         <entry key="dishes">
           <value>
             <TableInfoDTO>
+              <option name="comment" value="菜品表" />
               <option name="fullColumn">
                 <list>
                   <ColumnInfoDTO>
                     <option name="comment" value="编号" />
                     <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="菜品类别编号" />
                     <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
                     <option name="name" value="dishestypesId" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="菜品名称" />
                     <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
                     <option name="name" value="name" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="价格 单位：分" />
                     <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
                     <option name="name" value="price" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="店铺编号" />
                     <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
                     <option name="name" value="storeId" />
                     <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="菜品图片url" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="imgurl" />
+                    <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                 </list>
               </option>
@@ -115,6 +140,59 @@
                 </list>
               </option>
               <option name="name" value="Dishestypes" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="CanteenWeb" />
+              <option name="savePackageName" value="com" />
+              <option name="savePath" value="./src/main/java/com" />
+              <option name="templateGroupName" value="Default" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="picture">
+          <value>
+            <TableInfoDTO>
+              <option name="comment" value="图片表" />
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="编号" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="id" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="图片地址" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="pictureurl" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="关联表中的编号（外键）如果为空表示连接自己" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="relationtableId" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="关联表编号。&#13;&#10;0 表示 轮播图" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="relationtable" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="Picture" />
               <option name="preName" value="" />
               <option name="saveModelName" value="CanteenWeb" />
               <option name="savePackageName" value="com" />
@@ -349,27 +427,18 @@
                   <ColumnInfoDTO>
                     <option name="comment" value="编号" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="标签编号" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="tagsId" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="店铺编号" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="storeId" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>

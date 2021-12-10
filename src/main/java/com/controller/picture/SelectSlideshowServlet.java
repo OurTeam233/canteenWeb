@@ -1,15 +1,20 @@
-package com.controller.dishes;
+package com.controller.picture;
 
 import com.alibaba.fastjson.JSON;
 import com.controller.Store.SelectStoreServlet;
 import com.pojo.Dishes;
+import com.pojo.Picture;
 import com.service.DishesService;
+import com.service.PictureService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,11 +22,11 @@ import java.util.List;
 /**
  * @author tang
  */
-@WebServlet("/Dishes")
-public class SelectDishesServlet extends HttpServlet {
+@WebServlet("/Slideshow")
+public class SelectSlideshowServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    Logger logger = LoggerFactory.getLogger(SelectStoreServlet.class);
+    Logger logger = LoggerFactory.getLogger(SelectSlideshowServlet.class);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //初始化
@@ -30,11 +35,10 @@ public class SelectDishesServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         //处理
-        int storeId = Integer.parseInt(request.getParameter("storeId"));
-        DishesService dishesService = new DishesService();
-        List<Dishes> dishesList = dishesService.selectDishesByStoreId(storeId);
-        logger.info(dishesList.toString());
-        String dishesListString = JSON.toJSONString(dishesList);
+        PictureService pictureService = new PictureService();
+        List<Picture> pictureList = pictureService.selectAllSlideshow();
+        logger.info(pictureList.toString());
+        String dishesListString = JSON.toJSONString(pictureList);
         //输出
         out.print(dishesListString);
     }

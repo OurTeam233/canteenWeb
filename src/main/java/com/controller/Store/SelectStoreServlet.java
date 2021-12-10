@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * @author tang
  */
-@WebServlet(name = "SelectStoreServlet", value = "/Store")
+@WebServlet("/Store")
 public class SelectStoreServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

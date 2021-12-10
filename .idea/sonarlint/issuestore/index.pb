@@ -6,16 +6,12 @@ O
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 I
 src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 b
 2src/main/java/com/util/SqlSessionFactoryUtils.java,2\6\26148a2731c4c87a8bca83ecbe2ef706bb381523
 ^
 .src/test/java/mapperTest/DishesMapperTest.java,e\2\e25d8ea3d7be19e80d51532f2f3e89457b1eff3e
 Z
 *src/main/java/com/mapper/DishesMapper.java,e\9\e9d35c2c9077c09077dca51727f78452b0102e52
-\
-,src/main/java/com/service/DishesService.java,7\3\731a58761d60fe3f30b6dda62ca3ed1cfeb726b6
 R
 "src/main/java/com/pojo/Dishes.java,1\b\1b019d8de6ba529b7d7bafcac13a5935d50e60e2
 W
@@ -32,7 +28,3 @@ Q
 +src/main/java/com/service/StoreService.java,b\7\b7432e06f7de9dd53ae5dc51a504a1a731a6fb7e
 Y
 )src/main/java/com/mapper/StoreMapper.java,6\7\6793a8d9e4b46fa40e934ae904da42fa2d209818
-j
-:src/main/java/com/controller/Store/SelectStoreServlet.java,e\a\ea46c876c7cd7db3588a7b3d0de6a7143c21f63c
-l
-<src/main/java/com/controller/dishes/SelectDishesServlet.java,f\4\f4b23a620fab5f20aef34a2e42ed2b5195a3efb5

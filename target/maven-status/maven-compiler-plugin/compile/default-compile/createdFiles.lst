@@ -1,0 +1,17 @@
+com\pojo\Canteen.class
+com\service\PictureService.class
+com\pojo\Store.class
+com\pojo\Dishes.class
+com\pojo\DishesTypes.class
+com\service\DishesService.class
+com\util\SqlSessionFactoryUtils.class
+com\controller\Store\SelectStoreServlet.class
+com\pojo\Storetags.class
+com\controller\picture\SelectSlideshowServlet.class
+com\pojo\Tags.class
+com\controller\dishes\SelectDishesServlet.class
+com\mapper\DishesMapper.class
+com\mapper\PictureMapper.class
+com\pojo\Picture.class
+com\mapper\StoreMapper.class
+com\service\StoreService.class
