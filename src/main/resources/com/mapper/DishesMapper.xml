@@ -12,6 +12,7 @@
             <result column="dishes_name" property="name"/>
             <result column="price" property="price"/>
             <result column="imgUrl" property="imgUrl"/>
+            <result column="sales" property="sales"/>
         </collection>
     </resultMap>
 
@@ -21,6 +22,7 @@
                d.`name`  dishes_name,
                d.price,
                d.imgUrl,
+               d.sales,
                dt.`name` dishesTypes_name
         FROM dishes d
                  INNER JOIN dishestypes dt ON d.dishesTypes_id = dt.id

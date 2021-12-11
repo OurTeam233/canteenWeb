@@ -34,6 +34,10 @@ public class Dishes implements Serializable {
      * 图片地址
      */
     private String imgUrl;
+    /**
+     * 菜品月售
+     */
+    private Integer sales;
 
     public String getImgUrl() {
         return imgUrl;
@@ -83,6 +87,14 @@ public class Dishes implements Serializable {
         this.store = store;
     }
 
+    public Integer getSales() {
+        return sales;
+    }
+
+    public void setSales(Integer sales) {
+        this.sales = sales;
+    }
+
     @Override
     public String toString() {
         return "Dishes{" +
@@ -92,6 +104,7 @@ public class Dishes implements Serializable {
                 ", price=" + price +
                 ", store=" + store +
                 ", imgUrl='" + imgUrl + '\'' +
+                ", sales=" + sales +
                 '}';
     }
 }

@@ -11,5 +11,5 @@ z
 java:S1989,"_Handle the following exceptions that could be thrown by "doGet": ServletException, IOException.(®Ó‘ûÿÿÿÿÿ
 n
 java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ÑÐÓë
-9
-java:S2629$"$Invoke method(s) only conditionally.(ð÷õ
+@
+java:S2629$"$Invoke method(s) only conditionally.(ð÷õ8ƒ±ÐÆÚ/

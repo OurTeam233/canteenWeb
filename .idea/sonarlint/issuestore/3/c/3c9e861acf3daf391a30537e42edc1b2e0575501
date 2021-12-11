@@ -1,0 +1,19 @@
+
+£
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ïû©Öûÿÿÿÿ8ŒŒÁÆÚ/
+‚
+java:S1989%"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(ï‡‹ê
+k
+java:S1989'"PHandle the following exception that could be thrown by "getWriter": IOException.(ïô†úÿÿÿÿ
+t
+java:S19891"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(Åî„ôıÿÿÿÿ
+A
+java:S1128"+Remove this unused import 'com.pojo.Store'.(µä´Ò
+E
+java:S1128"*Remove this unused import 'com.pojo.User'.(½Ô’™şÿÿÿÿ
+P
+java:S1128"5Remove this unused import 'com.service.StoreService'.(‡Ê¤Şüÿÿÿÿ
+F
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
+@
+java:S1068"*Remove this unused "logger" private field.(Ó†È
