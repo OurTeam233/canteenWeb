@@ -84,4 +84,27 @@
                  INNER JOIN tags t ON st.tags_id = t.id
         WHERE st.tags_id = #{tagsId}
     </select>
+
+    <select id="selectByStoreId" resultMap="StoreResultMap">
+        SELECT
+            s.id,
+            s.`name` store_name,
+            s.canteen_id,
+            s.canteen_name,
+            s.address,
+            s.phone,
+            s.score,
+            s.logoUrl,
+            s.attention,
+            s.sales,
+            s.description,
+            st.tags_id,
+            t.`name` tags_name
+        FROM
+            store s
+                INNER JOIN storetags st ON st.store_id = s.id
+                INNER JOIN tags t ON st.tags_id = t.id
+        WHERE
+            s.id = #{id}
+    </select>
 </mapper>

@@ -25,6 +25,13 @@ public class DishesService {
      * 创建SqlSessionFactory工厂
      */
     private final SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtils.getSqlSessionFactory();
+    /**
+     * <p> 根据店铺id查询菜品信息 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.util.List<com.pojo.Dishes>
+     * @since 2021/12/11
+     */
     public List<Dishes> selectDishesByStoreId(int storeId) {
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()

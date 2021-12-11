@@ -74,7 +74,7 @@ public class StoreService {
     /**
      * <p> 根据标签编号查询店铺 </p>
      *
-     * @param canteenId 食堂编号
+     * @param tagsId 标签编号
      * @return java.util.List<com.pojo.Store>
      * @since 2021/12/9
      */
@@ -92,4 +92,25 @@ public class StoreService {
         return Collections.emptyList();
     }
 
+
+    /**
+     * <p> 根据店铺编号查询店铺信息 </p>
+     *
+     * @param storeId 店铺编号
+     * @return com.pojo.Store
+     * @since 2021/12/11
+     */
+    public Store selectByStoreId(int storeId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            StoreMapper storeMapper = sqlSession.getMapper(StoreMapper.class);
+            // 执行sql并返回结果
+            return storeMapper.selectByStoreId(storeId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

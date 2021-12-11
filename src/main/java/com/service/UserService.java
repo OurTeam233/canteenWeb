@@ -31,6 +31,15 @@ public class UserService {
      * 创建SqlSessionFactory工厂
      */
     private final SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtils.getSqlSessionFactory();
+    /**
+     * <p> 查询用户是否存在 </p>
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @param userType 用户类型
+     * @return com.pojo.Result
+     * @since 2021/12/11
+     */
     public Result selectUser(String username, String password, int userType) {
         // 初始化
         Result result = new Result();

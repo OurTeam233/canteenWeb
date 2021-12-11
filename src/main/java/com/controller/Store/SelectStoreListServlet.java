@@ -18,11 +18,11 @@ import java.util.List;
 /**
  * @author tang
  */
-@WebServlet("/Store")
-public class SelectStoreServlet extends HttpServlet {
+@WebServlet("/StoreList")
+public class SelectStoreListServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger logger = LoggerFactory.getLogger(SelectStoreServlet.class);
+    private static final Logger logger = LoggerFactory.getLogger(SelectStoreListServlet.class);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //初始化
@@ -33,18 +33,24 @@ public class SelectStoreServlet extends HttpServlet {
         //处理
         // 创建服务对象
         StoreService storeService = new StoreService();
-        // 尝试获取店铺参数
-        String storeId = request.getParameter("storeId");
-        // 根据店铺id查询店铺信息
-        Store store = storeService.selectByStoreId(Integer.parseInt(storeId));
-        // 判断店铺信息是否为空
-        if (store != null) {
-            String storeString = JSON.toJSONString(store);
-            out.println(storeString);
+        // 尝试获取canteenId参数
+        String canteenId = request.getParameter("canteenId");
+        // 尝试获取storeId参数
+        String tagsId = request.getParameter("tagsId");
+        // 根据请求参数判断调用方法
+        List<Store> storeList = null;
+        if (canteenId != null) {
+            // 获取所有食堂
+            storeList = storeService.selectAllByCanteenId(Integer.parseInt(canteenId));
+        } else if (tagsId != null) {
+            // 获取所有食堂
+            storeList = storeService.selectAllByTagsId(Integer.parseInt(tagsId));
         } else {
-            // 如果为空返回 status:0
-            out.println("{\"status\":\"0\"}");
+            storeList = storeService.selectAll();
         }
+        // 返回结果
+        String storeListString = JSON.toJSONString(storeList);
+        out.print(storeListString);
     }
 
     @Override

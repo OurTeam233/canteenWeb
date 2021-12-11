@@ -28,6 +28,12 @@ public class PictureService {
      */
     private final SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtils.getSqlSessionFactory();
 
+    /**
+     * <p> 查询所有的轮播图信息 </p>
+     *
+     * @return java.util.List<com.pojo.Picture>
+     * @since 2021/12/11
+     */
     public List<Picture> selectAllSlideshow() {
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()

@@ -11,6 +11,7 @@ com\controller\picture\SelectSlideshowServlet.class
 com\pojo\User.class
 com\pojo\Result.class
 com\mapper\StoreMapper.class
+com\controller\Store\SelectStoreListServlet.class
 com\service\UserService.class
 com\service\PictureService.class
 com\controller\Store\SelectStoreServlet.class

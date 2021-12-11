@@ -41,4 +41,13 @@ public interface StoreMapper {
      * @since 2021/12/9
      */
     List<Store> selectStoreByTagsId(int tagsId);
+
+    /**
+     * <p> 根据店铺id查询店铺信息 </p>
+     *
+     * @param storeId 店铺id
+     * @return com.pojo.Store
+     * @since 2021/12/11
+     */
+    Store selectByStoreId(int storeId);
 }

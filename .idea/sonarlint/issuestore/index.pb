@@ -20,12 +20,6 @@ P
  src/main/java/com/pojo/Tags.java,2\7\27dce35738edaf45bcdfc27776a9c0dc80fa9e8e
 Q
 !src/main/java/com/pojo/Store.java,6\f\6f18bd8970dc5bc635cd267370a179837521249d
-[
-+src/main/java/com/service/StoreService.java,b\7\b7432e06f7de9dd53ae5dc51a504a1a731a6fb7e
-Y
-)src/main/java/com/mapper/StoreMapper.java,6\7\6793a8d9e4b46fa40e934ae904da42fa2d209818
-j
-:src/main/java/com/controller/Store/SelectStoreServlet.java,e\a\ea46c876c7cd7db3588a7b3d0de6a7143c21f63c
 l
 <src/main/java/com/controller/dishes/SelectDishesServlet.java,f\4\f4b23a620fab5f20aef34a2e42ed2b5195a3efb5
 p
@@ -42,8 +36,6 @@ S
 #src/main/java/com/util/Md5Util.java,d\2\d24dc9a8cd14f259b9b947fd5879a51084f64448
 W
 'src/test/java/utilTest/Md5UtilTest.java,8\4\84c0d2d13744c9d705e160485f58f35ff404dded
-]
--src/main/java/com/service/PictureService.java,b\3\b3bf691cea0acffab2365170e1b2ce1042034b2d
 X
 (src/main/java/com/mapper/UserMapper.java,e\5\e5ec1e1e67e613bf80fc0f620e69891f69fc5f4f
 P
