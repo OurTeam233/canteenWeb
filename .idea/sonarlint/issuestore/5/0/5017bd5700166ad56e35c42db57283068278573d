@@ -1,18 +1,0 @@
-
-M
-java:S1135"2Complete the task associated to this TODO comment.(Ø–Èûÿÿÿÿ
-R
-java:S1128"6Remove this unused import 'com.alibaba.fastjson.JSON'.(Ö¢å$8ÆÈ—ÀÚ/
-V
-java:S1128"4Remove this unused import 'com.mapper.DishesMapper'.(Èá·Çûÿÿÿÿ8ÆÈ—ÀÚ/
-N
-java:S1128",Remove this unused import 'com.pojo.Dishes'.(Íö†½úÿÿÿÿ8ÇÈ—ÀÚ/
-^
-java:S1128
-"ARemove this unused import 'org.apache.ibatis.annotations.Mapper'.(à©•ù8ÇÈ—ÀÚ/
-]
-java:S1128"@Remove this unused import 'org.apache.ibatis.annotations.Param'.(á¬Ó²8ÇÈ—ÀÚ/
-T
-java:S1128"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ8ÈÈ—ÀÚ/
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ÈÈ—ÀÚ/

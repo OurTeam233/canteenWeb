@@ -6,6 +6,7 @@ com\pojo\Dishes.class
 com\pojo\DishesTypes.class
 com\service\DishesService.class
 com\util\SqlSessionFactoryUtils.class
+com\filter\Filter.class
 com\pojo\Storetags.class
 com\controller\picture\SelectSlideshowServlet.class
 com\pojo\User.class
@@ -15,6 +16,7 @@ com\controller\Store\SelectStoreListServlet.class
 com\service\UserService.class
 com\service\PictureService.class
 com\controller\Store\SelectStoreServlet.class
+com\util\JwtUtil.class
 com\pojo\Tags.class
 com\controller\dishes\SelectDishesServlet.class
 com\mapper\DishesMapper.class

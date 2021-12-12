@@ -6,6 +6,7 @@ import com.mapper.UserMapper;
 import com.pojo.Dishes;
 import com.pojo.Result;
 import com.pojo.User;
+import com.util.JwtUtil;
 import com.util.SqlSessionFactoryUtils;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,6 +32,7 @@ public class UserService {
      * 创建SqlSessionFactory工厂
      */
     private final SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtils.getSqlSessionFactory();
+
     /**
      * <p> 查询用户是否存在 </p>
      *
@@ -43,7 +45,6 @@ public class UserService {
     public Result selectUser(String username, String password, int userType) {
         // 初始化
         Result result = new Result();
-        result.setSuccess(false);
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()
         ) {
@@ -52,7 +53,15 @@ public class UserService {
             // 执行sql并返回用户对象
             User user = userMapper.selectUser(username, password);
             // 判断用户对象是否存在并符合要求
-            result.setSuccess(user != null && user.getUserTypes().equals(userType));
+            if (user != null && user.getUserTypes().equals(userType)) {
+                // 存在用户
+                result.setSuccess(true);
+                // 生成jwt
+                String jwtToken = JwtUtil.generateToken(String.valueOf(user.getId()));
+                result.setToken(jwtToken);
+            } else {
+                result.setSuccess(false);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

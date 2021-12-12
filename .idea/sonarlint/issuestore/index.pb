@@ -24,8 +24,6 @@ S
 #src/main/java/com/pojo/Picture.java,1\f\1f08d990b08deba59ccb02e6880364e1e3cc8e9e
 ^
 .src/test/java/mapperTest/DishesMapperTest.java,e\2\e25d8ea3d7be19e80d51532f2f3e89457b1eff3e
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 S
 #src/main/java/com/util/Md5Util.java,d\2\d24dc9a8cd14f259b9b947fd5879a51084f64448
 W
@@ -34,10 +32,6 @@ X
 (src/main/java/com/mapper/UserMapper.java,e\5\e5ec1e1e67e613bf80fc0f620e69891f69fc5f4f
 P
  src/main/java/com/pojo/User.java,3\e\3eecec3b80a41d51a1d61dc9fd25ae1aff1cd36a
-R
-"src/main/java/com/pojo/Result.java,7\f\7fd46e4cc3fceaf5fe77a352b373de07d8632346
-Z
-*src/main/java/com/service/UserService.java,5\0\5017bd5700166ad56e35c42db57283068278573d
 ]
 -src/main/java/com/service/PictureService.java,b\3\b3bf691cea0acffab2365170e1b2ce1042034b2d
 [
@@ -48,8 +42,6 @@ j
 :src/main/java/com/controller/Store/SelectStoreServlet.java,e\a\ea46c876c7cd7db3588a7b3d0de6a7143c21f63c
 Y
 )src/main/java/com/mapper/StoreMapper.java,6\7\6793a8d9e4b46fa40e934ae904da42fa2d209818
-h
-8src/main/java/com/controller/user/SelectUserServlet.java,3\c\3c9e861acf3daf391a30537e42edc1b2e0575501
 Z
 *src/main/java/com/mapper/DishesMapper.java,e\9\e9d35c2c9077c09077dca51727f78452b0102e52
 W
@@ -58,5 +50,3 @@ R
 "src/main/java/com/pojo/Dishes.java,1\b\1b019d8de6ba529b7d7bafcac13a5935d50e60e2
 \
 ,src/main/java/com/service/DishesService.java,7\3\731a58761d60fe3f30b6dda62ca3ed1cfeb726b6
-l
-<src/main/java/com/controller/dishes/SelectDishesServlet.java,f\4\f4b23a620fab5f20aef34a2e42ed2b5195a3efb5

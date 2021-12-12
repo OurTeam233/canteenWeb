@@ -14,6 +14,36 @@ package com.pojo;
 public class Result {
     private boolean success;
 
+    private String token;
+
+    private String message;
+
+    private String code;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public boolean isSuccess() {
         return success;
     }
@@ -26,6 +56,9 @@ public class Result {
     public String toString() {
         return "Result{" +
                 "success=" + success +
+                ", token='" + token + '\'' +
+                ", message='" + message + '\'' +
+                ", code='" + code + '\'' +
                 '}';
     }
 }
