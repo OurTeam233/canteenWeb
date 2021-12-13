@@ -35,7 +35,18 @@ public class User implements Serializable {
      * 封禁时间
      */
     private Date banTime;
+    /**
+     * 关联编号
+     */
+    private Integer relationId;
 
+    public Integer getRelationId() {
+        return relationId;
+    }
+
+    public void setRelationId(Integer relationId) {
+        this.relationId = relationId;
+    }
 
     public Integer getId() {
         return id;
@@ -94,6 +105,7 @@ public class User implements Serializable {
                 ", password='" + password + '\'' +
                 ", openId='" + openId + '\'' +
                 ", banTime=" + banTime +
+                ", relationId=" + relationId +
                 '}';
     }
 }

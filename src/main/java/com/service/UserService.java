@@ -57,7 +57,7 @@ public class UserService {
                 // 存在用户
                 result.setSuccess(true);
                 // 生成jwt
-                String jwtToken = JwtUtil.generateToken(String.valueOf(user.getId()));
+                String jwtToken = JwtUtil.generateToken(user.getRelationId() + "", user.getUserTypes() + "");
                 result.setToken(jwtToken);
             } else {
                 result.setSuccess(false);

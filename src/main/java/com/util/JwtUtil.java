@@ -29,7 +29,7 @@ public class JwtUtil {
      * @return java.lang.String
      * @since 2021/12/12
      */
-    public static String generateToken(String userId) {
+    public static String generateToken(String userId, String userType) {
         Date date = new Date();
         Date expireTime = new Date(date.getTime() + 60 * 60 * 1000 * 3);
         return Jwts.builder()
@@ -37,6 +37,7 @@ public class JwtUtil {
                 .setHeaderParam("typ", "JWT")
                 // payload
                 .claim("userId", userId)
+                .claim("userType", userType)
                 .setIssuedAt(date)
                 //过期时间
                 .setExpiration(expireTime)

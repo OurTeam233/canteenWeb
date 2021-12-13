@@ -28,10 +28,6 @@ S
 #src/main/java/com/util/Md5Util.java,d\2\d24dc9a8cd14f259b9b947fd5879a51084f64448
 W
 'src/test/java/utilTest/Md5UtilTest.java,8\4\84c0d2d13744c9d705e160485f58f35ff404dded
-X
-(src/main/java/com/mapper/UserMapper.java,e\5\e5ec1e1e67e613bf80fc0f620e69891f69fc5f4f
-P
- src/main/java/com/pojo/User.java,3\e\3eecec3b80a41d51a1d61dc9fd25ae1aff1cd36a
 ]
 -src/main/java/com/service/PictureService.java,b\3\b3bf691cea0acffab2365170e1b2ce1042034b2d
 [
@@ -50,3 +46,9 @@ R
 "src/main/java/com/pojo/Dishes.java,1\b\1b019d8de6ba529b7d7bafcac13a5935d50e60e2
 \
 ,src/main/java/com/service/DishesService.java,7\3\731a58761d60fe3f30b6dda62ca3ed1cfeb726b6
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+R
+"src/main/java/com/pojo/Result.java,7\f\7fd46e4cc3fceaf5fe77a352b373de07d8632346
+l
+<src/main/java/com/controller/dishes/SelectDishesServlet.java,f\4\f4b23a620fab5f20aef34a2e42ed2b5195a3efb5

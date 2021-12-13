@@ -9,12 +9,11 @@
         <result column="username" property="username"/>
         <result column="password" property="password"/>
         <result column="userTypes" property="userTypes"/>
-        <result column="openId" property="openId"/>
-        <result column="banTime" property="banTime"/>
+        <result column="relation_id" property="relationId"/>
     </resultMap>
 
     <select id="selectUser" resultMap="UserResultMap">
-        SELECT id, userName, userTypes, password, openId, banTime
+        SELECT id, userName, userTypes, password, relation_id
         FROM `user`
         WHERE userName = #{username}
           AND `password` = MD5(#{password})

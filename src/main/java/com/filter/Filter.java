@@ -41,6 +41,9 @@ public class Filter implements javax.servlet.Filter {
                 claim = JwtUtil.getClaimByToken(token);
             }
             if (claim != null && claim.getExpiration().after(new Date())) {
+                // 向request中添加用户信息
+                request.setAttribute("userId", claim.get("userId"));
+                request.setAttribute("userType", claim.get("userType"));
                 // 如果解析成功并且时间没有过期则放行
                 chain.doFilter(request, response);
             } else {
