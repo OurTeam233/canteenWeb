@@ -1,5 +1,6 @@
 package com.mapper;
 
+import com.pojo.StudentInfo;
 import com.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -16,7 +17,12 @@ import org.apache.ibatis.annotations.Param;
  **/
 public interface UserMapper {
     /**
-     * 查询用户
+     * 查询商家用户
      */
-     User selectUser(@Param("username") String username, @Param("password") String password);
+     User selectUserStore(@Param("username") String username, @Param("password") String password);
+
+    /**
+     * 查询学生用户
+     */
+     StudentInfo selectUserStudent(@Param("sequence") String sequence, @Param("departmentName") String departmentName, @Param("className") String className);
 }

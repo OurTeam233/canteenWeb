@@ -20,6 +20,16 @@ public class Result {
 
     private String code;
 
+    private String openId;
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
+
     public String getMessage() {
         return message;
     }
@@ -59,6 +69,7 @@ public class Result {
                 ", token='" + token + '\'' +
                 ", message='" + message + '\'' +
                 ", code='" + code + '\'' +
+                ", openId='" + openId + '\'' +
                 '}';
     }
 }

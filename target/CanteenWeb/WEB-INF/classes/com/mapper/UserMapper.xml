@@ -9,14 +9,31 @@
         <result column="username" property="username"/>
         <result column="password" property="password"/>
         <result column="userTypes" property="userTypes"/>
-        <result column="openId" property="openId"/>
-        <result column="banTime" property="banTime"/>
+        <result column="relation_id" property="relationId"/>
     </resultMap>
 
-    <select id="selectUser" resultMap="UserResultMap">
-        SELECT id, userName, userTypes, password, openId, banTime
+    <resultMap id="StudentInfoResultMap" type="studentInfo">
+        <result property="className" column="className"/>
+        <result property="departmentName" column="departmentName"/>
+        <result property="sequence" column="sequence"/>
+    </resultMap>
+
+    <select id="selectUserStore" resultMap="UserResultMap">
+        SELECT id, userName, userTypes, password, relation_id
         FROM `user`
         WHERE userName = #{username}
           AND `password` = MD5(#{password})
+    </select>
+
+    <select id="selectUserStudent" resultMap="StudentInfoResultMap">
+        SELECT sc.NAME      className,
+               d.simpleName departmentName,
+               si.sequence
+        FROM studentclass sc
+                 LEFT JOIN department d ON sc.department_id = d.id
+                 LEFT JOIN studentinfo si ON si.studentclass_id = sc.id
+        WHERE sequence = #{sequence}
+          AND d.simpleName = #{departmentName}
+          AND sc.NAME = #{className}
     </select>
 </mapper>

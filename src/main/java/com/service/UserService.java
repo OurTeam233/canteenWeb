@@ -1,20 +1,15 @@
 package com.service;
 
-import com.alibaba.fastjson.JSON;
-import com.mapper.DishesMapper;
 import com.mapper.UserMapper;
-import com.pojo.Dishes;
 import com.pojo.Result;
+import com.pojo.StudentInfo;
 import com.pojo.User;
 import com.util.JwtUtil;
 import com.util.SqlSessionFactoryUtils;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-
-import java.util.Collections;
-import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p> 对User表进行操作 </p>
@@ -39,10 +34,39 @@ public class UserService {
      * @param username 用户名
      * @param password 密码
      * @param userType 用户类型
+     * @return int 返回用户id
+     * @since 2021/12/11
+     */
+    public int selectUserStore(String username, String password, int userType) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            // 执行sql并返回用户对象
+            User user = userMapper.selectUserStore(username, password);
+            // 判断用户对象是否存在并符合要求
+            if (user != null && user.getUserTypes().equals(userType)) {
+                return user.getId();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+
+    /**
+     * <p> 查询用户是否存在 </p>
+     *
+     * @param sequence 学号
+     * @param departmentName 院系名
+     * @param className 班级名
      * @return com.pojo.Result
      * @since 2021/12/11
      */
-    public Result selectUser(String username, String password, int userType) {
+    public Result selectUserStudent(String sequence, String departmentName, String className) {
         // 初始化
         Result result = new Result();
         try (// 创建连接
@@ -51,17 +75,9 @@ public class UserService {
             // 创建映射关系
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             // 执行sql并返回用户对象
-            User user = userMapper.selectUser(username, password);
+            StudentInfo studentInfo = userMapper.selectUserStudent(sequence, departmentName, className);
             // 判断用户对象是否存在并符合要求
-            if (user != null && user.getUserTypes().equals(userType)) {
-                // 存在用户
-                result.setSuccess(true);
-                // 生成jwt
-                String jwtToken = JwtUtil.generateToken(user.getRelationId() + "", user.getUserTypes() + "");
-                result.setToken(jwtToken);
-            } else {
-                result.setSuccess(false);
-            }
+            result.setSuccess(studentInfo != null);
         } catch (Exception e) {
             e.printStackTrace();
         }

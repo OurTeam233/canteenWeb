@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sun.management.Agent;
 
 import java.util.Date;
 
@@ -20,7 +21,7 @@ import java.util.Date;
  * @TODO
  **/
 public class JwtUtil {
-    public static final String SECRET = "ToxhIw2l";
+    public static final String SECRET = "faononojacoisjoer";
 
     /**
      * <p> 生成jwt </p>
@@ -29,16 +30,17 @@ public class JwtUtil {
      * @return java.lang.String
      * @since 2021/12/12
      */
-    public static String generateToken(String userId, String userType) {
+    public static String generateToken(String userId, String userType, String userAgent, String ip) {
         Date date = new Date();
-        Date expireTime = new Date(date.getTime() + 60 * 60 * 1000 * 3);
+        Date expireTime = new Date(date.getTime() + 60 * 60 * 1000 * 12);
         return Jwts.builder()
                 // header
                 .setHeaderParam("typ", "JWT")
                 // payload
                 .claim("userId", userId)
                 .claim("userType", userType)
-                .setIssuedAt(date)
+                .claim("userAgent", userAgent)
+                .claim("ip", ip)
                 //过期时间
                 .setExpiration(expireTime)
                 //秘钥

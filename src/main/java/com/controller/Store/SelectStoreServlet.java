@@ -33,10 +33,22 @@ public class SelectStoreServlet extends HttpServlet {
         //处理
         // 创建服务对象
         StoreService storeService = new StoreService();
+        // 创建店铺对象
+        Store store = null;
         // 尝试获取店铺参数
         String storeId = request.getParameter("storeId");
-        // 根据店铺id查询店铺信息
-        Store store = storeService.selectByStoreId(Integer.parseInt(storeId));
+        if (storeId != null) {
+            // 根据店铺id查询店铺信息
+            store = storeService.selectByStoreId(Integer.parseInt(storeId));
+        } else {
+            // 如果是商家，那么直接返回该商户的店铺信息
+            String userId = request.getParameter("userId");
+            String userType = request.getParameter("userType");
+            if ("2".equals(userType)) {
+                store = storeService.selectByStoreId(Integer.parseInt(userId));
+            }
+        }
+        // 返回结果
         // 判断店铺信息是否为空
         if (store != null) {
             String storeString = JSON.toJSONString(store);
