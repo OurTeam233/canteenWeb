@@ -1,4 +1,4 @@
-package com.controller.Store;
+package com.controller.store;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Store;

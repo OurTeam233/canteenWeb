@@ -1,7 +1,7 @@
 package com.controller.studentClass;
 
 import com.alibaba.fastjson.JSON;
-import com.controller.Store.SelectStoreServlet;
+import com.controller.store.SelectStoreServlet;
 import com.pojo.StudentClass;
 import com.service.ClassService;
 import org.slf4j.Logger;

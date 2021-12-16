@@ -1,7 +1,6 @@
 package com.mapper;
 
-import com.pojo.Dishes;
-import com.pojo.StudentClass;
+import com.pojo.Order;
 
 import java.util.List;
 
@@ -14,6 +13,13 @@ import java.util.List;
  * @package com.mapper
  * @date 2021/12/8 8:35
  **/
-public interface ClassMapper {
-    List<StudentClass> selectClass();
+public interface OrderMapper {
+    /**
+     * <p> 根据显示id查询所有订单号 </p>
+     *
+     * @param StudentId 学生id
+     * @return java.util.List<com.pojo.Order>
+     * @since 2021/12/16
+     */
+    List<Order> selectOrderByStudentId(int studentId);
 }

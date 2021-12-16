@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * @author tang
  */
-@WebFilter("/wu")
+@WebFilter("/*")
 public class Filter implements javax.servlet.Filter {
     @Override
     public void init(FilterConfig config) throws ServletException {

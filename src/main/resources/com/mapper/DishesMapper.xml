@@ -11,6 +11,7 @@
             <id column="id" property="id"/>
             <result column="dishes_name" property="name"/>
             <result column="price" property="price"/>
+            <result column="vipPrice" property="vipPrice"/>
             <result column="imgUrl" property="imgUrl"/>
             <result column="sales" property="sales"/>
         </collection>
@@ -21,6 +22,7 @@
                d.dishesTypes_id,
                d.`name`  dishes_name,
                d.price,
+               d.vipPrice,
                d.imgUrl,
                d.sales,
                dt.`name` dishesTypes_name

@@ -1,4 +1,4 @@
-package com.controller.Store;
+package com.controller.store;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Store;
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 /**
  * @author tang

@@ -1,38 +1,49 @@
-//import org.apache.http.HttpEntity;
-//import org.apache.http.client.methods.HttpGet;
-//import org.apache.http.impl.client.CloseableHttpClient;
-//import org.apache.http.impl.client.HttpClientBuilder;
-//import org.apache.http.util.EntityUtils;
-//
 //import java.io.IOException;
-//import java.util.Date;
-//
+//import javax.websocket.OnClose;
+//import javax.websocket.OnError;
+//import javax.websocket.OnMessage;
+//import javax.websocket.OnOpen;
+//import javax.websocket.Session;
+//import javax.websocket.server.PathParam;
+//import javax.websocket.server.ServerEndpoint;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 ///**
-// * <p> 随便测试一点东西 </p>
-// *
-// * @author 汤卫豪
-// * @version V1.0
-// * @projectName CanteenWeb
-// * @package PACKAGE_NAME
-// * @className Test
-// * @date 2021/12/13 17:33
-// * @TODO
-// **/
+// * @Class: Test
+// * @Description: 简单websocket demo
+// * @author 九风萍舟
+// */
+//@ServerEndpoint("/websocketTest/{userId}")
 //public class Test {
-//    @org.junit.Test
-//    public void getOpenId() {
-//        String url = "https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code";
-//        url = url.replace("APPID", "wxa93be96343aa1696");
-//        url = url.replace("SECRET", "686aa322b8310a2df92c7abceb56c91b");
-//        url = url.replace("JSCODE", );
-//        HttpGet httpGet = new HttpGet(url);
-//        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-//        try {
-//            HttpEntity entity = httpClient.execute(httpGet).getEntity();
-//            String result = EntityUtils.toString(entity);
-//            System.out.println(result);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+//    private Logger logger = LoggerFactory.getLogger(Test.class);
+//
+//    private static String userId;
+//
+//    //连接时执行
+//    @OnOpen
+//    public void onOpen(@PathParam("userId") String userId,Session session) throws IOException{
+//        this.userId = userId;
+//        logger.debug("新连接：{}",userId);
 //    }
+//
+//    //关闭时执行
+//    @OnClose
+//    public void onClose(){
+//        logger.debug("连接：{} 关闭",this.userId);
+//    }
+//
+//    //收到消息时执行
+//    @OnMessage
+//    public void onMessage(String message, Session session) throws IOException {
+//        logger.debug("收到用户{}的消息{}",this.userId,message);
+//        session.getBasicRemote().sendText("收到 "+this.userId+" 的消息 "); //回复用户
+//    }
+//
+//    //连接错误时执行
+//    @OnError
+//    public void onError(Session session, Throwable error){
+//        logger.debug("用户id为：{}的连接发送错误",this.userId);
+//        error.printStackTrace();
+//    }
+//
 //}

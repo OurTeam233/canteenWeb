@@ -1,7 +1,7 @@
 package com.controller.dishes;
 
 import com.alibaba.fastjson.JSON;
-import com.controller.Store.SelectStoreServlet;
+import com.controller.store.SelectStoreServlet;
 import com.pojo.Dishes;
 import com.service.DishesService;
 import org.slf4j.Logger;

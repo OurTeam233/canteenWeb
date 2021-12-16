@@ -82,6 +82,7 @@ public class UserStudentLoginServlet extends HttpServlet {
             } else {
                 // 查询到学生的studentId
                 studentId = studentBySequence.getId();
+                System.out.println(studentBySequence);
             }
             // 生成token
             // 获取ua和ip

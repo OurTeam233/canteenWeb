@@ -38,6 +38,10 @@ public class Dishes implements Serializable {
      * 菜品月售
      */
     private Integer sales;
+    /**
+     * 会员价
+     */
+    private Integer vipPrice;
 
     public String getImgUrl() {
         return imgUrl;
@@ -87,6 +91,14 @@ public class Dishes implements Serializable {
         this.store = store;
     }
 
+    public Integer getVipPrice() {
+        return vipPrice;
+    }
+
+    public void setVipPrice(Integer vipPrice) {
+        this.vipPrice = vipPrice;
+    }
+
     public Integer getSales() {
         return sales;
     }
@@ -105,6 +117,7 @@ public class Dishes implements Serializable {
                 ", store=" + store +
                 ", imgUrl='" + imgUrl + '\'' +
                 ", sales=" + sales +
+                ", vipPrice=" + vipPrice +
                 '}';
     }
 }

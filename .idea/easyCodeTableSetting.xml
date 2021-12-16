@@ -181,6 +181,139 @@
             </TableInfoDTO>
           </value>
         </entry>
+        <entry key="order">
+          <value>
+            <TableInfoDTO>
+              <option name="comment" value="订单表" />
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="编号" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="id" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="学生编号" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="studentId" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="店铺编号" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="storeId" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="订单号。例如0-00-0000" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="ordernumber" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="取餐时间" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="ordertime" />
+                    <option name="type" value="java.util.Date" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="下单时间" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="time" />
+                    <option name="type" value="java.util.Date" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="0未取订单 1历史订单 2违规订单" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="type" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="Order" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="CanteenWeb" />
+              <option name="savePackageName" value="com" />
+              <option name="savePath" value="./src/main/java/com" />
+              <option name="templateGroupName" value="Default" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="orderdetails">
+          <value>
+            <TableInfoDTO>
+              <option name="comment" value="订单明细表" />
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="编号" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="id" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="菜品编号" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="dishesId" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="订单编号" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="orderId" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="菜品数量" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="num" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="Orderdetails" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="CanteenWeb" />
+              <option name="savePackageName" value="com" />
+              <option name="savePath" value="./src/main/java/com" />
+              <option name="templateGroupName" value="Default" />
+            </TableInfoDTO>
+          </value>
+        </entry>
         <entry key="picture">
           <value>
             <TableInfoDTO>
@@ -349,63 +482,42 @@
                   <ColumnInfoDTO>
                     <option name="comment" value="编号" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="学号&#13;&#10;" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="suqence" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="昵称" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="nickname" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="电话" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="phone" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="会员类型" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="membertypes" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="微信编号" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="openid" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="封禁时间" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map />
-                    </option>
                     <option name="name" value="bantime" />
                     <option name="type" value="java.util.Date" />
                   </ColumnInfoDTO>
