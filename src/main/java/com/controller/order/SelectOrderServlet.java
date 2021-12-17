@@ -3,7 +3,6 @@ package com.controller.order;
 import com.alibaba.fastjson.JSON;
 import com.pojo.Order;
 import com.service.OrderService;
-import com.util.RequestParameterWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,13 +34,16 @@ public class SelectOrderServlet extends HttpServlet {
         // 初始化
         OrderService orderService = new OrderService();
         List<Order> orderList = null;
-        // 如果是商家，那么直接返回该商户的店铺信息
+        // 获取参数
         String userId = request.getParameter("userId");
         String userType = request.getParameter("userType");
         System.out.println(userId);
         System.out.println(userType);
+        // 根据不同的用户类型，获取不同的订单
         if ("1".equals(userType)) {
             orderList = orderService.selectOrderByStudentId(Integer.parseInt(userId));
+        } else if ("2".equals(userType)) {
+            orderList = orderService.selectOrderByStoreId(Integer.parseInt(userId));
         }
         // 返回结果集
         if (orderList != null) {

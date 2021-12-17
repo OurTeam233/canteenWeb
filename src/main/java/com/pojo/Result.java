@@ -22,6 +22,16 @@ public class Result {
 
     private String openId;
 
+    private Integer sum;
+
+    public Integer getSum() {
+        return sum;
+    }
+
+    public void setSum(Integer sum) {
+        this.sum = sum;
+    }
+
     public String getOpenId() {
         return openId;
     }
@@ -70,6 +80,7 @@ public class Result {
                 ", message='" + message + '\'' +
                 ", code='" + code + '\'' +
                 ", openId='" + openId + '\'' +
+                ", sum=" + sum +
                 '}';
     }
 }
