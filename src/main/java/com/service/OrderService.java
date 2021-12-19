@@ -138,4 +138,26 @@ public class OrderService {
         }
         return null;
     }
+
+    /**
+     * <p> 按订单id更新订单状态 </p>
+     *
+     * @param orderId 订单id
+     * @param type 订单状态
+     * @return int 被更新的行数
+     * @since 2021/12/19
+     */
+    public int updateOrderById(String orderId, String type) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+            // 执行sql并返回结果
+            return orderMapper.updateOrderById(orderId, type);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

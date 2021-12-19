@@ -110,5 +110,10 @@
         VALUES (#{orderDetails.orderId}, #{orderDetails.dishesId}, #{orderDetails.num})
     </insert>
 
-
+    <update id="updateOrderById">
+        UPDATE `order`
+        SET type = #{type}
+        WHERE
+            id = #{orderId}
+    </update>
 </mapper>

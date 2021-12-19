@@ -34,6 +34,7 @@ com\controller\picture\SelectSlideshowServlet.class
 com\service\ClassService.class
 com\mapper\StoreMapper.class
 com\service\PictureService.class
+com\controller\order\UpdateOrderTypeServlet.class
 com\util\RequestParameterWrapper.class
 com\pojo\StudentClass.class
 com\util\JwtUtil.class

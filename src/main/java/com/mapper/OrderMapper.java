@@ -19,7 +19,7 @@ public interface OrderMapper {
     /**
      * <p> 根据显示id查询所有订单号 </p>
      *
-     * @param StudentId 学生id
+     * @param studentId 学生id
      * @return java.util.List<com.pojo.Order>
      * @since 2021/12/16
      */
@@ -70,4 +70,14 @@ public interface OrderMapper {
      * @since 2021/12/17
      */
     Order selectOrderById(int orderId);
+
+    /**
+     * <p> 按订单id更新订单状态 </p>
+     *
+     * @param orderId 订单id
+     * @param type 订单状态
+     * @return int 被更新的行数
+     * @since 2021/12/19
+     */
+    int updateOrderById(@Param("orderId") String orderId,@Param("type") String type);
 }
