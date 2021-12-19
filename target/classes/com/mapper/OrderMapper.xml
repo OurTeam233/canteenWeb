@@ -74,6 +74,30 @@
           AND store_id = #{storeId}
     </select>
 
+
+    <select id="selectOrderById" resultMap="OrderResultMapper">
+        SELECT
+            o.id orderId,
+            o.orderNumber,
+            o.orderTime,
+            o.time,
+            o.type,
+            o.note,
+            o.totalPrice,
+            o.student_id,
+            d.id dishesId,
+            d.`name`,
+            d.price,
+            od.num
+        FROM
+            `order` o
+                LEFT JOIN orderdetails od ON od.order_id = o.id
+                LEFT JOIN dishes d ON d.id = od.dishes_id
+                LEFT JOIN store s ON s.id = o.store_id
+        WHERE
+            o.id = #{orderId}
+    </select>
+
     <insert id="insertOrder" parameterType="order" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO `order` (student_id, store_id, orderNumber, orderTime, time, type, note, totalPrice)
         VALUES (#{order.studentId}, #{order.storeId}, #{order.orderNumber}, #{order.orderTime}, #{order.time},
@@ -85,4 +109,6 @@
         INSERT INTO orderdetails (order_id, dishes_id, num)
         VALUES (#{orderDetails.orderId}, #{orderDetails.dishesId}, #{orderDetails.num})
     </insert>
+
+
 </mapper>

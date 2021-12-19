@@ -19,12 +19,13 @@ com\controller\dishes\SelectDishesServlet.class
 com\mapper\DishesMapper.class
 com\mapper\PictureMapper.class
 com\pojo\Picture.class
-com\controller\order\SelectOrderServlet.class
 com\pojo\Store.class
 com\controller\user\UserStudentLoginServlet.class
 com\pojo\DishesTypes.class
+com\controller\order\SelectAllOrderServlet.class
 com\service\DishesService.class
 com\mapper\StudentMapper.class
+com\controller\order\SelectOneOrderServlet.class
 com\pojo\Order.class
 com\service\StudentService.class
 com\util\SqlSessionFactoryUtils.class

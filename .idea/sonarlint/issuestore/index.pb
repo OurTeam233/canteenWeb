@@ -72,8 +72,6 @@ R
 "src/main/java/com/pojo/Result.java,7\f\7fd46e4cc3fceaf5fe77a352b373de07d8632346
 l
 <src/main/java/com/controller/dishes/SelectDishesServlet.java,f\4\f4b23a620fab5f20aef34a2e42ed2b5195a3efb5
-j
-:src/main/java/com/controller/order/SelectOrderServlet.java,6\b\6bba712a6c55aa5b14e33d3462325f61156fa32c
 n
 >src/main/java/com/controller/user/UserStudentLoginServlet.java,8\f\8ff7f6a487bb31d905e6a397c4875b9821c0f14e
 R
@@ -88,9 +86,3 @@ Q
 !src/main/java/com/pojo/Order.java,b\0\b0a8fb59928cbba451e1b14606030bc1db65159a
 X
 (src/main/java/com/util/SessionUtils.java,2\5\25c1af4bee13b0c44d7389d7f3f7d2a5b0dacebf
-Y
-)src/main/java/com/mapper/OrderMapper.java,e\2\e2dadfad4e8cfe0b3bb5e0233352391fcc8a91f0
-`
-0src/main/java/com/controller/WebsocketPoint.java,0\7\07da4c73b0a3132fc4b90a6e933c5ac1d20e1b4e
-T
-$src/main/java/com/filter/Filter.java,8\d\8d59bbeabd2fc07adf946a1235ac2a24e8637861

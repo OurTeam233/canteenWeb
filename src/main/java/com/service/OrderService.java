@@ -117,4 +117,25 @@ public class OrderService {
         }
         return 0;
     }
+
+    /**
+     * <p> 通过id查询订单 </p>
+     *
+     * @param orderId 订单id
+     * @return com.pojo.Order
+     * @since 2021/12/19
+     */
+    public Order selectOrderById(int orderId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+            // 执行sql并返回结果
+            return orderMapper.selectOrderById(orderId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

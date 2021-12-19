@@ -61,4 +61,13 @@ public interface OrderMapper {
      * @since 2021/12/17
      */
     List<Order> selectOrderByStoreId(int storeId);
+
+    /**
+     * <p> 根据订单id查询订单 </p>
+     *
+     * @param orderId 订单id
+     * @return java.util.List<com.pojo.Order>
+     * @since 2021/12/17
+     */
+    Order selectOrderById(int orderId);
 }

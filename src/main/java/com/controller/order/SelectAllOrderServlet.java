@@ -19,10 +19,10 @@ import java.util.List;
  * @author tang
  */
 @WebServlet("/Order/Select")
-public class SelectOrderServlet extends HttpServlet {
+public class SelectAllOrderServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    Logger logger = LoggerFactory.getLogger(SelectOrderServlet.class);
+    Logger logger = LoggerFactory.getLogger(SelectAllOrderServlet.class);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //初始化
