@@ -16,6 +16,7 @@
         <result column="address" property="address"/>
         <result column="student_id" property="studentId"/>
         <result column="store_id" property="storeId"/>
+        <result column="type" property="type"/>
         <collection property="orderDetailsList" ofType="orderDetails">
             <id column="dishesId" property="dishesId"/>
             <result column="name" property="name"/>

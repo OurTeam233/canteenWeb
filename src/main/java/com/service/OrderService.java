@@ -94,9 +94,9 @@ public class OrderService {
             currentDate.set(Calendar.HOUR_OF_DAY, 0);
             currentDate.set(Calendar.MINUTE, 0);
             currentDate.set(Calendar.SECOND, 0);
-            String time = currentDate.getTime().toString();
+            long time = currentDate.getTime().getTime();
             // 获取今天的订单数量
-            int orderCount = orderMapper.selectOrderCount(time, order.getStoreId());
+            int orderCount = orderMapper.selectOrderCount(String.valueOf(time), order.getStoreId());
             // 构造order
             order.setOrderNumber(String.format("%03d", order.getStoreId()) + "-" + String.format("%04d", orderCount + 1));
             // 存入订单

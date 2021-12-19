@@ -1,0 +1,18 @@
+
+T
+java:S1135"2Complete the task associated to this TODO comment.(Ø–Èûÿÿÿÿ8¯õ¡·Ü/
+P
+java:S1128"3Remove this unused import 'com.mapper.ClassMapper'.(Ëë““8·õ¡·Ü/
+R
+java:S1128"5Remove this unused import 'com.mapper.PictureMapper'.(ãƒ8·õ¡·Ü/
+O
+java:S1128"-Remove this unused import 'com.pojo.Picture'.(±ÿÅéùÿÿÿÿ8¸õ¡·Ü/
+O
+java:S1128"2Remove this unused import 'com.pojo.StudentClass'.(áğõÜ8¸õ¡·Ü/
+^
+java:S1128
+"ARemove this unused import 'org.apache.ibatis.annotations.Mapper'.(à©•ù8¸õ¡·Ü/
+T
+java:S1128"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ8¸õ¡·Ü/
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¹õ¡·Ü/

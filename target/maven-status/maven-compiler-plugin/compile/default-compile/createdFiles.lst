@@ -1,7 +1,6 @@
 com\mapper\UserMapper.class
 com\pojo\Canteen.class
 com\pojo\Student.class
-com\controller\Test.class
 com\pojo\Department.class
 com\pojo\Dishes.class
 com\service\OrderService.class
@@ -39,7 +38,9 @@ com\pojo\StudentClass.class
 com\util\JwtUtil.class
 com\controller\order\InsertOrderServlet.class
 com\pojo\StudentInfo.class
+com\util\SessionUtils.class
 com\mapper\OrderMapper.class
 com\controller\store\SelectStoreServlet.class
 com\service\StoreService.class
+com\controller\WebsocketPoint.class
 com\util\Md5Util.class
