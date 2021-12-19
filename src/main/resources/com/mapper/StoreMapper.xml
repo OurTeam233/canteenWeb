@@ -108,4 +108,28 @@
                  LEFT JOIN tags t ON st.tags_id = t.id
         WHERE s.id = #{id}
     </select>
+
+    <select id="likeSelectStore" resultMap="StoreResultMap">
+        <bind name="keyword" value="'%' + keyword + '%'" />
+        SELECT
+            s.id,
+            s.`name` store_name,
+            s.canteen_id,
+            s.canteen_name,
+            s.address,
+            s.phone,
+            s.score,
+            s.logoUrl,
+            s.attention,
+            s.sales,
+            s.description,
+            st.tags_id,
+            t.`name` tags_name
+        FROM
+            store s
+                LEFT JOIN storetags st ON st.store_id = s.id
+                LEFT JOIN tags t ON st.tags_id = t.id
+                LEFT JOIN dishes d ON d.store_id = s.id
+        WHERE d.`name` like #{keyword} OR s.`name` like #{keyword} OR t.name like #{keyword}
+    </select>
 </mapper>

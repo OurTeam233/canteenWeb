@@ -2,6 +2,7 @@ package com.mapper;
 
 import com.pojo.Dishes;
 import com.pojo.Store;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -50,4 +51,15 @@ public interface StoreMapper {
      * @since 2021/12/11
      */
     Store selectByStoreId(int storeId);
+
+    /**
+     * <p> 通过店铺名或者菜品名进行模糊查询 </p>
+     *
+     * @param storeName 店铺名
+     * @param dishesName 菜品名
+     * @param tagsName 标签名
+     * @return java.util.List<com.pojo.Store>
+     * @since 2021/12/19
+     */
+    List<Store> likeSelectStore(String keyword);
 }

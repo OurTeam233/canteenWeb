@@ -9,6 +9,7 @@ com\filter\Filter.class
 com\pojo\User.class
 com\pojo\Result.class
 com\service\UserService.class
+com\controller\store\SelectLikeStoreServlet.class
 com\controller\store\SelectStoreListServlet.class
 com\pojo\OrderDetails.class
 com\util\WxRequestUtil.class

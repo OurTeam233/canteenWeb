@@ -113,4 +113,26 @@ public class StoreService {
         }
         return null;
     }
+
+    /**
+     * <p> 根据店铺名或者菜品名搜索店铺 </p>
+     *
+     * @param storeName 店铺名称
+     * @param dishesName 菜品名称
+     * @return java.util.List<com.pojo.Store>
+     * @since 2021/12/19
+     */
+    public List<Store> likeSelectStore(String keyword) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            StoreMapper storeMapper = sqlSession.getMapper(StoreMapper.class);
+            // 执行sql并返回结果
+            return storeMapper.likeSelectStore(keyword);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
 }
