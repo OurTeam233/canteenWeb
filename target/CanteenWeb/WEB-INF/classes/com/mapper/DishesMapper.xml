@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间为全类名-->
+<mapper namespace="com.mapper.DishesMapper">
+    <resultMap id="DishesResultMap" type="dishesTypes">
+        <id column="dishesTypes_id" property="id"/>
+        <result column="dishesTypes_name" property="name"/>
+        <collection property="dishes" ofType="dishes">
+            <id column="id" property="id"/>
+            <result column="dishes_name" property="name"/>
+            <result column="price" property="price"/>
+            <result column="vipPrice" property="vipPrice"/>
+            <result column="imgUrl" property="imgUrl"/>
+            <result column="sales" property="sales"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectDishesByStoreId" resultMap="DishesResultMap">
+        SELECT d.id,
+               d.dishesTypes_id,
+               d.`name`  dishes_name,
+               d.price,
+               d.vipPrice,
+               d.imgUrl,
+               d.sales,
+               dt.`name` dishesTypes_name
+        FROM dishes d
+                 INNER JOIN dishestypes dt ON d.dishesTypes_id = dt.id
+        WHERE store_id = #{storeId}
+    </select>
+</mapper>

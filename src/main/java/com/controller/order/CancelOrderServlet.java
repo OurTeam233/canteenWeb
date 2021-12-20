@@ -1,7 +1,7 @@
 package com.controller.order;
 
 import com.alibaba.fastjson.JSON;
-import com.pojo.Order;
+import com.pojo.Result;
 import com.service.OrderService;
 
 import javax.servlet.*;
@@ -10,10 +10,9 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
-import java.util.List;
 
-@WebServlet(value = "/Order/One")
-public class SelectOneOrderServlet extends HttpServlet {
+@WebServlet("/Order/Cancel")
+public class CancelOrderServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,23 +24,16 @@ public class SelectOneOrderServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         //处理
+        String orderId = request.getParameter("orderId");
         // 创建服务对象
         OrderService orderService = new OrderService();
-        // 获取参数
-        String userId = request.getParameter("orderId");
-        // 按id查询
-        Order order = orderService.selectOrderById(userId);
-        // 返回结果集
-        if (order != null) {
-            String orderString = JSON.toJSONString(order);
-            out.print(orderString);
-        } else {
-            // 如果为空返回 status:0
-            out.println("{\"status\":\"0\"}");
-        }
-
+        boolean cancelable = orderService.cancelOrderById(orderId);
+        // 创建结果集
+        Result result = new Result();
+        result.setSuccess(cancelable);
+        String jsonString = JSON.toJSONString(result);
         //输出
-        out.print("");
+        out.print(jsonString);
     }
 
     @Override

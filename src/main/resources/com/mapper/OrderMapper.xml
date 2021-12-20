@@ -85,6 +85,7 @@
             o.note,
             o.totalPrice,
             o.student_id,
+            o.store_id,
             d.id dishesId,
             d.`name`,
             d.price,

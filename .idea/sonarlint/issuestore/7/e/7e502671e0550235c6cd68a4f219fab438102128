@@ -1,16 +1,0 @@
-
-‚
-java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(ï‡‹ê
-k
-java:S1989"PHandle the following exception that could be thrown by "getWriter": IOException.(ïô†úÿÿÿÿ
-T
-java:S4719'"9Replace charset name argument with StandardCharsets.UTF_8(äÜÕ¡üÿÿÿÿ
-{
-java:S1989'"`Handle the following exception that could be thrown by "getBytes": UnsupportedEncodingException.(äÜÕ¡üÿÿÿÿ
-Y
-java:S4719'">Replace charset name argument with StandardCharsets.ISO_8859_1(äÜÕ¡üÿÿÿÿ
-z
-java:S19891"_Handle the following exceptions that could be thrown by "doGet": ServletException, IOException.(®Ó‘ûÿÿÿÿÿ
-E
-java:S1068"*Remove this unused "logger" private field.(µÿ¼Àùÿÿÿÿ
-k	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø˜„¸þÿÿÿÿ

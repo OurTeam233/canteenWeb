@@ -50,23 +50,22 @@ public class Filter implements javax.servlet.Filter {
                 String header = requestParameterWrapper.getHeader("User-Agent");
                 // 获取ip
                 String remoteAddr = requestParameterWrapper.getRemoteAddr();
-                // 如果ua和ip都相同，则继续判断
-                if (header.equals(claim.get("userAgent")) && remoteAddr.equals(claim.get("ip"))) {
-                    // 获取userId和userType
-                    String userId = claim.get("userId") + "";
-                    String userType = claim.get("userType") + "";
-                    // (如果用户为学生) 或者 (如果用户为不为学生但token没有过期)，放行
-                    boolean studentLoginEnabled = "1".equals(userType);
-                    boolean otherLoginEnabled = (!"1".equals(userType) && claim.getExpiration().after(new Date()));
-                    if (studentLoginEnabled || otherLoginEnabled) {
-                        // 向request中添加用户信息
-                        // 修改集合中的参数
-                        requestParameterWrapper.addParameter("userId", userId);
-                        requestParameterWrapper.addParameter("userType", userType);
-                        // 如果解析成功并且时间没有过期则放行
-                        chain.doFilter(requestParameterWrapper, response);
-                        return;
-                    }
+                // 获取userId和userType
+                String userId = claim.get("userId") + "";
+                String userType = claim.get("userType") + "";
+                // (如果用户为学生) 或者 (如果用户为不为学生但token没有过期)，放行
+                boolean studentLoginEnabled = "1".equals(userType);
+                boolean otherLoginEnabled = (!"1".equals(userType) && claim.getExpiration().after(new Date()));
+                // 判断ua和ip都相同
+                boolean statusEnabled = header.equals(claim.get("userAgent")) && remoteAddr.equals(claim.get("ip"));
+                if (studentLoginEnabled || (otherLoginEnabled && statusEnabled)) {
+                    // 向request中添加用户信息
+                    // 修改集合中的参数
+                    requestParameterWrapper.addParameter("userId", userId);
+                    requestParameterWrapper.addParameter("userType", userType);
+                    // 如果解析成功并且时间没有过期则放行
+                    chain.doFilter(requestParameterWrapper, response);
+                    return;
                 }
             }
             // 如果解析失败或者时间过期则返回401

@@ -37,13 +37,11 @@ public class SelectAllOrderServlet extends HttpServlet {
         // 获取参数
         String userId = request.getParameter("userId");
         String userType = request.getParameter("userType");
-        System.out.println(userId);
-        System.out.println(userType);
         // 根据不同的用户类型，获取不同的订单
         if ("1".equals(userType)) {
-            orderList = orderService.selectOrderByStudentId(Integer.parseInt(userId));
+            orderList = orderService.selectOrderByStudentId(userId);
         } else if ("2".equals(userType)) {
-            orderList = orderService.selectOrderByStoreId(Integer.parseInt(userId));
+            orderList = orderService.selectOrderByStoreId(userId);
         }
         // 返回结果集
         if (orderList != null) {

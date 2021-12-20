@@ -1,17 +1,0 @@
-
-£
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(õ­¥Ûþÿÿÿÿ8š ¬·Ü/
-ž
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‚“¶î8š ¬·Ü/
-4
-java:S2176"Rename this class.(ÇÄ¢Äúÿÿÿÿ8› ¬·Ü/
-t
-java:S3776 "RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(§Ä®·ÿÿÿÿÿ8  ¬·Ü/
-I
-java:S1128"-Remove this unused import 'org.slf4j.Logger'.(íØ®68ƒ®Â”Ý/
-Q
-java:S1128"4Remove this unused import 'org.slf4j.LoggerFactory'.(–ÿÚÞ8„®Â”Ý/
-P
-java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8„®Â”Ý/
-L
-java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òþÿÿÿÿ8…®Â”Ý/

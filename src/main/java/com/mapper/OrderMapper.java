@@ -23,7 +23,7 @@ public interface OrderMapper {
      * @return java.util.List<com.pojo.Order>
      * @since 2021/12/16
      */
-    List<Order> selectOrderByStudentId(int studentId);
+    List<Order> selectOrderByStudentId(String studentId);
 
     /**
      * <p> 查询storeId的time时间所有订单数量 </p>
@@ -60,7 +60,7 @@ public interface OrderMapper {
      * @return java.util.List<com.pojo.Order>
      * @since 2021/12/17
      */
-    List<Order> selectOrderByStoreId(int storeId);
+    List<Order> selectOrderByStoreId(String storeId);
 
     /**
      * <p> 根据订单id查询订单 </p>
@@ -69,7 +69,7 @@ public interface OrderMapper {
      * @return java.util.List<com.pojo.Order>
      * @since 2021/12/17
      */
-    Order selectOrderById(int orderId);
+    Order selectOrderById(String orderId);
 
     /**
      * <p> 按订单id更新订单状态 </p>

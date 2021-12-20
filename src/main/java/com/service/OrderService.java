@@ -39,7 +39,7 @@ public class OrderService {
      * @return java.util.List<com.pojo.Order>
      * @since 2021/12/11
      */
-    public List<Order> selectOrderByStudentId(int studentId) {
+    public List<Order> selectOrderByStudentId(String studentId) {
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()
         ) {
@@ -61,7 +61,7 @@ public class OrderService {
      * @return java.util.List<com.pojo.Order>
      * @since 2021/12/11
      */
-    public List<Order> selectOrderByStoreId(int storeId) {
+    public List<Order> selectOrderByStoreId(String storeId) {
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()
         ) {
@@ -125,7 +125,7 @@ public class OrderService {
      * @return com.pojo.Order
      * @since 2021/12/19
      */
-    public Order selectOrderById(int orderId) {
+    public Order selectOrderById(String orderId) {
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()
         ) {
@@ -154,10 +154,46 @@ public class OrderService {
             // 创建映射关系
             OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
             // 执行sql并返回结果
-            return orderMapper.updateOrderById(orderId, type);
+            int updateOrderById = orderMapper.updateOrderById(orderId, type);
+            sqlSession.commit();
+            return updateOrderById;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    /**
+     * <p> 根据订单id取消订单 </p>
+     *
+     * @param orderId 订单id
+     * @return boolean true 取消成功
+     * @since 2021/12/20
+     */
+    public boolean cancelOrderById(String orderId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+            // 执行sql并返回结果
+            Order order = orderMapper.selectOrderById(orderId);
+            // 获取今天的时间和订单的取餐时间
+            Date orderTime = order.getOrderTime();
+            Date currentTime = new Date();
+            // 判断是否能取消订单
+            if (orderTime.getTime() - currentTime.getTime() > 1000 * 60 * 30) {
+                return false;
+            } else {
+                System.out.println("可以");
+                // 执行sql并返回结果
+                boolean cancelable = orderMapper.updateOrderById(orderId, "4") > 0;
+                sqlSession.commit();
+                return cancelable;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
