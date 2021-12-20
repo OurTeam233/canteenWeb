@@ -10,6 +10,7 @@ com\filter\Filter.class
 com\pojo\User.class
 com\controller\order\CancelOrderServlet.class
 com\pojo\Result.class
+com\service\CollectionsService.class
 com\service\UserService.class
 com\controller\store\SelectLikeStoreServlet.class
 com\controller\store\SelectStoreListServlet.class

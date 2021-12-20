@@ -12,8 +12,6 @@ S
 #src/main/java/com/pojo/Canteen.java,f\7\f74ff080c8c6fd66d53ed3c335a3f04683eadd20
 P
  src/main/java/com/pojo/Tags.java,2\7\27dce35738edaf45bcdfc27776a9c0dc80fa9e8e
-Q
-!src/main/java/com/pojo/Store.java,6\f\6f18bd8970dc5bc635cd267370a179837521249d
 p
 @src/main/java/com/controller/picture/SelectSlideshowServlet.java,5\3\5358b5269b0e6a83275a31c1508912d122454a51
 [
@@ -54,8 +52,6 @@ Z
 *src/main/java/com/mapper/DishesMapper.java,e\9\e9d35c2c9077c09077dca51727f78452b0102e52
 S
 #src/main/java/com/pojo/Picture.java,1\f\1f08d990b08deba59ccb02e6880364e1e3cc8e9e
-\
-,src/main/java/com/service/DishesService.java,7\3\731a58761d60fe3f30b6dda62ca3ed1cfeb726b6
 S
 #src/main/java/com/pojo/Student.java,f\f\ffb1259d15446e6c5482221fe9cabd339aabaf40
 [

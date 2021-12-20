@@ -2,6 +2,7 @@ package com.controller.store;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Store;
+import com.service.CollectionsService;
 import com.service.StoreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,8 +38,15 @@ public class SelectStoreServlet extends HttpServlet {
         // 尝试获取店铺参数
         String storeId = request.getParameter("storeId");
         if (storeId != null) {
-            // 根据店铺id查询店铺信息
+            // 根据店铺id查询店铺信息  (学生查询方式)
             store = storeService.selectByStoreId(Integer.parseInt(storeId));
+            // 创建收藏服务对象，查询学生是否收藏了该店铺
+            CollectionsService collectionsService = new CollectionsService();
+            // 获取学生id
+            String userId = request.getParameter("userId");
+            // 查询学生是否收藏了该店铺
+            boolean collectible = collectionsService.selectDishesByStoreId(userId, storeId);
+            store.setCollected(collectible);
         } else {
             // 如果是商家，那么直接返回该商户的店铺信息
             String userId = request.getParameter("userId");

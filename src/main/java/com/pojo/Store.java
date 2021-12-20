@@ -55,6 +55,18 @@ public class Store implements Serializable {
      * 标签集合
      */
     private List<Tags> tags;
+    /**
+     * 被收藏
+     */
+    private boolean collected;
+
+    public boolean isCollected() {
+        return collected;
+    }
+
+    public void setCollected(boolean collected) {
+        this.collected = collected;
+    }
 
     public List<Tags> getTags() {
         return tags;
@@ -158,6 +170,7 @@ public class Store implements Serializable {
                 ", sales=" + sales +
                 ", description='" + description + '\'' +
                 ", tags=" + tags +
+                ", collected=" + collected +
                 '}';
     }
 }

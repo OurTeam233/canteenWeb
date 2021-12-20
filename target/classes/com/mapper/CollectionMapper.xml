@@ -4,13 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--命名空间为全类名-->
 <mapper namespace="com.mapper.CollectionMapper">
-    <resultMap id="departmentResultMap" type="department">
-        <id column="department_id" property="id"/>
-        <result column="simpleName" property="simpleName"/>
-        <collection property="studentClassList" ofType="studentClass">
-            <id column="id" property="id"/>
-            <result column="name" property="name"/>
-        </collection>
+    <resultMap id="CollectionResultMap" type="Collections">
+        <id column="id" property="id"/>
+        <result column="student_id" property="studentId"/>
+        <result column="store_id" property="storeId"/>
     </resultMap>
+
+    <select id="selectByStudentAndStore" resultMap="CollectionResultMap">
+        SELECT id
+        FROM collections
+        WHERE student_id = #{studentId}
+          AND store_id = #{storeId}
+    </select>
 
 </mapper>
