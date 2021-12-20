@@ -45,7 +45,7 @@ public class SelectStoreServlet extends HttpServlet {
             // 获取学生id
             String userId = request.getParameter("userId");
             // 查询学生是否收藏了该店铺
-            boolean collectible = collectionsService.selectDishesByStoreId(userId, storeId);
+            boolean collectible = collectionsService.selectStudentCollectStore(userId, storeId);
             store.setCollected(collectible);
         } else {
             // 如果是商家，那么直接返回该商户的店铺信息

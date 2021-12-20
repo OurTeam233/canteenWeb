@@ -17,4 +17,15 @@
           AND store_id = #{storeId}
     </select>
 
+    <insert id="insertStudentCollectStore">
+        INSERT INTO collections(student_id, store_id)
+        VALUES (#{studentId}, #{storeId})
+    </insert>
+
+    <delete id="delStudentCollectStore">
+        DELETE
+        FROM collections
+        WHERE student_id = #{studentId}
+          AND store_id = #{storeId}
+    </delete>
 </mapper>

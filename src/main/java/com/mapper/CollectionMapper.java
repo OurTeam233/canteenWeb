@@ -24,4 +24,25 @@ public interface CollectionMapper {
      */
     Collections selectByStudentAndStore(@Param("studentId") String studentId,
                                         @Param("storeId") String storeId);
+
+    /**
+     * <p> 添加收藏 </p>
+     * @param studentId 学生id
+     * @param storeId 店铺id
+     * @return int
+     * @since 2021/12/20
+     */
+    int insertStudentCollectStore(@Param("studentId") String studentId,
+                                  @Param("storeId") String storeId);
+
+    /**
+     * <p> 取消收藏 </p>
+     *
+     * @param studentId 学生id
+     * @param storeId 店铺id
+     * @return int
+     * @since 2021/12/20
+     */
+    int delStudentCollectStore(@Param("studentId") String studentId,
+                               @Param("storeId") String storeId);
 }

@@ -9,6 +9,7 @@ D:\workspace\CanteenWeb\src\main\java\com\util\SessionUtils.java
 D:\workspace\CanteenWeb\src\main\java\com\controller\order\SelectAllOrderServlet.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\Department.java
 D:\workspace\CanteenWeb\src\main\java\generator\domain\Collections.java
+D:\workspace\CanteenWeb\src\main\java\com\controller\collection\DelCollectionServlet.java
 D:\workspace\CanteenWeb\src\main\java\com\controller\WebsocketPoint.java
 D:\workspace\CanteenWeb\src\main\java\com\mapper\ClassMapper.java
 D:\workspace\CanteenWeb\src\main\java\com\controller\user\UserStoreLoginServlet.java
@@ -19,6 +20,7 @@ D:\workspace\CanteenWeb\src\main\java\com\service\StoreService.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\Picture.java
 D:\workspace\CanteenWeb\src\main\java\com\mapper\CollectionMapper.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\StudentClass.java
+D:\workspace\CanteenWeb\src\main\java\com\controller\collection\InsertCollectionServlet.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\Order.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\Dishes.java
 D:\workspace\CanteenWeb\src\main\java\com\controller\picture\SelectSlideshowServlet.java
@@ -33,6 +35,7 @@ D:\workspace\CanteenWeb\src\main\java\com\util\RequestParameterWrapper.java
 D:\workspace\CanteenWeb\src\main\java\com\util\SqlSessionFactoryUtils.java
 D:\workspace\CanteenWeb\src\main\java\com\service\ClassService.java
 D:\workspace\CanteenWeb\src\main\java\com\controller\order\SelectOneOrderServlet.java
+D:\workspace\CanteenWeb\src\main\java\com\controller\collection\SelectCollectionStoreServlet.java
 D:\workspace\CanteenWeb\src\main\java\com\controller\dishes\SelectDishesServlet.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\User.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\DishesTypes.java

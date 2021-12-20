@@ -58,8 +58,6 @@ S
 +src/main/java/com/mapper/StudentMapper.java,f\4\f4bcf148803c65aec2e4e7facdb3cfaaa6c0288e
 R
 "src/main/java/com/pojo/Result.java,7\f\7fd46e4cc3fceaf5fe77a352b373de07d8632346
-l
-<src/main/java/com/controller/dishes/SelectDishesServlet.java,f\4\f4b23a620fab5f20aef34a2e42ed2b5195a3efb5
 R
 "src/main/java/com/pojo/Dishes.java,1\b\1b019d8de6ba529b7d7bafcac13a5935d50e60e2
 7
@@ -74,5 +72,3 @@ X
 0src/main/java/com/controller/WebsocketPoint.java,0\7\07da4c73b0a3132fc4b90a6e933c5ac1d20e1b4e
 n
 >src/main/java/com/controller/order/UpdateOrderTypeServlet.java,6\1\610e8baf55956b9567ae057389d96173009c7943
-Y
-)src/main/java/com/mapper/StoreMapper.java,6\7\6793a8d9e4b46fa40e934ae904da42fa2d209818

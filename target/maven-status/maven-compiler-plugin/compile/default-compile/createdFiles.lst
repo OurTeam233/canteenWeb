@@ -12,6 +12,8 @@ com\controller\order\CancelOrderServlet.class
 com\pojo\Result.class
 com\service\CollectionsService.class
 com\service\UserService.class
+com\controller\collection\DelCollectionServlet.class
+com\controller\collection\InsertCollectionServlet.class
 com\controller\store\SelectLikeStoreServlet.class
 com\controller\store\SelectStoreListServlet.class
 com\pojo\OrderDetails.class
@@ -35,6 +37,7 @@ com\controller\order\SelectOneOrderServlet.class
 com\pojo\Order.class
 com\service\StudentService.class
 com\util\SqlSessionFactoryUtils.class
+com\controller\collection\SelectCollectionStoreServlet.class
 com\pojo\Storetags.class
 com\controller\picture\SelectSlideshowServlet.class
 com\service\ClassService.class

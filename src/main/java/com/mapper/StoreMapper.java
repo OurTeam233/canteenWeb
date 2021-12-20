@@ -62,4 +62,13 @@ public interface StoreMapper {
      * @since 2021/12/19
      */
     List<Store> likeSelectStore(String keyword);
+
+    /**
+     * <p> 显示所有收藏的店铺 </p>
+     *
+     * @param studentId 学生id
+     * @return java.util.List<com.pojo.Store>
+     * @since 2021/12/20
+     */
+    List<Store> selectCollectionStore(String studentId);
 }

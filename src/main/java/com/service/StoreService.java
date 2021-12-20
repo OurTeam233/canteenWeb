@@ -135,4 +135,25 @@ public class StoreService {
         }
         return Collections.emptyList();
     }
+
+    /**
+     * <p> 返回学生收藏的所有店铺 </p>
+     *
+     * @param studentId 学生编号
+     * @return java.util.List<com.pojo.Store>
+     * @since 2021/12/20
+     */
+    public List<Store> selectCollectionStore(String studentId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            StoreMapper storeMapper = sqlSession.getMapper(StoreMapper.class);
+            // 执行sql并返回结果
+            return storeMapper.selectCollectionStore(studentId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
 }
