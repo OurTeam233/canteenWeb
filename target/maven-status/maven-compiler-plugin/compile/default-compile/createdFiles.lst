@@ -1,5 +1,6 @@
 com\mapper\UserMapper.class
 com\pojo\Canteen.class
+com\mapper\CollectionMapper.class
 com\pojo\Student.class
 com\pojo\Department.class
 com\pojo\Dishes.class
@@ -16,6 +17,8 @@ com\pojo\OrderDetails.class
 com\util\WxRequestUtil.class
 com\controller\user\UserStoreLoginServlet.class
 com\controller\studentClass\SelectClassServlet.class
+generator\domain\Collections.class
+com\pojo\Collections.class
 com\pojo\Tags.class
 com\controller\dishes\SelectDishesServlet.class
 com\mapper\DishesMapper.class

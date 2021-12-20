@@ -20,6 +20,7 @@ import javax.websocket.WebSocketContainer;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.util.List;
 
 /**
@@ -52,6 +53,7 @@ public class InsertOrderServlet extends HttpServlet {
         // 获取请求体参数
         BufferedReader reader = request.getReader();
         String postBody = IOUtils.toString(reader);
+//        System.out.println(postBody);
         // 将参数转换为JSON对象
         JSONObject jsonUserInfo = JSON.parseObject(postBody).getJSONObject("order");
         // 构造order对象

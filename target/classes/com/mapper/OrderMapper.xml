@@ -44,6 +44,7 @@
                  LEFT JOIN dishes d ON d.id = od.dishes_id
                  LEFT JOIN store s ON s.id = o.store_id
         WHERE student_id = #{studentId}
+        ORDER BY o.time DESC
     </select>
 
     <select id="selectOrderByStoreId" resultMap="OrderResultMapper">
@@ -63,7 +64,8 @@
                  LEFT JOIN orderdetails od ON od.order_id = o.id
                  LEFT JOIN dishes d ON d.id = od.dishes_id
                  LEFT JOIN store s ON s.id = o.store_id
-        WHERE d.store_id = #{storeId}
+        WHERE o.store_id = #{storeId}
+        ORDER BY o.time DESC
     </select>
 
 

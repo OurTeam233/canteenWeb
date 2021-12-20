@@ -1,4 +1,5 @@
 D:\workspace\CanteenWeb\src\main\java\com\mapper\StoreMapper.java
+D:\workspace\CanteenWeb\src\main\java\com\pojo\Collections.java
 D:\workspace\CanteenWeb\src\main\java\com\controller\user\UserStudentLoginServlet.java
 D:\workspace\CanteenWeb\src\main\java\com\controller\store\SelectStoreServlet.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\Student.java
@@ -7,6 +8,7 @@ D:\workspace\CanteenWeb\src\main\java\com\pojo\Result.java
 D:\workspace\CanteenWeb\src\main\java\com\util\SessionUtils.java
 D:\workspace\CanteenWeb\src\main\java\com\controller\order\SelectAllOrderServlet.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\Department.java
+D:\workspace\CanteenWeb\src\main\java\generator\domain\Collections.java
 D:\workspace\CanteenWeb\src\main\java\com\controller\WebsocketPoint.java
 D:\workspace\CanteenWeb\src\main\java\com\mapper\ClassMapper.java
 D:\workspace\CanteenWeb\src\main\java\com\controller\user\UserStoreLoginServlet.java
@@ -15,6 +17,7 @@ D:\workspace\CanteenWeb\src\main\java\com\pojo\Canteen.java
 D:\workspace\CanteenWeb\src\main\java\com\service\OrderService.java
 D:\workspace\CanteenWeb\src\main\java\com\service\StoreService.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\Picture.java
+D:\workspace\CanteenWeb\src\main\java\com\mapper\CollectionMapper.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\StudentClass.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\Order.java
 D:\workspace\CanteenWeb\src\main\java\com\pojo\Dishes.java

@@ -47,7 +47,7 @@ public class UserService {
             User user = userMapper.selectUserStore(username, password);
             // 判断用户对象是否存在并符合要求
             if (user != null && user.getUserTypes().equals(userType)) {
-                return user.getId();
+                return user.getRelationId();
             }
         } catch (Exception e) {
             e.printStackTrace();
