@@ -1,8 +1,10 @@
 package com.controller.store;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.pojo.Store;
 import com.service.StoreService;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -34,9 +37,10 @@ public class SelectLikeStoreServlet extends HttpServlet {
         // 创建服务对象
         StoreService storeService = new StoreService();
         // 尝试获取参数
-        String _keyword = request.getParameter("keyword");
-        // 解决中文乱码问题
-        String keyword = new String(_keyword.getBytes("iso8859-1"), "utf-8");
+        BufferedReader reader = request.getReader();
+        String postBody = IOUtils.toString(reader);
+        JSONObject jsonObject = JSON.parseObject(postBody);
+        String keyword = jsonObject.getString("keyword");
         // 调用服务
         List<Store> storeList = storeService.likeSelectStore(keyword);
         // 返回结果
