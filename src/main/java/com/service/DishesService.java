@@ -2,6 +2,7 @@ package com.service;
 
 import com.mapper.DishesMapper;
 import com.pojo.Dishes;
+import com.pojo.DishesTypes;
 import com.util.SqlSessionFactoryUtils;
 import java.util.Collections;
 import org.apache.ibatis.session.SqlSession;
@@ -44,5 +45,32 @@ public class DishesService {
             e.printStackTrace();
         }
         return Collections.emptyList();
+    }
+
+    /**
+     * <p> 新增菜品类型名 </p>
+     *
+     * @param dishesTypeName 菜品类型名称
+     * @return int 影响的行数
+     * @since 2021/12/21
+     */
+    public int insertDishesType(String dishesTypeName) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
+            // 执行sql并返回结果
+            int typeId = dishesMapper.selectDishesTypeByName(dishesTypeName);
+            if (typeId == 0) {
+                int insertId = dishesMapper.insertDishesType(dishesTypeName);
+                sqlSession.commit();
+                return insertId;
+            }
+            return typeId;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

@@ -30,4 +30,15 @@
                  INNER JOIN dishestypes dt ON d.dishesTypes_id = dt.id
         WHERE store_id = #{storeId}
     </select>
+
+    <select id="selectDishesTypeByName" resultType="java.lang.Integer">
+        SELECT id
+        FROM dishestypes
+        WHERE name = #{name}
+    </select>
+
+    <insert id="insertDishesType" useGeneratedKeys="true" keyProperty="id">
+        insert into dishesTypes(name)
+        values(#{name})
+    </insert>
 </mapper>

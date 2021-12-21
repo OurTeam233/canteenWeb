@@ -19,4 +19,22 @@ public interface DishesMapper {
      * 通过店铺id查询菜品
      */
     List<Dishes> selectDishesByStoreId(int storeId);
+
+    /**
+     * <p> 根据菜品名称返回菜品编号 </p>
+     *
+     * @param name 菜品类型名称
+     * @return int 菜品类型id
+     * @since 2021/12/21
+     */
+    Integer selectDishesTypeByName(String name);
+
+    /**
+     * <p> 新增菜品类型名 </p>
+     *
+     * @param name 菜品类型名称
+     * @return int 菜品类型id
+     * @since 2021/12/21
+     */
+    Integer insertDishesType(String name);
 }

@@ -24,6 +24,16 @@ public class Result {
 
     private Integer sum;
 
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getSum() {
         return sum;
     }
@@ -81,6 +91,7 @@ public class Result {
                 ", code='" + code + '\'' +
                 ", openId='" + openId + '\'' +
                 ", sum=" + sum +
+                ", id=" + id +
                 '}';
     }
 }

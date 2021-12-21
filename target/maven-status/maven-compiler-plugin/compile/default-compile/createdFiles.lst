@@ -50,6 +50,7 @@ com\util\JwtUtil.class
 com\controller\order\InsertOrderServlet.class
 com\pojo\StudentInfo.class
 com\util\SessionUtils.class
+com\controller\dishes\InsertDishesTypeServlet.class
 com\mapper\OrderMapper.class
 com\controller\store\SelectStoreServlet.class
 com\service\StoreService.class

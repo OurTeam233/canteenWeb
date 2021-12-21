@@ -22,10 +22,10 @@ import java.util.List;
  * @author tang
  */
 @WebServlet("/Store/Like")
-public class SelectLikeStoreServlet extends HttpServlet {
+public class SearchLikeStoreServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger logger = LoggerFactory.getLogger(SelectLikeStoreServlet.class);
+    private static final Logger logger = LoggerFactory.getLogger(SearchLikeStoreServlet.class);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //初始化
