@@ -2,6 +2,7 @@ com\mapper\UserMapper.class
 com\pojo\Canteen.class
 com\mapper\CollectionMapper.class
 com\pojo\Student.class
+com\controller\store\SearchLikeStoreServlet.class
 com\pojo\Department.class
 com\pojo\Dishes.class
 com\service\OrderService.class
@@ -14,7 +15,6 @@ com\service\CollectionsService.class
 com\service\UserService.class
 com\controller\collection\DelCollectionServlet.class
 com\controller\collection\InsertCollectionServlet.class
-com\controller\store\SelectLikeStoreServlet.class
 com\controller\store\SelectStoreListServlet.class
 com\pojo\OrderDetails.class
 com\util\WxRequestUtil.class
@@ -40,6 +40,7 @@ com\util\SqlSessionFactoryUtils.class
 com\controller\collection\SelectCollectionStoreServlet.class
 com\pojo\Storetags.class
 com\controller\picture\SelectSlideshowServlet.class
+com\controller\dishes\InsertDishesServlet.class
 com\service\ClassService.class
 com\mapper\StoreMapper.class
 com\service\PictureService.class

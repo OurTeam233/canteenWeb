@@ -17,6 +17,7 @@
         </collection>
     </resultMap>
 
+
     <select id="selectDishesByStoreId" resultMap="DishesResultMap">
         SELECT d.id,
                d.dishesTypes_id,
@@ -41,4 +42,15 @@
         insert into dishesTypes(name)
         values(#{name})
     </insert>
+
+    <insert id="insertDishes" parameterType="dishes" useGeneratedKeys="true" keyProperty="id">
+        insert into dishes(dishesTypes_id, `name`, price, vipPrice, imgUrl, store_id, sales)
+        values (#{dishesTypeId}, #{name}, #{price}, #{vipPrice}, #{imgUrl}, #{storeId}, 0)
+    </insert>
+
+    <update id="updateDishesSales">
+        update dishes
+        set sales = sales + 1
+        where id = #{id}
+    </update>
 </mapper>

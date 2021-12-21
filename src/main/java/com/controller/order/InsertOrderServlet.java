@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.pojo.Order;
 import com.pojo.OrderDetails;
+import com.service.DishesService;
 import com.service.OrderService;
 import com.util.SessionUtils;
 import org.apache.commons.io.IOUtils;
@@ -67,6 +68,13 @@ public class InsertOrderServlet extends HttpServlet {
             OrderService orderService = new OrderService();
             order.setStudentId(Integer.valueOf(userId));
             int insertOrder = orderService.insertOrder(order, orderDetails);
+            // 增加菜品售卖数量
+            // 创建菜品服务对象
+            DishesService dishesService = new DishesService();
+            for (OrderDetails orderDetail : orderDetails) {
+                dishesService.updateDishesSales(String.valueOf(orderDetail.getDishesId()));
+            }
+            // 返回结果集
             if (insertOrder > 0) {
                 out.print("{\"success\":\"true\"}");
                 // 向商家发送消息

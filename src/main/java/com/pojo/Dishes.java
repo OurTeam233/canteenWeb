@@ -42,6 +42,30 @@ public class Dishes implements Serializable {
      * 会员价
      */
     private Integer vipPrice;
+    /**
+     * 菜品类型
+     */
+    private Integer dishesTypeId;
+    /**
+     * 店铺id
+     */
+    private Integer storeId;
+
+    public Integer getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
+    }
+
+    public Integer getDishesTypeId() {
+        return dishesTypeId;
+    }
+
+    public void setDishesTypeId(Integer dishesTypeId) {
+        this.dishesTypeId = dishesTypeId;
+    }
 
     public String getImgUrl() {
         return imgUrl;
@@ -118,6 +142,8 @@ public class Dishes implements Serializable {
                 ", imgUrl='" + imgUrl + '\'' +
                 ", sales=" + sales +
                 ", vipPrice=" + vipPrice +
+                ", dishesTypeId=" + dishesTypeId +
+                ", storeId=" + storeId +
                 '}';
     }
 }

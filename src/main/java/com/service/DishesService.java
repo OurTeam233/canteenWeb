@@ -3,6 +3,7 @@ package com.service;
 import com.mapper.DishesMapper;
 import com.pojo.Dishes;
 import com.pojo.DishesTypes;
+import com.pojo.OrderDetails;
 import com.util.SqlSessionFactoryUtils;
 import java.util.Collections;
 import org.apache.ibatis.session.SqlSession;
@@ -72,5 +73,45 @@ public class DishesService {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    /**
+     * <p> 新增菜品 </p>
+     *
+     * @param dishes 菜品信息
+     * @return int 影响的行数
+     * @since 2021/12/21
+     */
+    public int insertDishes(Dishes dishes) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
+            // 执行sql并返回结果
+            int insertId = dishesMapper.insertDishes(dishes);
+            sqlSession.commit();
+            return insertId;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+    public boolean updateDishesSales(String dishesId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
+            // 执行sql并返回结果
+            Integer affectedRows = dishesMapper.updateDishesSales(dishesId);
+            sqlSession.commit();
+            return affectedRows > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
