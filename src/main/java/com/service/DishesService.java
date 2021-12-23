@@ -98,7 +98,13 @@ public class DishesService {
         return 0;
     }
 
-
+    /**
+     * <p> 将菜品售卖数量增加1 </p>
+     *
+     * @param dishesId 菜品id
+     * @return boolean
+     * @since 2021/12/22
+     */
     public boolean updateDishesSales(String dishesId) {
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()
@@ -107,6 +113,52 @@ public class DishesService {
             DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
             // 执行sql并返回结果
             Integer affectedRows = dishesMapper.updateDishesSales(dishesId);
+            sqlSession.commit();
+            return affectedRows > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * <p> 通过菜品类型id删除菜品类型 </p>
+     *
+     * @param dishesTypeId 菜品类型id
+     * @return boolean
+     * @since 2021/12/22
+     */
+    public boolean delDishesTypeById(String dishesTypeId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
+            // 执行sql并返回结果
+            Integer affectedRows = dishesMapper.delDishesTypeById(dishesTypeId);
+            sqlSession.commit();
+            return affectedRows > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * <p> 通过菜品id删除菜品 </p>
+     *
+     * @param dishesId 菜品类型id
+     * @return boolean
+     * @since 2021/12/23
+     */
+    public boolean delDishesById(String dishesId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
+            // 执行sql并返回结果
+            Integer affectedRows = dishesMapper.delDishesById(dishesId);
             sqlSession.commit();
             return affectedRows > 0;
         } catch (Exception e) {

@@ -154,5 +154,9 @@
         WHERE c.student_id = #{studentId}
     </select>
 
-
+    <update id="updateStoreStatus">
+        UPDATE store
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
 </mapper>

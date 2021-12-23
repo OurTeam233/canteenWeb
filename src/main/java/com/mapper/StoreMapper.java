@@ -71,4 +71,15 @@ public interface StoreMapper {
      * @since 2021/12/20
      */
     List<Store> selectCollectionStore(String studentId);
+
+    /**
+     * <p> 更改店铺状态 </p>
+     *
+     * @param storeId 店铺id
+     * @param status 更改后的状态
+     * @return boolean
+     * @since 2021/12/21
+     */
+    Integer updateStoreStatus(@Param("storeId") String storeId,
+                              @Param("status") String status);
 }

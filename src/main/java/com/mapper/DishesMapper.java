@@ -39,6 +39,15 @@ public interface DishesMapper {
     Integer insertDishesType(String name);
 
     /**
+     * <p> 通过id删除菜品类型 </p>
+     *
+     * @param dishTypeId 菜品类型id
+     * @return java.lang.Integer 被影响行数
+     * @since 2021/12/22
+     */
+    Integer delDishesTypeById(String dishTypeId);
+
+    /**
      * <p> 新增菜品 </p>
      *
      * @param dishes 菜品信息
@@ -55,4 +64,13 @@ public interface DishesMapper {
      * @since 2021/12/21
      */
     Integer updateDishesSales(String dishesId);
+
+    /**
+     * <p> 删除菜品信息 </p>
+     *
+     * @param dishesId 菜品id
+     * @return java.lang.Integer 受影响行数
+     * @since 2021/12/21
+     */
+    Integer delDishesById(String dishesId);
 }

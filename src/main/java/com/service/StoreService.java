@@ -156,4 +156,20 @@ public class StoreService {
         }
         return Collections.emptyList();
     }
+
+    public boolean updateStoreStatus(String storeId, String status) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            StoreMapper storeMapper = sqlSession.getMapper(StoreMapper.class);
+            // 执行sql并返回结果
+            boolean updatable = storeMapper.updateStoreStatus(storeId, status) > 0;
+            sqlSession.commit();
+            return updatable;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

@@ -72,10 +72,20 @@ public class SelectAllOrderServlet extends HttpServlet {
         Date current = new Date();
         OrderService orderService = new OrderService();
         for (Order order : orderList) {
+            Date orderTime = order.getOrderTime();
+            // 将未做和未取更改为违规订单
+            orderTime.setTime(orderTime.getTime() + 1000 * 60 * 30);
             boolean operable = order.getType() == 0 || order.getType() == 1;
-            if (current.after(order.getOrderTime()) && operable) {
+            if (current.after(orderTime) && operable) {
                 orderService.updateOrderById(order.getId() + "", "3");
                 order.setType(3);
+            }
+            // 将可取消更改为未做
+            orderTime.setTime(orderTime.getTime() - 1000 * 60 * 60);
+            operable = order.getType() == 5;
+            if (current.after(orderTime) && operable) {
+                orderService.updateOrderById(order.getId() + "", "0");
+                order.setType(0);
             }
         }
     }

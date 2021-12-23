@@ -14,6 +14,7 @@
         <result column="attention" property="attention"/>
         <result column="sales" property="sales"/>
         <result column="description" property="description"/>
+        <result column="status" property="status"/>
         <!--     将多个字段封装成一个对象 property为store的属性 JavaType为要封装成的实体类   -->
         <association property="canteen" javaType="Canteen">
             <id column="canteen_id" property="id"/>
@@ -38,6 +39,7 @@
                s.attention,
                s.sales,
                s.description,
+               s.status,
                st.tags_id,
                t.`name` tags_name
         FROM store s
@@ -57,6 +59,7 @@
                s.attention,
                s.sales,
                s.description,
+               s.status,
                st.tags_id,
                t.`name` tags_name
         FROM store s
@@ -77,6 +80,7 @@
                s.attention,
                s.sales,
                s.description,
+               s.status,
                st.tags_id,
                t.`name` tags_name
         FROM store s
@@ -101,6 +105,7 @@
                s.attention,
                s.sales,
                s.description,
+               s.status,
                st.tags_id,
                t.`name` tags_name
         FROM store s
@@ -123,6 +128,7 @@
         s.attention,
         s.sales,
         s.description,
+        s.status,
         st.tags_id,
         t.`name` tags_name
         FROM
@@ -145,6 +151,7 @@
                s.attention,
                s.sales,
                s.description,
+               s.status,
                st.tags_id,
                t.`name` tags_name
         FROM store s
@@ -154,5 +161,9 @@
         WHERE c.student_id = #{studentId}
     </select>
 
-
+    <update id="updateStoreStatus">
+        UPDATE store
+        SET status = #{status}
+        WHERE id = #{storeId}
+    </update>
 </mapper>

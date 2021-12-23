@@ -4,8 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.pojo.Order;
 import com.pojo.OrderDetails;
+import com.pojo.Store;
 import com.service.DishesService;
 import com.service.OrderService;
+import com.service.StoreService;
 import com.util.SessionUtils;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -54,7 +56,6 @@ public class InsertOrderServlet extends HttpServlet {
         // 获取请求体参数
         BufferedReader reader = request.getReader();
         String postBody = IOUtils.toString(reader);
-//        System.out.println(postBody);
         // 将参数转换为JSON对象
         JSONObject jsonUserInfo = JSON.parseObject(postBody).getJSONObject("order");
         // 构造order对象
@@ -62,8 +63,12 @@ public class InsertOrderServlet extends HttpServlet {
         order.setStudentId(Integer.valueOf(userId));
         // 构造orderDetails对象
         List<OrderDetails> orderDetails = JSON.parseArray(jsonUserInfo.getString("dishes"), OrderDetails.class);
-        // 如果是学生
-        if ("1".equals(userType)) {
+        // 获取店铺状态
+        int storeId = order.getStoreId();
+        StoreService storeService = new StoreService();
+        Store store = storeService.selectByStoreId(storeId);
+        // 如果是学生 并且店铺营业中
+        if ("1".equals(userType) && store.getStatus() == 1) {
             // 创建服务对象
             OrderService orderService = new OrderService();
             order.setStudentId(Integer.valueOf(userId));

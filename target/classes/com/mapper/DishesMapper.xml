@@ -17,6 +17,18 @@
         </collection>
     </resultMap>
 
+    <delete id="delDishesTypeById">
+        DELETE
+        FROM dishesTypes
+        WHERE id = #{dishTypeId}
+    </delete>
+
+    <delete id="delDishesById">
+        DELETE
+        FROM dishes
+        WHERE id = #{dishId}
+    </delete>
+
 
     <select id="selectDishesByStoreId" resultMap="DishesResultMap">
         SELECT d.id,
@@ -40,7 +52,7 @@
 
     <insert id="insertDishesType" useGeneratedKeys="true" keyProperty="id">
         insert into dishesTypes(name)
-        values(#{name})
+        values (#{name})
     </insert>
 
     <insert id="insertDishes" parameterType="dishes" useGeneratedKeys="true" keyProperty="id">

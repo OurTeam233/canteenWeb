@@ -59,6 +59,18 @@ public class Store implements Serializable {
      * 被收藏
      */
     private boolean collected;
+    /**
+     * 店铺状态
+     */
+    private Integer status;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     public boolean isCollected() {
         return collected;
@@ -171,6 +183,7 @@ public class Store implements Serializable {
                 ", description='" + description + '\'' +
                 ", tags=" + tags +
                 ", collected=" + collected +
+                ", status=" + status +
                 '}';
     }
 }

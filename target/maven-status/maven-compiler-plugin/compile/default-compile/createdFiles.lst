@@ -20,6 +20,7 @@ com\pojo\OrderDetails.class
 com\util\WxRequestUtil.class
 com\controller\user\UserStoreLoginServlet.class
 com\controller\studentClass\SelectClassServlet.class
+com\controller\store\UpdateStoreTypeServlet.class
 generator\domain\Collections.class
 com\pojo\Collections.class
 com\pojo\Tags.class
@@ -32,6 +33,7 @@ com\controller\user\UserStudentLoginServlet.class
 com\pojo\DishesTypes.class
 com\controller\order\SelectAllOrderServlet.class
 com\service\DishesService.class
+com\controller\dishes\DeleteDishesServlet.class
 com\mapper\StudentMapper.class
 com\controller\order\SelectOneOrderServlet.class
 com\pojo\Order.class
@@ -50,6 +52,7 @@ com\pojo\StudentClass.class
 com\util\JwtUtil.class
 com\controller\order\InsertOrderServlet.class
 com\pojo\StudentInfo.class
+com\controller\dishes\DeleteDishesTypeServlet.class
 com\util\SessionUtils.class
 com\controller\dishes\InsertDishesTypeServlet.class
 com\mapper\OrderMapper.class
