@@ -45,6 +45,7 @@ com\controller\picture\SelectSlideshowServlet.class
 com\controller\dishes\InsertDishesServlet.class
 com\service\ClassService.class
 com\mapper\StoreMapper.class
+com\controller\dishes\SelectDishesTypesServlet.class
 com\service\PictureService.class
 com\controller\order\UpdateOrderTypeServlet.class
 com\util\RequestParameterWrapper.class
@@ -52,9 +53,7 @@ com\pojo\StudentClass.class
 com\util\JwtUtil.class
 com\controller\order\InsertOrderServlet.class
 com\pojo\StudentInfo.class
-com\controller\dishes\DeleteDishesTypeServlet.class
 com\util\SessionUtils.class
-com\controller\dishes\InsertDishesTypeServlet.class
 com\mapper\OrderMapper.class
 com\controller\store\SelectStoreServlet.class
 com\service\StoreService.class

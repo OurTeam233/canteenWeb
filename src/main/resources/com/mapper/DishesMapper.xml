@@ -50,9 +50,21 @@
         WHERE name = #{name}
     </select>
 
-    <insert id="insertDishesType" useGeneratedKeys="true" keyProperty="id">
-        insert into dishesTypes(name)
-        values (#{name})
+    <select id="selectDishesTypes" resultMap="DishesResultMap">
+        SELECT dt.`name` dishesTypes_name,
+               dt.id     dishesTypes_id
+        FROM dishes d
+                 left JOIN dishestypes dt ON dt.id = d.dishesTypes_id
+        WHERE d.store_id = #{storeId}
+        UNION
+        SELECT dt.`name` dishesTypes_name,
+               dt.id     dishesTypes_id
+        FROM dishestypes dt
+    </select>
+
+    <insert id="insertDishesType" parameterType="dishesTypes" useGeneratedKeys="true" keyProperty="id">
+        insert into dishesTypes(id, name)
+        values (null, #{name})
     </insert>
 
     <insert id="insertDishes" parameterType="dishes" useGeneratedKeys="true" keyProperty="id">

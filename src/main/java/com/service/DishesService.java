@@ -3,7 +3,6 @@ package com.service;
 import com.mapper.DishesMapper;
 import com.pojo.Dishes;
 import com.pojo.DishesTypes;
-import com.pojo.OrderDetails;
 import com.util.SqlSessionFactoryUtils;
 import java.util.Collections;
 import org.apache.ibatis.session.SqlSession;
@@ -52,23 +51,25 @@ public class DishesService {
      * <p> 新增菜品类型名 </p>
      *
      * @param dishesTypeName 菜品类型名称
-     * @return int 影响的行数
+     * @return boolean
      * @since 2021/12/21
      */
-    public int insertDishesType(String dishesTypeName) {
+    public Integer insertDishesType(String dishesTypeName) {
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()
         ) {
             // 创建映射关系
             DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
             // 执行sql并返回结果
-            int typeId = dishesMapper.selectDishesTypeByName(dishesTypeName);
-            if (typeId == 0) {
-                int insertId = dishesMapper.insertDishesType(dishesTypeName);
+            Object typeId = dishesMapper.selectDishesTypeByName(dishesTypeName);
+            if (typeId == null) {
+                DishesTypes dishesTypes = new DishesTypes();
+                dishesTypes.setName(dishesTypeName);
+                dishesMapper.insertDishesType(dishesTypes);
                 sqlSession.commit();
-                return insertId;
+                return dishesTypes.getId();
             }
-            return typeId;
+            return (int) typeId;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -82,12 +83,17 @@ public class DishesService {
      * @return int 影响的行数
      * @since 2021/12/21
      */
-    public int insertDishes(Dishes dishes) {
+    public int insertDishes(Dishes dishes, String dishTypeName, String storeId) {
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()
         ) {
             // 创建映射关系
             DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
+            DishesService dishesService = new DishesService();
+            Integer dishesTypeId = dishesService.insertDishesType(dishTypeName);
+            // 完善菜品信息
+            dishes.setDishesTypeId(dishesTypeId);
+            dishes.setStoreId(Integer.valueOf(storeId));
             // 执行sql并返回结果
             int insertId = dishesMapper.insertDishes(dishes);
             sqlSession.commit();
@@ -102,10 +108,9 @@ public class DishesService {
      * <p> 将菜品售卖数量增加1 </p>
      *
      * @param dishesId 菜品id
-     * @return boolean
      * @since 2021/12/22
      */
-    public boolean updateDishesSales(String dishesId) {
+    public void updateDishesSales(String dishesId) {
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()
         ) {
@@ -114,11 +119,9 @@ public class DishesService {
             // 执行sql并返回结果
             Integer affectedRows = dishesMapper.updateDishesSales(dishesId);
             sqlSession.commit();
-            return affectedRows > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
     }
 
     /**
@@ -165,5 +168,26 @@ public class DishesService {
             e.printStackTrace();
         }
         return false;
+    }
+
+
+    /**
+     * <p> 查询所有菜品类型 </p>
+     *
+     * @return boolean
+     * @since 2021/12/23
+     */
+    public List<DishesTypes> selectDishesTypes(String storeId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
+            // 执行sql并返回结果
+            return dishesMapper.selectDishesTypes(storeId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
     }
 }

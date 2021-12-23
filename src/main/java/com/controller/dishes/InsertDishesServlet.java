@@ -31,14 +31,15 @@ public class InsertDishesServlet extends HttpServlet {
         // 获取参数
         BufferedReader reader = request.getReader();
         String postBody = IOUtils.toString(reader);
-        JSONObject jsonObject = JSON.parseObject(postBody).getJSONObject("dishes");
-        // 将jsonObject转换为Dishes对象
-        Dishes dishes = JSON.toJavaObject(jsonObject, Dishes.class);
-        System.out.println(dishes);
+        JSONObject jsonObject = JSON.parseObject(postBody);
+        String userId = request.getParameter("userId");
+        // 将jsonObject转换为其他对象
+        Dishes dishes = JSON.toJavaObject(jsonObject.getJSONObject("dishes"), Dishes.class);
+        String dishesTypeName = jsonObject.getString("dishesTypeName");
         // 创建服务对象
         DishesService dishesService = new DishesService();
         // 调用方法
-        int insertId = dishesService.insertDishes(dishes);
+        int insertId = dishesService.insertDishes(dishes, dishesTypeName, userId);
         // 创建结果集
         Result result = new Result();
         result.setSuccess(insertId > 0);

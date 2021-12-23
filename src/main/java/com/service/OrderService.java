@@ -183,10 +183,9 @@ public class OrderService {
             Date orderTime = order.getOrderTime();
             Date currentTime = new Date();
             // 判断是否能取消订单
-            if (orderTime.getTime() - currentTime.getTime() > 1000 * 60 * 30) {
+            if (currentTime.getTime() > orderTime.getTime() - 1000 * 60 * 30) {
                 return false;
             } else {
-                System.out.println("可以");
                 // 执行sql并返回结果
                 boolean cancelable = orderMapper.updateOrderById(orderId, "4") > 0;
                 sqlSession.commit();

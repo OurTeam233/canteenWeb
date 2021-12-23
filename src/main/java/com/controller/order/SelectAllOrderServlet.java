@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.pojo.Order;
 import com.pojo.Store;
 import com.service.OrderService;
+import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -73,20 +75,32 @@ public class SelectAllOrderServlet extends HttpServlet {
         OrderService orderService = new OrderService();
         for (Order order : orderList) {
             Date orderTime = order.getOrderTime();
+
             // 将未做和未取更改为违规订单
-            orderTime.setTime(orderTime.getTime() + 1000 * 60 * 30);
+            boolean timetable = current.getTime() > orderTime.getTime() + 1000 * 60 * 30;
             boolean operable = order.getType() == 0 || order.getType() == 1;
-            if (current.after(orderTime) && operable) {
+            if (timetable && operable) {
                 orderService.updateOrderById(order.getId() + "", "3");
                 order.setType(3);
             }
+            // 对是否是同一天的订单进行不同操作
+            if (DateUtils.isSameDay(current, orderTime)){
+                // 在取餐前半小时不能取消订单
+                timetable = current.getTime() > orderTime.getTime() - 1000 * 60 * 30;
+            } else {
+                // 在取餐前一天晚上11点前不能取消订单
+                // 创建时间，并将时间调至orderTime的当天的11点
+                Calendar calendar = Calendar.getInstance();
+//                calendar.setTime(orderTime.);
+            }
             // 将可取消更改为未做
-            orderTime.setTime(orderTime.getTime() - 1000 * 60 * 60);
             operable = order.getType() == 5;
-            if (current.after(orderTime) && operable) {
+            if (timetable && operable) {
                 orderService.updateOrderById(order.getId() + "", "0");
                 order.setType(0);
             }
         }
     }
+
+    
 }

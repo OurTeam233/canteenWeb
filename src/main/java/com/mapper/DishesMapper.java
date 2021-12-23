@@ -1,6 +1,7 @@
 package com.mapper;
 
 import com.pojo.Dishes;
+import com.pojo.DishesTypes;
 
 import java.util.List;
 
@@ -36,7 +37,7 @@ public interface DishesMapper {
      * @return int 插入后菜品类型id
      * @since 2021/12/21
      */
-    Integer insertDishesType(String name);
+    Integer insertDishesType(DishesTypes dishesTypes);
 
     /**
      * <p> 通过id删除菜品类型 </p>
@@ -73,4 +74,12 @@ public interface DishesMapper {
      * @since 2021/12/21
      */
     Integer delDishesById(String dishesId);
+
+    /**
+     * <p> 查询所有菜品类型 </p>
+     *
+     * @return java.util.List<com.pojo.DishesTypes>
+     * @since 2021/12/23
+     */
+    List<DishesTypes> selectDishesTypes(String storeId);
 }

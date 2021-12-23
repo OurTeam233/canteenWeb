@@ -1,7 +1,0 @@
-0:0:0:0:0:0:0:1 - - [21/Dec/2021:21:50:19 +0800] "GET /CanteenWeb/Store/Update?status=1 HTTP/1.1" 200 17 http-bio-8080-exec-2 2566
-0:0:0:0:0:0:0:1 - - [21/Dec/2021:21:51:44 +0800] "GET /CanteenWeb/Store/Update?status=1 HTTP/1.1" 200 16 http-bio-8080-exec-2 1910
-0:0:0:0:0:0:0:1 - - [21/Dec/2021:22:01:34 +0800] "GET /CanteenWeb/Store/Update?status=0 HTTP/1.1" 401 43 http-bio-8080-exec-2 312
-0:0:0:0:0:0:0:1 - - [21/Dec/2021:22:01:43 +0800] "GET /CanteenWeb/Store/Update?status=0 HTTP/1.1" 200 16 http-bio-8080-exec-3 1441
-0:0:0:0:0:0:0:1 - - [21/Dec/2021:22:01:57 +0800] "POST /CanteenWeb/Login/Student?code= HTTP/1.1" 200 268 http-bio-8080-exec-4 496
-0:0:0:0:0:0:0:1 - - [21/Dec/2021:22:02:21 +0800] "POST /CanteenWeb/Order/Insert HTTP/1.1" 401 43 http-bio-8080-exec-5 4
-0:0:0:0:0:0:0:1 - - [21/Dec/2021:22:02:25 +0800] "POST /CanteenWeb/Order/Insert HTTP/1.1" 200 19 http-bio-8080-exec-6 42

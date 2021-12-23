@@ -1,26 +1,30 @@
 package com.controller.dishes;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import com.controller.store.SelectStoreServlet;
 import com.pojo.Dishes;
-import com.pojo.Result;
+import com.pojo.DishesTypes;
 import com.service.DishesService;
-import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
-@WebServlet("/Dishes/Type/Delete")
-public class DeleteDishesTypeServlet extends HttpServlet {
+/**
+ * @author tang
+ */
+@WebServlet("/Dishes/Types/Select")
+public class SelectDishesTypesServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-
+    Logger logger = LoggerFactory.getLogger(SelectStoreServlet.class);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //初始化
@@ -29,18 +33,18 @@ public class DeleteDishesTypeServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         //处理
-        // 获取参数
-        String dishesTypeId = request.getParameter("dishesTypeId");
-        // 创建服务对象
+        // 初始化
+        String userId = request.getParameter("userId");
         DishesService dishesService = new DishesService();
-        // 调用方法
-        boolean deletable = dishesService.delDishesTypeById(dishesTypeId);
-        // 创建结果集
-        Result result = new Result();
-        result.setSuccess(deletable);
-        String jsonString = JSON.toJSONString(result);
-        //输出
-        out.print(jsonString);
+        List<DishesTypes> dishesTypesList = dishesService.selectDishesTypes(userId);
+        // 返回结果集
+        if (dishesTypesList != null) {
+            String dishesListString = JSON.toJSONString(dishesTypesList);
+            out.print(dishesListString);
+        } else {
+            // 如果为空返回 status:0
+            out.println("{\"status\":\"0\"}");
+        }
     }
 
     @Override
