@@ -23,6 +23,7 @@ com\controller\studentClass\SelectClassServlet.class
 com\controller\store\UpdateStoreTypeServlet.class
 generator\domain\Collections.class
 com\pojo\Collections.class
+com\controller\store\RecommendStoreServlet.class
 com\pojo\Tags.class
 com\controller\dishes\SelectDishesServlet.class
 com\mapper\DishesMapper.class

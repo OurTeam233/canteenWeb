@@ -63,6 +63,18 @@ public class Store implements Serializable {
      * 店铺状态
      */
     private Integer status;
+    /**
+     * 推荐值
+     */
+    private Double recommendValue;
+
+    public Double getRecommendValue() {
+        return recommendValue;
+    }
+
+    public void setRecommendValue(Double recommendValue) {
+        this.recommendValue = recommendValue;
+    }
 
     public Integer getStatus() {
         return status;
@@ -184,6 +196,7 @@ public class Store implements Serializable {
                 ", tags=" + tags +
                 ", collected=" + collected +
                 ", status=" + status +
+                ", recommendValue=" + recommendValue +
                 '}';
     }
 }

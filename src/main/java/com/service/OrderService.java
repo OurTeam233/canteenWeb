@@ -7,6 +7,7 @@ import com.pojo.Order;
 import com.pojo.OrderDetails;
 import com.pojo.Student;
 import com.util.SqlSessionFactoryUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -100,6 +101,7 @@ public class OrderService {
             int orderCount = orderMapper.selectOrderCount(String.valueOf(time), order.getStoreId());
             // 构造order
             order.setOrderNumber(String.format("%03d", order.getStoreId()) + "-" + String.format("%04d", orderCount + 1));
+            order.setStatus(DateUtils.isSameDay(order.getOrderTime(), order.getTime()) ? 0 : 1);
             // 存入订单
             int insertOrder = orderMapper.insertOrder(order);
             // 存入订单细节

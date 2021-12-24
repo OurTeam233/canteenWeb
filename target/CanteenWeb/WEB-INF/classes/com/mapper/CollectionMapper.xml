@@ -17,6 +17,12 @@
           AND store_id = #{storeId}
     </select>
 
+    <select id="selectCollectionByStudentId" resultMap="CollectionResultMap">
+        SELECT id, student_id, store_id
+        FROM collections
+        WHERE student_id = #{studentId}
+    </select>
+
     <insert id="insertStudentCollectStore">
         INSERT INTO collections(student_id, store_id)
         VALUES (#{studentId}, #{storeId})

@@ -84,14 +84,18 @@ public class SelectAllOrderServlet extends HttpServlet {
                 order.setType(3);
             }
             // 对是否是同一天的订单进行不同操作
-            if (DateUtils.isSameDay(current, orderTime)){
+            // 0当天下的订单 1明天的预定订单
+            if (order.getStatus() == 0){
                 // 在取餐前半小时不能取消订单
                 timetable = current.getTime() > orderTime.getTime() - 1000 * 60 * 30;
             } else {
                 // 在取餐前一天晚上11点前不能取消订单
                 // 创建时间，并将时间调至orderTime的当天的11点
                 Calendar calendar = Calendar.getInstance();
-//                calendar.setTime(orderTime.);
+                calendar.setTime(order.getTime());
+                calendar.set(Calendar.HOUR_OF_DAY, 23);
+                // 比较当前时间和设定的时间, 如果当前时间大于设定时间，则不能取消订单
+                timetable = current.getTime() > calendar.getTime().getTime();
             }
             // 将可取消更改为未做
             operable = order.getType() == 5;

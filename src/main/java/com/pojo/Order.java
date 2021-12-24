@@ -68,6 +68,18 @@ public class Order implements Serializable {
      * 窗口地址
      */
     private String address;
+    /**
+     * 新增订单
+     */
+    private Integer status;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     public String getCanteenName() {
         return canteenName;
@@ -198,6 +210,7 @@ public class Order implements Serializable {
                 ", orderDetailsList=" + orderDetailsList +
                 ", canteenName='" + canteenName + '\'' +
                 ", address='" + address + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

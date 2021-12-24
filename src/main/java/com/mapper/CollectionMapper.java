@@ -3,6 +3,8 @@ package com.mapper;
 import com.pojo.Collections;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * <p>  </p>
  *
@@ -45,4 +47,13 @@ public interface CollectionMapper {
      */
     int delStudentCollectStore(@Param("studentId") String studentId,
                                @Param("storeId") String storeId);
+
+    /**
+     * <p> 获取该学生的所有收藏店铺 </p>
+     *
+     * @param studentId 学生id
+     * @return java.util.List<com.pojo.Collections>
+     * @since 2021/12/24
+     */
+    List<Collections> selectCollectionByStudentId(String studentId);
 }
