@@ -8,8 +8,6 @@ I
 src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded
 U
 %src/main/java/com/pojo/Storetags.java,3\b\3ba7368c09249e49ebe0594e7972d71c47b25a76
-S
-#src/main/java/com/pojo/Canteen.java,f\7\f74ff080c8c6fd66d53ed3c335a3f04683eadd20
 P
  src/main/java/com/pojo/Tags.java,2\7\27dce35738edaf45bcdfc27776a9c0dc80fa9e8e
 [
@@ -22,8 +20,6 @@ W
 'src/test/java/utilTest/Md5UtilTest.java,8\4\84c0d2d13744c9d705e160485f58f35ff404dded
 n
 >src/main/java/com/controller/Store/SelectStoreListServlet.java,a\c\ac0f71f5854f8b01081c3cbe802ad24acf19a647
-P
- src/main/java/com/pojo/User.java,3\e\3eecec3b80a41d51a1d61dc9fd25ae1aff1cd36a
 V
 &src/main/java/com/pojo/Department.java,2\7\27b02080784f3f7a1f738daeb9a5282231d4fed2
 q
@@ -52,8 +48,6 @@ X
 (src/main/java/com/pojo/OrderDetails.java,0\a\0a535acc33dfdea7eaa90a2e2dad6e11cf690cdc
 X
 (src/main/java/com/util/SessionUtils.java,2\5\25c1af4bee13b0c44d7389d7f3f7d2a5b0dacebf
-n
->src/main/java/com/controller/user/UserStudentLoginServlet.java,8\f\8ff7f6a487bb31d905e6a397c4875b9821c0f14e
 a
 1src/main/java/com/service/CollectionsService.java,3\9\39ad4328923505378222502222a41e667ba15b8b
 t
@@ -92,8 +86,6 @@ W
 'src/main/java/com/pojo/DishesTypes.java,e\e\ee202d662250460ce99da970c752e8a88b61fcd4
 l
 <src/main/java/com/controller/dishes/InsertDishesServlet.java,4\9\49dd2405e52a9ebb57bbdafe32a977966ef2bbda
-\
-,src/main/java/com/service/DishesService.java,7\3\731a58761d60fe3f30b6dda62ca3ed1cfeb726b6
 l
 <src/main/java/com/controller/dishes/DeleteDishesServlet.java,1\6\1666c5436aff7fd58bfb9cb563bd894dfa453760
 Q
@@ -108,3 +100,39 @@ m
 =src/main/java/com/controller/order/SelectOneOrderServlet.java,e\d\ed02c23e7782fce4bb61f6edec24d5e5a2b0a12e
 m
 =src/main/java/com/controller/order/SelectAllOrderServlet.java,7\6\76769c400eddb9c7369537dbf9a1a93c0172ba25
+n
+>src/main/java/com/controller/store/SelectStoreListServlet.java,d\0\d0b62a3a7d15a8a9e1d890005ea1fa6f3e374cdc
+Z
+*src/main/java/com/mapper/DishesMapper.java,e\9\e9d35c2c9077c09077dca51727f78452b0102e52
+^
+.src/main/java/com/mapper/CollectionMapper.java,0\2\02bb560d8d02cd172f01461b9e202aef3b3a87f8
+W
+'src/main/java/com/pojo/Collections.java,e\5\e5aca7ac63c12b1971883cea7905444814e27cab
+m
+=src/main/java/com/controller/store/RecommendStoreServlet.java,8\2\8247729c275b689648ff0e4a15cc45a85e0aec60
+]
+-src/main/java/com/service/StudentService.java,8\f\8f35968b2b11df18de660ae07572cfc921955e83
+\
+,src/main/java/com/service/DishesService.java,7\3\731a58761d60fe3f30b6dda62ca3ed1cfeb726b6
+[
++src/main/java/com/service/StoreService.java,b\7\b7432e06f7de9dd53ae5dc51a504a1a731a6fb7e
+T
+$src/main/java/com/filter/Filter.java,8\d\8d59bbeabd2fc07adf946a1235ac2a24e8637861
+n
+>src/main/java/com/controller/user/UserStudentLoginServlet.java,8\f\8ff7f6a487bb31d905e6a397c4875b9821c0f14e
+h
+8src/main/java/com/controller/user/SelectUserServlet.java,3\c\3c9e861acf3daf391a30537e42edc1b2e0575501
+g
+7src/main/java/com/controller/user/UserLoginServlet.java,6\c\6ccd2ad66dd5e2359c145215c978f9e40752a463
+Q
+!src/main/java/com/pojo/Store.java,6\f\6f18bd8970dc5bc635cd267370a179837521249d
+S
+#src/main/java/com/pojo/Canteen.java,f\7\f74ff080c8c6fd66d53ed3c335a3f04683eadd20
+h
+8src/main/java/com/controller/user/DeleteUserServlet.java,0\5\05961336168065fd954757f266b3e78813e9dd54
+Y
+)src/main/java/com/mapper/StoreMapper.java,6\7\6793a8d9e4b46fa40e934ae904da42fa2d209818
+P
+ src/main/java/com/pojo/User.java,3\e\3eecec3b80a41d51a1d61dc9fd25ae1aff1cd36a
+h
+8src/main/java/com/controller/user/InsertUserServlet.java,0\8\08517b167544460e89ea8332b79821af86f22977

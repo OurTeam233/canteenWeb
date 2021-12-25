@@ -11,6 +11,7 @@ com\filter\Filter.class
 com\pojo\User.class
 com\controller\order\CancelOrderServlet.class
 com\pojo\Result.class
+com\controller\user\UpdateUserServlet.class
 com\service\CollectionsService.class
 com\service\UserService.class
 com\controller\collection\DelCollectionServlet.class
@@ -18,9 +19,9 @@ com\controller\collection\InsertCollectionServlet.class
 com\controller\store\SelectStoreListServlet.class
 com\pojo\OrderDetails.class
 com\util\WxRequestUtil.class
-com\controller\user\UserStoreLoginServlet.class
 com\controller\studentClass\SelectClassServlet.class
 com\controller\store\UpdateStoreTypeServlet.class
+com\controller\user\InsertUserServlet.class
 generator\domain\Collections.class
 com\pojo\Collections.class
 com\controller\store\RecommendStoreServlet.class
@@ -29,10 +30,12 @@ com\controller\dishes\SelectDishesServlet.class
 com\mapper\DishesMapper.class
 com\mapper\PictureMapper.class
 com\pojo\Picture.class
+com\controller\user\SelectUserServlet.class
 com\pojo\Store.class
 com\controller\user\UserStudentLoginServlet.class
 com\pojo\DishesTypes.class
 com\controller\order\SelectAllOrderServlet.class
+com\controller\user\UserLoginServlet.class
 com\service\DishesService.class
 com\controller\dishes\DeleteDishesServlet.class
 com\mapper\StudentMapper.class
@@ -54,6 +57,7 @@ com\pojo\StudentClass.class
 com\util\JwtUtil.class
 com\controller\order\InsertOrderServlet.class
 com\pojo\StudentInfo.class
+com\controller\user\DeleteUserServlet.class
 com\util\SessionUtils.class
 com\mapper\OrderMapper.class
 com\controller\store\SelectStoreServlet.class

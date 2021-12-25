@@ -246,4 +246,27 @@ public class StoreService {
         }
         return Collections.emptyList();
     }
+
+    /**
+     * <p> 新增店铺 </p>
+     *
+     * @param store 店铺
+     * @return Integer 插入后的主键
+     * @since 2021/12/24
+     */
+    public Integer insertStore(Store store) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            StoreMapper storeMapper = sqlSession.getMapper(StoreMapper.class);
+            // 执行sql并返回结果
+            storeMapper.insertStore(store);
+            sqlSession.commit();
+            return store.getId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

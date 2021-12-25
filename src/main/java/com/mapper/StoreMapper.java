@@ -82,4 +82,22 @@ public interface StoreMapper {
      */
     Integer updateStoreStatus(@Param("storeId") String storeId,
                               @Param("status") String status);
+
+    /**
+     * <p> 新增店铺 </p>
+     *
+     * @param store 店铺信息
+     * @return java.lang.Integer
+     * @since 2021/12/24
+     */
+    Integer insertStore(Store store);
+
+    /**
+     * <p> 根据店铺删除店铺id </p>
+     *
+     * @param id 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/25
+     */
+    Integer deleteById(String id);
 }

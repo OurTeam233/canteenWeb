@@ -18,6 +18,21 @@
         <result property="sequence" column="sequence"/>
     </resultMap>
 
+    <insert id="insertUser" useGeneratedKeys="true">
+        INSERT INTO user(username, password, userTypes, relation_id)
+        VALUES(#{username}, MD5(#{password}), 2, #{relationId})
+    </insert>
+
+    <update id="updateUser">
+        UPDATE user
+        SET username = #{username}, password = MD5(#{password})
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteUser">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+
     <select id="selectUserStore" resultMap="UserResultMap">
         SELECT id, userName, userTypes, password, relation_id
         FROM `user`
@@ -35,5 +50,22 @@
         WHERE sequence = #{sequence}
           AND d.simpleName = #{departmentName}
           AND sc.NAME = #{className}
+    </select>
+
+    <select id="selectUser" resultMap="UserResultMap">
+        SELECT id, userName, userTypes
+        FROM `user`
+    </select>
+
+    <select id="selectByUsername" resultMap="UserResultMap">
+        SELECT id, userName, userTypes, password, relation_id
+        FROM `user`
+        WHERE userName = #{username}
+    </select>
+
+    <select id="selectById" resultMap="UserResultMap">
+        SELECT id, userName, userTypes, password, relation_id
+        FROM `user`
+        WHERE id = #{id}
     </select>
 </mapper>

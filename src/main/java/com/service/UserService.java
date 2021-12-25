@@ -1,7 +1,10 @@
 package com.service;
 
+import com.alibaba.fastjson.JSON;
+import com.mapper.StoreMapper;
 import com.mapper.UserMapper;
 import com.pojo.Result;
+import com.pojo.Store;
 import com.pojo.StudentInfo;
 import com.pojo.User;
 import com.util.JwtUtil;
@@ -10,6 +13,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * <p> 对User表进行操作 </p>
@@ -56,13 +62,12 @@ public class UserService {
     }
 
 
-
     /**
      * <p> 查询用户是否存在 </p>
      *
-     * @param sequence 学号
+     * @param sequence       学号
      * @param departmentName 院系名
-     * @param className 班级名
+     * @param className      班级名
      * @return com.pojo.Result
      * @since 2021/12/11
      */
@@ -82,5 +87,117 @@ public class UserService {
             e.printStackTrace();
         }
         return result;
+    }
+
+    /**
+     * <p> 查询所有用户信息 </p>
+     *
+     * @return java.util.List<com.pojo.User>
+     * @since 2021/12/24
+     */
+    public List<User> selectUser() {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            // 执行sql并返回用户对象
+            return userMapper.selectUser();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
+
+    /**
+     * <p> 新增用户信息 </p>
+     *
+     * @param user  用户对象
+     * @param store 店铺对象
+     * @return boolean
+     * @since 2021/12/24
+     */
+    public boolean insertUser(User user, Store store) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            StoreMapper storeMapper = sqlSession.getMapper(StoreMapper.class);
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            // 执行sql并返回用户对象
+            storeMapper.insertStore(store);
+            Integer storeId = store.getId();
+            User username = userMapper.selectByUsername(user.getUsername());
+            // 存在storeId
+            boolean existsStoreId = storeId != null && storeId > 0;
+            // 不存在用户名
+            boolean notExistsUsername = username == null;
+
+            if (existsStoreId && notExistsUsername) {
+                boolean insertable = userMapper.insertUser(user.getUsername(), user.getPassword(), storeId + "") > 0;
+                sqlSession.commit();
+                return insertable;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * <p> 通过用户id删除用户 </p>
+     *
+     * @param id 用户id
+     * @return boolean
+     * @since 2021/12/24
+     */
+    public boolean deleteUserById(String id) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            StoreMapper storeMapper = sqlSession.getMapper(StoreMapper.class);
+            // 执行sql并返回用户对象
+            // 找到用户开设的店铺
+            User user = userMapper.selectById(id);
+            // 尝试删除店铺
+            boolean deleteStorable = true;
+            if (user != null) {
+                Integer relationId = user.getRelationId();
+                // 删除店铺
+                deleteStorable = storeMapper.deleteById(relationId + "") > 0;
+            }
+            // 删除用户
+            boolean deleteUsable = userMapper.deleteUser(id) > 0;
+            sqlSession.commit();
+            return deleteStorable && deleteUsable;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * <p> 更新用户信息 </p>
+     *
+     * @param user 用户对象
+     * @return boolean
+     * @since 2021/12/24
+     */
+    public boolean updateUser(User user) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            // 执行sql并返回用户对象
+            boolean updatable = userMapper.updateUser(user.getId() + "", user.getUsername(), user.getPassword()) > 0;
+            sqlSession.commit();
+            return updatable;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

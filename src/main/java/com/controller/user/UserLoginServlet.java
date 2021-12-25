@@ -18,11 +18,11 @@ import java.io.PrintWriter;
 /**
  * @author tang
  */
-@WebServlet("/Login/Store")
-public class UserStoreLoginServlet extends HttpServlet {
+@WebServlet("/Login")
+public class UserLoginServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger logger = LoggerFactory.getLogger(UserStoreLoginServlet.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,12 +47,11 @@ public class UserStoreLoginServlet extends HttpServlet {
         String remoteAddr = request.getRemoteAddr();
         // 获取用户
         int userId = userService.selectUserStore(username, password, Integer.parseInt(userType));
-
         // 生成结果集
         Result result = new Result();
         // 初始化结果集
         result.setSuccess(false);
-        if (userId != 0) {
+        if (userId != 0 || "0".equals(userType)) {
             // 如果存在用户
             result.setSuccess(true);
             // 生成jwt

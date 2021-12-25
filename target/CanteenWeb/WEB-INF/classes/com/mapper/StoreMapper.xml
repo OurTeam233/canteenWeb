@@ -27,6 +27,19 @@
         </collection>
     </resultMap>
 
+    <insert id="insertStore" parameterType="store" useGeneratedKeys="true" keyProperty="id">
+        insert into store(name, address, phone, score, logoUrl, attention, sales, description, status, canteen_id,
+                          canteen_name)
+        values (#{name}, #{address}, #{phone}, 0, #{logoUrl}, 0, 0, #{description}, 0,
+                #{canteen.id}, #{canteen.name})
+    </insert>
+
+    <delete id="deleteById">
+        delete
+        from store
+        where id = #{id}
+    </delete>
+
     <select id="selectStore" resultMap="StoreResultMap">
         SELECT s.id,
                s.`name` store_name,
