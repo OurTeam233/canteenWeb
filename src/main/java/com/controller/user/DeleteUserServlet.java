@@ -1,19 +1,14 @@
 package com.controller.user;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.pojo.Result;
-import com.pojo.Store;
-import com.pojo.User;
-import com.service.UserService;
-import org.apache.commons.io.IOUtils;
+import com.service.UserService.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -37,8 +32,8 @@ public class DeleteUserServlet extends HttpServlet {
         Result result = new Result();
         result.setSuccess(false);
         if ("0".equals(userType)) {
-            UserService userService = new UserService();
-            boolean deletable = userService.deleteUserById(id);
+            UserServiceImpl userServiceImpl = new UserServiceImpl();
+            boolean deletable = userServiceImpl.deleteUserById(id);
             result.setSuccess(deletable);
         }
         // 返回结果

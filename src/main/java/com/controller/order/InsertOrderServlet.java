@@ -5,9 +5,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.pojo.Order;
 import com.pojo.OrderDetails;
 import com.pojo.Store;
-import com.service.DishesService;
-import com.service.OrderService;
-import com.service.StoreService;
+import com.service.DishesService.DishesServiceImpl;
+import com.service.OrderService.OrderServiceImpl;
+import com.service.StoreService.StoreServiceImpl;
 import com.util.SessionUtils;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -23,7 +23,6 @@ import javax.websocket.WebSocketContainer;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLDecoder;
 import java.util.List;
 
 /**
@@ -65,19 +64,19 @@ public class InsertOrderServlet extends HttpServlet {
         List<OrderDetails> orderDetails = JSON.parseArray(jsonUserInfo.getString("dishes"), OrderDetails.class);
         // 获取店铺状态
         int storeId = order.getStoreId();
-        StoreService storeService = new StoreService();
-        Store store = storeService.selectByStoreId(storeId);
+        StoreServiceImpl storeServiceImpl = new StoreServiceImpl();
+        Store store = storeServiceImpl.selectByStoreId(storeId);
         // 如果是学生 并且店铺营业中
         if ("1".equals(userType) && store.getStatus() == 1) {
             // 创建服务对象
-            OrderService orderService = new OrderService();
+            OrderServiceImpl orderServiceImpl = new OrderServiceImpl();
             order.setStudentId(Integer.valueOf(userId));
-            int insertOrder = orderService.insertOrder(order, orderDetails);
+            int insertOrder = orderServiceImpl.insertOrder(order, orderDetails);
             // 增加菜品售卖数量
             // 创建菜品服务对象
-            DishesService dishesService = new DishesService();
+            DishesServiceImpl dishesServiceImpl = new DishesServiceImpl();
             for (OrderDetails orderDetail : orderDetails) {
-                dishesService.updateDishesSales(String.valueOf(orderDetail.getDishesId()));
+                dishesServiceImpl.updateDishesSales(String.valueOf(orderDetail.getDishesId()));
             }
             // 返回结果集
             if (insertOrder > 0) {

@@ -2,14 +2,13 @@ package com.controller.order;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Result;
-import com.service.OrderService;
+import com.service.OrderService.OrderServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 
 @WebServlet(value = "/Order/Update")
 public class UpdateOrderTypeServlet extends HttpServlet {
@@ -28,9 +27,9 @@ public class UpdateOrderTypeServlet extends HttpServlet {
         String orderId = request.getParameter("orderId");
         String type = request.getParameter("type");
         // 创建订单服务对象
-        OrderService orderService = new OrderService();
+        OrderServiceImpl orderServiceImpl = new OrderServiceImpl();
         // 更新订单状态
-        int updateOrderById = orderService.updateOrderById(orderId, type);
+        int updateOrderById = orderServiceImpl.updateOrderById(orderId, type);
         // 返回结果
         Result result = new Result();
         result.setSuccess(updateOrderById > 0);

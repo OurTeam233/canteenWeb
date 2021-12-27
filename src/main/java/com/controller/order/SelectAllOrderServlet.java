@@ -2,9 +2,7 @@ package com.controller.order;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Order;
-import com.pojo.Store;
-import com.service.OrderService;
-import org.apache.commons.lang3.time.DateUtils;
+import com.service.OrderService.OrderServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,17 +34,17 @@ public class SelectAllOrderServlet extends HttpServlet {
 
         //处理
         // 初始化
-        OrderService orderService = new OrderService();
+        OrderServiceImpl orderServiceImpl = new OrderServiceImpl();
         List<Order> orderList = null;
         // 获取参数
         String userId = request.getParameter("userId");
         String userType = request.getParameter("userType");
         // 根据不同的用户类型，获取不同的订单
         if ("1".equals(userType)) {
-            orderList = orderService.selectOrderByStudentId(userId);
+            orderList = orderServiceImpl.selectOrderByStudentId(userId);
             updateOrderType(orderList);
         } else if ("2".equals(userType)) {
-            orderList = orderService.selectOrderByStoreId(userId);
+            orderList = orderServiceImpl.selectOrderByStoreId(userId);
             updateOrderType(orderList);
         }
         // 返回结果集
@@ -72,7 +70,7 @@ public class SelectAllOrderServlet extends HttpServlet {
      */
     public void updateOrderType(List<Order> orderList) {
         Date current = new Date();
-        OrderService orderService = new OrderService();
+        OrderServiceImpl orderServiceImpl = new OrderServiceImpl();
         for (Order order : orderList) {
             Date orderTime = order.getOrderTime();
 
@@ -80,7 +78,7 @@ public class SelectAllOrderServlet extends HttpServlet {
             boolean timetable = current.getTime() > orderTime.getTime() + 1000 * 60 * 30;
             boolean operable = order.getType() == 0 || order.getType() == 1;
             if (timetable && operable) {
-                orderService.updateOrderById(order.getId() + "", "3");
+                orderServiceImpl.updateOrderById(order.getId() + "", "3");
                 order.setType(3);
             }
             // 对是否是同一天的订单进行不同操作
@@ -100,7 +98,7 @@ public class SelectAllOrderServlet extends HttpServlet {
             // 将可取消更改为未做
             operable = order.getType() == 5;
             if (timetable && operable) {
-                orderService.updateOrderById(order.getId() + "", "0");
+                orderServiceImpl.updateOrderById(order.getId() + "", "0");
                 order.setType(0);
             }
         }

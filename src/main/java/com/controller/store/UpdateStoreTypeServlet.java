@@ -2,14 +2,13 @@ package com.controller.store;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Result;
-import com.service.StoreService;
+import com.service.StoreService.StoreServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 
 @WebServlet(value = "/Store/Update")
 public class UpdateStoreTypeServlet extends HttpServlet {
@@ -28,8 +27,8 @@ public class UpdateStoreTypeServlet extends HttpServlet {
         String userId = request.getParameter("userId");
         String status = request.getParameter("status");
         // 创建服务对象
-        StoreService storeService = new StoreService();
-        boolean updatable = storeService.updateStoreStatus(userId, status);
+        StoreServiceImpl storeServiceImpl = new StoreServiceImpl();
+        boolean updatable = storeServiceImpl.updateStoreStatus(userId, status);
         // 返回结果集
         Result result = new Result();
         result.setSuccess(updatable);

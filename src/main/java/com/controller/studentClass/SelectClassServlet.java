@@ -3,7 +3,7 @@ package com.controller.studentClass;
 import com.alibaba.fastjson.JSON;
 import com.controller.store.SelectStoreServlet;
 import com.pojo.StudentClass;
-import com.service.ClassService;
+import com.service.ClassService.ClassServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,8 +32,8 @@ public class SelectClassServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         //处理
-        ClassService classService = new ClassService();
-        List<StudentClass> studentClassList = classService.selectClass();
+        ClassServiceImpl classServiceImpl = new ClassServiceImpl();
+        List<StudentClass> studentClassList = classServiceImpl.selectClass();
         String dishesListString = JSON.toJSONString(studentClassList);
         //输出
         out.print(dishesListString);

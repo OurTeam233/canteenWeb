@@ -2,7 +2,7 @@ package com.controller.user;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Result;
-import com.service.UserService;
+import com.service.UserService.UserServiceImpl;
 import com.util.JwtUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +37,7 @@ public class UserLoginServlet extends HttpServlet {
 
         //处理
         // 创建服务对象
-        UserService userService = new UserService();
+        UserServiceImpl userServiceImpl = new UserServiceImpl();
         // 尝试获取参数
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -46,7 +46,7 @@ public class UserLoginServlet extends HttpServlet {
         String requestHeader = request.getHeader("User-Agent");
         String remoteAddr = request.getRemoteAddr();
         // 获取用户
-        int userId = userService.selectUserStore(username, password, Integer.parseInt(userType));
+        int userId = userServiceImpl.selectUserStore(username, password, Integer.parseInt(userType));
         // 生成结果集
         Result result = new Result();
         // 初始化结果集

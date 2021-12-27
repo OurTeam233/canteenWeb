@@ -2,14 +2,13 @@ package com.controller.user;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.User;
-import com.service.UserService;
+import com.service.UserService.UserServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.List;
 
 @WebServlet("/User/Select")
@@ -27,8 +26,8 @@ public class SelectUserServlet extends HttpServlet {
         //处理
         String userType = request.getParameter("userType");
         if ("0".equals(userType)) {
-            UserService userService = new UserService();
-            List<User> userList = userService.selectUser();
+            UserServiceImpl userServiceImpl = new UserServiceImpl();
+            List<User> userList = userServiceImpl.selectUser();
             // 返回结果
             String toJSONString = JSON.toJSONString(userList);
             //输出

@@ -2,7 +2,7 @@ package com.controller.collection;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Result;
-import com.service.CollectionsService;
+import com.service.CollectionsService.CollectionsServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,11 +29,11 @@ public class DelCollectionServlet extends HttpServlet {
         String userId = request.getParameter("userId");
         String storeId = request.getParameter("storeId");
         // 创建服务对象
-        CollectionsService collectionsService = new CollectionsService();
+        CollectionsServiceImpl collectionsServiceImpl = new CollectionsServiceImpl();
         // 调用方法
         boolean deletable = false;
-        if (collectionsService.selectStudentCollectStore(userId, storeId)) {
-            deletable = collectionsService.delStudentCollectStore(userId, storeId);
+        if (collectionsServiceImpl.selectStudentCollectStore(userId, storeId)) {
+            deletable = collectionsServiceImpl.delStudentCollectStore(userId, storeId);
         }
         // 创建结果集
         Result result = new Result();

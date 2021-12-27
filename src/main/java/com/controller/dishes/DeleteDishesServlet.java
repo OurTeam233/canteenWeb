@@ -1,18 +1,14 @@
 package com.controller.dishes;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.pojo.Dishes;
 import com.pojo.Result;
-import com.service.DishesService;
-import org.apache.commons.io.IOUtils;
+import com.service.DishesService.DishesServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -32,9 +28,9 @@ public class DeleteDishesServlet extends HttpServlet {
         // 获取参数
         String dishesId = request.getParameter("dishesId");
         // 创建服务对象
-        DishesService dishesService = new DishesService();
+        DishesServiceImpl dishesServiceImpl = new DishesServiceImpl();
         // 调用方法
-        boolean deletable = dishesService.delDishesById(dishesId);
+        boolean deletable = dishesServiceImpl.delDishesById(dishesId);
         // 创建结果集
         Result result = new Result();
         result.setSuccess(deletable);

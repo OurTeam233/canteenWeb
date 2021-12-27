@@ -2,14 +2,13 @@ package com.controller.store;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Store;
-import com.service.StoreService;
+import com.service.StoreService.StoreServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.List;
 
 @WebServlet("/Store/Recommend")
@@ -27,9 +26,9 @@ public class RecommendStoreServlet extends HttpServlet {
         //处理
         String userId = request.getParameter("userId");
         // 创建服务对象
-        StoreService storeService = new StoreService();
+        StoreServiceImpl storeServiceImpl = new StoreServiceImpl();
         // 调用服务对象的方法
-        List<Store> stores = storeService.recommendStore(userId);
+        List<Store> stores = storeServiceImpl.recommendStore(userId);
         // 返回结果
         String jsonString = JSON.toJSONString(stores);
 

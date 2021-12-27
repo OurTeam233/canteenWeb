@@ -1,8 +1,6 @@
 package com.controller.statistics;
 
-import com.alibaba.fastjson.JSON;
-import com.pojo.Dishes;
-import com.service.StatisticsService;
+import com.service.StatisticsService.StatisticsServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 @WebServlet("/Statistic/TotalPrice")
 public class SelectTotalPriceServlet extends HttpServlet {
@@ -29,8 +26,8 @@ public class SelectTotalPriceServlet extends HttpServlet {
         // 获取参数
         String userId = request.getParameter("userId");
         // 调用service
-        StatisticsService statisticsService = new StatisticsService();
-        Integer totalPrice = statisticsService.selectTotalPrice(userId);
+        StatisticsServiceImpl statisticsServiceImpl = new StatisticsServiceImpl();
+        Integer totalPrice = statisticsServiceImpl.selectTotalPrice(userId);
         //输出
         out.print("{\"totalPrice\":" + totalPrice + "}");
     }

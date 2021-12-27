@@ -2,7 +2,7 @@ package com.controller.picture;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Picture;
-import com.service.PictureService;
+import com.service.PictureService.PictureServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,8 +31,8 @@ public class SelectSlideshowServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         //处理
-        PictureService pictureService = new PictureService();
-        List<Picture> pictureList = pictureService.selectAllSlideshow();
+        PictureServiceImpl pictureServiceImpl = new PictureServiceImpl();
+        List<Picture> pictureList = pictureServiceImpl.selectAllSlideshow();
         logger.info(pictureList.toString());
         String dishesListString = JSON.toJSONString(pictureList);
         //输出

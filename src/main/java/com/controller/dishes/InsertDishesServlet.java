@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.pojo.Dishes;
 import com.pojo.Result;
-import com.service.DishesService;
+import com.service.DishesService.DishesServiceImpl;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.*;
@@ -13,7 +13,6 @@ import javax.servlet.annotation.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 
 @WebServlet("/Dishes/Insert")
 public class InsertDishesServlet extends HttpServlet {
@@ -41,9 +40,9 @@ public class InsertDishesServlet extends HttpServlet {
         Dishes dishes = JSON.toJavaObject(jsonObject.getJSONObject("dishes"), Dishes.class);
         String dishesTypeName = jsonObject.getJSONObject("dishes").getString("dishesTypeName");
         // 创建服务对象
-        DishesService dishesService = new DishesService();
+        DishesServiceImpl dishesServiceImpl = new DishesServiceImpl();
         // 调用方法
-        int insertId = dishesService.insertDishes(dishes, dishesTypeName, userId);
+        int insertId = dishesServiceImpl.insertDishes(dishes, dishesTypeName, userId);
         // 创建结果集
         Result result = new Result();
         result.setSuccess(insertId > 0);

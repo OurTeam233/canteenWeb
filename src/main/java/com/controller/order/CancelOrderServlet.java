@@ -2,14 +2,13 @@ package com.controller.order;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Result;
-import com.service.OrderService;
+import com.service.OrderService.OrderServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 
 @WebServlet("/Order/Cancel")
 public class CancelOrderServlet extends HttpServlet {
@@ -26,8 +25,8 @@ public class CancelOrderServlet extends HttpServlet {
         //处理
         String orderId = request.getParameter("orderId");
         // 创建服务对象
-        OrderService orderService = new OrderService();
-        boolean cancelable = orderService.cancelOrderById(orderId);
+        OrderServiceImpl orderServiceImpl = new OrderServiceImpl();
+        boolean cancelable = orderServiceImpl.cancelOrderById(orderId);
         // 创建结果集
         Result result = new Result();
         result.setSuccess(cancelable);

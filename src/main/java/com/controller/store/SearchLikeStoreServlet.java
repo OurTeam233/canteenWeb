@@ -3,7 +3,7 @@ package com.controller.store;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.pojo.Store;
-import com.service.StoreService;
+import com.service.StoreService.StoreServiceImpl;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,14 +35,14 @@ public class SearchLikeStoreServlet extends HttpServlet {
 
         //处理
         // 创建服务对象
-        StoreService storeService = new StoreService();
+        StoreServiceImpl storeServiceImpl = new StoreServiceImpl();
         // 尝试获取参数
         BufferedReader reader = request.getReader();
         String postBody = IOUtils.toString(reader);
         JSONObject jsonObject = JSON.parseObject(postBody);
         String keyword = jsonObject.getString("keyword");
         // 调用服务
-        List<Store> storeList = storeService.likeSelectStore(keyword);
+        List<Store> storeList = storeServiceImpl.likeSelectStore(keyword);
         // 返回结果
         String storeListString = JSON.toJSONString(storeList);
         out.print(storeListString);

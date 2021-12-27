@@ -3,9 +3,8 @@ package com.controller.user;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.pojo.Result;
-import com.pojo.Store;
 import com.pojo.User;
-import com.service.UserService;
+import com.service.UserService.UserServiceImpl;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
@@ -42,8 +41,8 @@ public class UpdateUserServlet extends HttpServlet {
         Result result = new Result();
         result.setSuccess(false);
         if ("0".equals(userType)) {
-            UserService userService = new UserService();
-            boolean updatable = userService.updateUser(user);
+            UserServiceImpl userServiceImpl = new UserServiceImpl();
+            boolean updatable = userServiceImpl.updateUser(user);
             result.setSuccess(updatable);
         }
         // 返回结果

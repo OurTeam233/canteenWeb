@@ -2,8 +2,8 @@ package com.controller.store;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Store;
-import com.service.CollectionsService;
-import com.service.StoreService;
+import com.service.CollectionsService.CollectionsServiceImpl;
+import com.service.StoreService.StoreServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,27 +32,27 @@ public class SelectStoreServlet extends HttpServlet {
 
         //处理
         // 创建服务对象
-        StoreService storeService = new StoreService();
+        StoreServiceImpl storeServiceImpl = new StoreServiceImpl();
         // 创建店铺对象
         Store store = null;
         // 尝试获取店铺参数
         String storeId = request.getParameter("storeId");
         if (storeId != null) {
             // 根据店铺id查询店铺信息  (学生查询方式)
-            store = storeService.selectByStoreId(Integer.parseInt(storeId));
+            store = storeServiceImpl.selectByStoreId(Integer.parseInt(storeId));
             // 创建收藏服务对象，查询学生是否收藏了该店铺
-            CollectionsService collectionsService = new CollectionsService();
+            CollectionsServiceImpl collectionsServiceImpl = new CollectionsServiceImpl();
             // 获取学生id
             String userId = request.getParameter("userId");
             // 查询学生是否收藏了该店铺
-            boolean collectible = collectionsService.selectStudentCollectStore(userId, storeId);
+            boolean collectible = collectionsServiceImpl.selectStudentCollectStore(userId, storeId);
             store.setCollected(collectible);
         } else {
             // 如果是商家，那么直接返回该商户的店铺信息
             String userId = request.getParameter("userId");
             String userType = request.getParameter("userType");
             if ("2".equals(userType)) {
-                store = storeService.selectByStoreId(Integer.parseInt(userId));
+                store = storeServiceImpl.selectByStoreId(Integer.parseInt(userId));
             }
         }
         // 返回结果

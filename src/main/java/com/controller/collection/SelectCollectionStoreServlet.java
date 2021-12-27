@@ -2,14 +2,13 @@ package com.controller.collection;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Store;
-import com.service.StoreService;
+import com.service.StoreService.StoreServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.List;
 
 @WebServlet("/Collection/Store")
@@ -27,8 +26,8 @@ public class SelectCollectionStoreServlet extends HttpServlet {
         //处理
         String userId = request.getParameter("userId");
         // 创建服务对象
-        StoreService storeService = new StoreService();
-        List<Store> storeList = storeService.selectCollectionStore(userId);
+        StoreServiceImpl storeServiceImpl = new StoreServiceImpl();
+        List<Store> storeList = storeServiceImpl.selectCollectionStore(userId);
         String jsonString = JSON.toJSONString(storeList);
         //输出
         out.print(jsonString);

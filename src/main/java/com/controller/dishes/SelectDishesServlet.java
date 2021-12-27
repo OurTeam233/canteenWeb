@@ -3,7 +3,7 @@ package com.controller.dishes;
 import com.alibaba.fastjson.JSON;
 import com.controller.store.SelectStoreServlet;
 import com.pojo.Dishes;
-import com.service.DishesService;
+import com.service.DishesService.DishesServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,18 +31,18 @@ public class SelectDishesServlet extends HttpServlet {
 
         //处理
         // 初始化
-        DishesService dishesService = new DishesService();
+        DishesServiceImpl dishesServiceImpl = new DishesServiceImpl();
         List<Dishes> dishesList = null;
         String storeId = request.getParameter("storeId");
         if (storeId != null) {
             // 如果有storeId，则查询该店铺的菜品
-            dishesList = dishesService.selectDishesByStoreId(Integer.parseInt(storeId));
+            dishesList = dishesServiceImpl.selectDishesByStoreId(Integer.parseInt(storeId));
         } else {
             // 如果是商家，那么直接返回该商户的店铺信息
             String userId = request.getParameter("userId");
             String userType = request.getParameter("userType");
             if ("2".equals(userType)) {
-                dishesList = dishesService.selectDishesByStoreId(Integer.parseInt(userId));
+                dishesList = dishesServiceImpl.selectDishesByStoreId(Integer.parseInt(userId));
             }
         }
         // 返回结果集

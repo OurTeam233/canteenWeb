@@ -2,9 +2,8 @@ package com.controller.dishes;
 
 import com.alibaba.fastjson.JSON;
 import com.controller.store.SelectStoreServlet;
-import com.pojo.Dishes;
 import com.pojo.DishesTypes;
-import com.service.DishesService;
+import com.service.DishesService.DishesServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,8 +34,8 @@ public class SelectDishesTypesServlet extends HttpServlet {
         //处理
         // 初始化
         String userId = request.getParameter("userId");
-        DishesService dishesService = new DishesService();
-        List<DishesTypes> dishesTypesList = dishesService.selectDishesTypes(userId);
+        DishesServiceImpl dishesServiceImpl = new DishesServiceImpl();
+        List<DishesTypes> dishesTypesList = dishesServiceImpl.selectDishesTypes(userId);
         // 返回结果集
         if (dishesTypesList != null) {
             String dishesListString = JSON.toJSONString(dishesTypesList);

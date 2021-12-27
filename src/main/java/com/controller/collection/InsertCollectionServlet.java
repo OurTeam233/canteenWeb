@@ -1,16 +1,14 @@
 package com.controller.collection;
 
 import com.alibaba.fastjson.JSON;
-import com.pojo.Collections;
 import com.pojo.Result;
-import com.service.CollectionsService;
+import com.service.CollectionsService.CollectionsServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 
 @WebServlet(value = "/Collection/Insert")
 public class InsertCollectionServlet extends HttpServlet {
@@ -29,11 +27,11 @@ public class InsertCollectionServlet extends HttpServlet {
         String userId = request.getParameter("userId");
         String storeId = request.getParameter("storeId");
         // 创建服务对象
-        CollectionsService collectionsService = new CollectionsService();
+        CollectionsServiceImpl collectionsServiceImpl = new CollectionsServiceImpl();
         // 调用方法
         boolean insertable = false;
-        if (!collectionsService.selectStudentCollectStore(userId, storeId)) {
-            insertable = collectionsService.insertStudentCollectStore(userId, storeId);
+        if (!collectionsServiceImpl.selectStudentCollectStore(userId, storeId)) {
+            insertable = collectionsServiceImpl.insertStudentCollectStore(userId, storeId);
         }
         // 创建结果集
         Result result = new Result();

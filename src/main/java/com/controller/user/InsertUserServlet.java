@@ -2,11 +2,10 @@ package com.controller.user;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.pojo.Order;
 import com.pojo.Result;
 import com.pojo.Store;
 import com.pojo.User;
-import com.service.UserService;
+import com.service.UserService.UserServiceImpl;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 @WebServlet("/User/Insert")
 public class InsertUserServlet extends HttpServlet {
@@ -48,8 +46,8 @@ public class InsertUserServlet extends HttpServlet {
         Result result = new Result();
         result.setSuccess(false);
         if ("0".equals(userType)) {
-            UserService userService = new UserService();
-            boolean insertable = userService.insertUser(user, store);
+            UserServiceImpl userServiceImpl = new UserServiceImpl();
+            boolean insertable = userServiceImpl.insertUser(user, store);
             result.setSuccess(insertable);
         }
         // 返回结果

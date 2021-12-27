@@ -2,15 +2,13 @@ package com.controller.order;
 
 import com.alibaba.fastjson.JSON;
 import com.pojo.Order;
-import com.service.OrderService;
+import com.service.OrderService.OrderServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
-import java.util.List;
 
 @WebServlet(value = "/Order/One")
 public class SelectOneOrderServlet extends HttpServlet {
@@ -26,11 +24,11 @@ public class SelectOneOrderServlet extends HttpServlet {
 
         //处理
         // 创建服务对象
-        OrderService orderService = new OrderService();
+        OrderServiceImpl orderServiceImpl = new OrderServiceImpl();
         // 获取参数
         String userId = request.getParameter("orderId");
         // 按id查询
-        Order order = orderService.selectOrderById(userId);
+        Order order = orderServiceImpl.selectOrderById(userId);
         // 返回结果集
         if (order != null) {
             String orderString = JSON.toJSONString(order);

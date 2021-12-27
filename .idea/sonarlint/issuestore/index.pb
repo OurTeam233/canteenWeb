@@ -42,8 +42,6 @@ X
 (src/main/java/com/pojo/OrderDetails.java,0\a\0a535acc33dfdea7eaa90a2e2dad6e11cf690cdc
 X
 (src/main/java/com/util/SessionUtils.java,2\5\25c1af4bee13b0c44d7389d7f3f7d2a5b0dacebf
-a
-1src/main/java/com/service/CollectionsService.java,3\9\39ad4328923505378222502222a41e667ba15b8b
 t
 Dsrc/main/java/com/controller/collection/InsertCollectionServlet.java,1\e\1ea35bdf3ac04aed3438130a1ac4d902f55d80ad
 W
@@ -68,8 +66,6 @@ l
 <src/main/java/com/controller/dishes/DeleteDishesServlet.java,1\6\1666c5436aff7fd58bfb9cb563bd894dfa453760
 Q
 !src/main/java/com/pojo/Order.java,b\0\b0a8fb59928cbba451e1b14606030bc1db65159a
-[
-+src/main/java/com/service/OrderService.java,7\b\7b30211ec6aede1f9f10b65e3dcc2c37df7065cd
 m
 =src/main/java/com/controller/order/SelectOneOrderServlet.java,e\d\ed02c23e7782fce4bb61f6edec24d5e5a2b0a12e
 ^
@@ -78,8 +74,6 @@ W
 'src/main/java/com/pojo/Collections.java,e\5\e5aca7ac63c12b1971883cea7905444814e27cab
 m
 =src/main/java/com/controller/store/RecommendStoreServlet.java,8\2\8247729c275b689648ff0e4a15cc45a85e0aec60
-]
--src/main/java/com/service/StudentService.java,8\f\8f35968b2b11df18de660ae07572cfc921955e83
 h
 8src/main/java/com/controller/user/SelectUserServlet.java,3\c\3c9e861acf3daf391a30537e42edc1b2e0575501
 S
@@ -94,10 +88,6 @@ R
 "src/main/java/com/pojo/Result.java,7\f\7fd46e4cc3fceaf5fe77a352b373de07d8632346
 g
 7src/main/java/com/controller/user/UserLoginServlet.java,6\c\6ccd2ad66dd5e2359c145215c978f9e40752a463
-Z
-*src/main/java/com/service/UserService.java,5\0\5017bd5700166ad56e35c42db57283068278573d
-[
-+src/main/java/com/service/StoreService.java,b\7\b7432e06f7de9dd53ae5dc51a504a1a731a6fb7e
 Y
 )src/main/java/com/mapper/StoreMapper.java,6\7\6793a8d9e4b46fa40e934ae904da42fa2d209818
 j
@@ -106,3 +96,11 @@ n
 >src/main/java/com/controller/store/SelectStoreListServlet.java,d\0\d0b62a3a7d15a8a9e1d890005ea1fa6f3e374cdc
 j
 :src/main/java/com/controller/order/InsertOrderServlet.java,a\9\a9f97b66cbd77714c93f572ed68205965ed621af
+Q
+!src/main/java/com/pojo/Store.java,6\f\6f18bd8970dc5bc635cd267370a179837521249d
+l
+<src/main/java/com/controller/dishes/InsertDishesServlet.java,4\9\49dd2405e52a9ebb57bbdafe32a977966ef2bbda
+`
+0src/main/java/com/service/DishesServiceImpl.java,c\4\c41c8ea8b0dde6ad4c644c42e3bce868484bce54
+Z
+*src/main/java/com/mapper/DishesMapper.java,e\9\e9d35c2c9077c09077dca51727f78452b0102e52
