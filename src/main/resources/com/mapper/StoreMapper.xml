@@ -15,6 +15,7 @@
         <result column="sales" property="sales"/>
         <result column="description" property="description"/>
         <result column="status" property="status"/>
+        <result column="per" property="per"/>
         <!--     将多个字段封装成一个对象 property为store的属性 JavaType为要封装成的实体类   -->
         <association property="canteen" javaType="Canteen">
             <id column="canteen_id" property="id"/>
@@ -53,6 +54,7 @@
                s.sales,
                s.description,
                s.status,
+               s.per,
                st.tags_id,
                t.`name` tags_name
         FROM store s
@@ -73,6 +75,7 @@
                s.sales,
                s.description,
                s.status,
+               s.per,
                st.tags_id,
                t.`name` tags_name
         FROM store s
@@ -94,6 +97,7 @@
                s.sales,
                s.description,
                s.status,
+               s.per,
                st.tags_id,
                t.`name` tags_name
         FROM store s
@@ -119,6 +123,7 @@
                s.sales,
                s.description,
                s.status,
+               s.per,
                st.tags_id,
                t.`name` tags_name
         FROM store s
@@ -142,6 +147,7 @@
         s.sales,
         s.description,
         s.status,
+        s.per,
         st.tags_id,
         t.`name` tags_name
         FROM
@@ -165,6 +171,7 @@
                s.sales,
                s.description,
                s.status,
+               s.per,
                st.tags_id,
                t.`name` tags_name
         FROM store s
@@ -178,5 +185,18 @@
         UPDATE store
         SET status = #{status}
         WHERE id = #{storeId}
+    </update>
+
+    <select id="selectAvgPriceById" resultType="integer">
+        SELECT AVG( totalPrice )
+        FROM `order`
+        WHERE store_id = #{storeId}
+    </select>
+
+    <update id="updatePerById">
+        UPDATE store
+        SET per = #{per}
+        WHERE
+            id = #{id}
     </update>
 </mapper>

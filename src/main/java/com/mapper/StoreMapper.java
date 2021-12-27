@@ -100,4 +100,23 @@ public interface StoreMapper {
      * @since 2021/12/25
      */
     Integer deleteById(String id);
+
+    /**
+     * <p> 通过店铺id更新店铺人均 </p>
+     *
+     * @param id 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/27
+     */
+    Integer updatePerById(@Param("id") String id,
+                          @Param("per") String per);
+
+    /**
+     * <p> 查询店铺的人均消费 </p>
+     *
+     * @param id 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/27
+     */
+    Integer selectAvgPriceById(String id);
 }

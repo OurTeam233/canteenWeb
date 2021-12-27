@@ -4,16 +4,17 @@ import com.alibaba.fastjson.JSON;
 import com.pojo.Dishes;
 import com.service.StatisticsService;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.List;
 
-@WebServlet("/Statistic/Dishes/NextDay")
-public class SelectNextDayDishesServlet extends HttpServlet {
+@WebServlet("/Statistic/TotalPrice")
+public class SelectTotalPriceServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,11 +30,9 @@ public class SelectNextDayDishesServlet extends HttpServlet {
         String userId = request.getParameter("userId");
         // 调用service
         StatisticsService statisticsService = new StatisticsService();
-        List<Dishes> dishesList = statisticsService.selectDishesStatus1ByStoreId(userId);
-        // 创建json对象
-        String jsonString = JSON.toJSONString(dishesList);
+        Integer totalPrice = statisticsService.selectTotalPrice(userId);
         //输出
-        out.print(jsonString);
+        out.print("{\"totalPrice\":" + totalPrice + "}");
     }
 
     @Override

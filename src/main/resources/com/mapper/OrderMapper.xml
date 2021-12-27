@@ -17,6 +17,7 @@
         <result column="student_id" property="studentId"/>
         <result column="store_id" property="storeId"/>
         <result column="type" property="type"/>
+        <result column="status" property="status"/>
         <collection property="orderDetailsList" ofType="orderDetails">
             <id column="dishesId" property="dishesId"/>
             <result column="name" property="name"/>
@@ -33,6 +34,7 @@
                o.type,
                o.note,
                o.totalPrice,
+               o.status,
                d.id dishesId,
                d.`name`,
                d.price,
@@ -56,6 +58,7 @@
                o.note,
                o.totalPrice,
                o.student_id,
+               o.status,
                d.id dishesId,
                d.`name`,
                d.price,
@@ -87,6 +90,7 @@
                o.totalPrice,
                o.student_id,
                o.store_id,
+               o.status,
                d.id dishesId,
                d.`name`,
                d.price,

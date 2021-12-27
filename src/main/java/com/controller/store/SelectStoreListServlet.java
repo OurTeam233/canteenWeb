@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,6 +49,13 @@ public class SelectStoreListServlet extends HttpServlet {
             storeList = storeService.selectAllByTagsId(Integer.parseInt(tagsId));
         } else {
             storeList = storeService.selectAll();
+        }
+        // 如果现在是11点半, 尝试更新店铺人均消费
+        Calendar instance = Calendar.getInstance();
+        if (instance.get(Calendar.HOUR_OF_DAY) == 11 && instance.get(Calendar.MINUTE) == 30) {
+            for (Store store : storeList) {
+                storeService.updatePerPrice(store.getId());
+            }
         }
         // 返回结果
         String storeListString = JSON.toJSONString(storeList);

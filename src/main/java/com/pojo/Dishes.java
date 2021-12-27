@@ -50,6 +50,18 @@ public class Dishes implements Serializable {
      * 店铺id
      */
     private Integer storeId;
+    /**
+     * 数量
+     */
+    private Integer num;
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
 
     public Integer getStoreId() {
         return storeId;
@@ -144,6 +156,7 @@ public class Dishes implements Serializable {
                 ", vipPrice=" + vipPrice +
                 ", dishesTypeId=" + dishesTypeId +
                 ", storeId=" + storeId +
+                ", num=" + num +
                 '}';
     }
 }

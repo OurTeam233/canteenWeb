@@ -17,8 +17,10 @@ com\service\UserService.class
 com\controller\collection\DelCollectionServlet.class
 com\controller\collection\InsertCollectionServlet.class
 com\controller\store\SelectStoreListServlet.class
+com\service\StatisticsService.class
 com\pojo\OrderDetails.class
 com\util\WxRequestUtil.class
+com\controller\statistics\SelectTotalPriceServlet.class
 com\controller\studentClass\SelectClassServlet.class
 com\controller\store\UpdateStoreTypeServlet.class
 com\controller\user\InsertUserServlet.class
@@ -29,6 +31,7 @@ com\pojo\Tags.class
 com\controller\dishes\SelectDishesServlet.class
 com\mapper\DishesMapper.class
 com\mapper\PictureMapper.class
+com\controller\statistics\SelectNextDayDishesServlet.class
 com\pojo\Picture.class
 com\controller\user\SelectUserServlet.class
 com\pojo\Store.class

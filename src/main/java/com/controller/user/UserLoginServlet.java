@@ -51,11 +51,12 @@ public class UserLoginServlet extends HttpServlet {
         Result result = new Result();
         // 初始化结果集
         result.setSuccess(false);
-        if (userId != 0 || "0".equals(userType)) {
+        if (userId != -1) {
             // 如果存在用户
             result.setSuccess(true);
             // 生成jwt
             String jwtToken = JwtUtil.generateToken(userId + "",  userType, requestHeader, remoteAddr);
+            result.setType(Integer.valueOf(userType));
             result.setToken(jwtToken);
         }
         // 返回结果

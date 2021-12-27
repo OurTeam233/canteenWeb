@@ -269,4 +269,33 @@ public class StoreService {
         }
         return 0;
     }
+
+    /**
+     * <p> 更新店铺人均消费 </p>
+     *
+     * @param storeId 店铺编号
+     * @return boolean
+     * @since 2021/12/27
+     */
+    public boolean updatePerPrice(Integer storeId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            StoreMapper storeMapper = sqlSession.getMapper(StoreMapper.class);
+            // 获取店铺的人均消费
+            Integer perPrice = storeMapper.selectAvgPriceById(String.valueOf(storeId));
+            // 判断价格
+            boolean updatable = false;
+            if (perPrice != null) {
+                // 更新店铺人均消费
+                updatable = storeMapper.updatePerById(storeId + "", perPrice + "") > 0;
+                sqlSession.commit();
+            }
+            return updatable;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

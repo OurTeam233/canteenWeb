@@ -62,7 +62,8 @@ public class DishesService {
             DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
             // 执行sql并返回结果
             Object typeId = dishesMapper.selectDishesTypeByName(dishesTypeName);
-            if (typeId == null) {
+            // 如果没有该类型
+            if (typeId == null || (int) typeId == 0) {
                 DishesTypes dishesTypes = new DishesTypes();
                 dishesTypes.setName(dishesTypeName);
                 dishesMapper.insertDishesType(dishesTypes);
@@ -90,6 +91,7 @@ public class DishesService {
             // 创建映射关系
             DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
             DishesService dishesService = new DishesService();
+            // 获取菜品类型id
             Integer dishesTypeId = dishesService.insertDishesType(dishTypeName);
             // 完善菜品信息
             dishes.setDishesTypeId(dishesTypeId);

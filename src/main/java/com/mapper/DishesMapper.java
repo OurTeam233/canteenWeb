@@ -2,7 +2,9 @@ package com.mapper;
 
 import com.pojo.Dishes;
 import com.pojo.DishesTypes;
+import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -82,4 +84,20 @@ public interface DishesMapper {
      * @since 2021/12/23
      */
     List<DishesTypes> selectDishesTypes(String storeId);
+
+    /**
+     * <p> 根据店铺id查询第二天的的菜品数量 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.util.List<com.pojo.DishesTypes>
+     * @since 2021/12/25
+     */
+    List<Dishes> selectDishesStatus1ByStoreId(@Param("storeId") String storeId,
+                                              @Param("curTime") Date curTime);
+
+    /**
+     * 根据店铺id查询总销售额
+     * @param storeId 店铺id
+     */
+    Integer selectTotalPrice(String storeId);
 }

@@ -62,7 +62,7 @@ public class UserStudentLoginServlet extends HttpServlet {
         UserService userService = new UserService();
         Result result = userService.selectUserStudent(sequence, department, className);
         // TODO 待修改，当前是永远成功
-        result.setSuccess(true);
+//        result.setSuccess(true);
         if (result.isSuccess()) {
             // 初始化
             int studentId;

@@ -67,6 +67,18 @@ public class Store implements Serializable {
      * 推荐值
      */
     private Double recommendValue;
+    /**
+     * 人均消费
+     */
+    private Integer per;
+
+    public Integer getPer() {
+        return per;
+    }
+
+    public void setPer(Integer per) {
+        this.per = per;
+    }
 
     public Double getRecommendValue() {
         return recommendValue;
@@ -197,6 +209,7 @@ public class Store implements Serializable {
                 ", collected=" + collected +
                 ", status=" + status +
                 ", recommendValue=" + recommendValue +
+                ", per=" + per +
                 '}';
     }
 }

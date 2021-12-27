@@ -22,6 +22,10 @@ public class InsertDishesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //初始化
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/json;charset=utf-8");
@@ -35,7 +39,7 @@ public class InsertDishesServlet extends HttpServlet {
         String userId = request.getParameter("userId");
         // 将jsonObject转换为其他对象
         Dishes dishes = JSON.toJavaObject(jsonObject.getJSONObject("dishes"), Dishes.class);
-        String dishesTypeName = jsonObject.getString("dishesTypeName");
+        String dishesTypeName = jsonObject.getJSONObject("dishes").getString("dishesTypeName");
         // 创建服务对象
         DishesService dishesService = new DishesService();
         // 调用方法
@@ -46,11 +50,6 @@ public class InsertDishesServlet extends HttpServlet {
         String jsonString = JSON.toJSONString(result);
         //输出
         out.print(jsonString);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
     }
 
 }

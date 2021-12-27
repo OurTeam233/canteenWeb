@@ -26,6 +26,16 @@ public class Result {
 
     private Integer id;
 
+    private Integer type;
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -92,6 +102,7 @@ public class Result {
                 ", openId='" + openId + '\'' +
                 ", sum=" + sum +
                 ", id=" + id +
+                ", type=" + type +
                 '}';
     }
 }
