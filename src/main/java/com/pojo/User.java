@@ -39,6 +39,18 @@ public class User implements Serializable {
      * 关联编号
      */
     private Integer relationId;
+    /**
+     * 店铺信息
+     */
+    private Store store;
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
 
     public Integer getRelationId() {
         return relationId;
@@ -106,6 +118,7 @@ public class User implements Serializable {
                 ", openId='" + openId + '\'' +
                 ", banTime=" + banTime +
                 ", relationId=" + relationId +
+                ", store=" + store +
                 '}';
     }
 }

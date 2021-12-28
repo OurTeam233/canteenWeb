@@ -1,7 +1,12 @@
 package com.controller.user;
 
 import com.alibaba.fastjson.JSON;
+import com.pojo.Dishes;
+import com.pojo.Store;
 import com.pojo.User;
+import com.service.DishesService.DishesService;
+import com.service.DishesService.DishesServiceImpl;
+import com.service.StoreService.StoreServiceImpl;
 import com.service.UserService.UserServiceImpl;
 
 import javax.servlet.*;
@@ -25,9 +30,17 @@ public class SelectUserServlet extends HttpServlet {
 
         //处理
         String userType = request.getParameter("userType");
+        // 如果为管理员
         if ("0".equals(userType)) {
+            // 查询出所有用户
             UserServiceImpl userServiceImpl = new UserServiceImpl();
             List<User> userList = userServiceImpl.selectUser();
+            // 查询出所有用户的店铺信息
+            StoreServiceImpl storeService = new StoreServiceImpl();
+            for (User user : userList) {
+                Store store = storeService.selectByStoreId(user.getRelationId());
+                user.setStore(store);
+            }
             // 返回结果
             String toJSONString = JSON.toJSONString(userList);
             //输出

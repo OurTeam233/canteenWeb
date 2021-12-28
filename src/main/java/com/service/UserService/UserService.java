@@ -55,7 +55,7 @@ public interface UserService {
      * @return boolean
      * @since 2021/12/24
      */
-    boolean insertUser(User user, Store store);
+    boolean insertUser(User user);
 
     /**
      * <p> 通过用户id删除用户 </p>

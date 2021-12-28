@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间为全类名-->
+<mapper namespace="com.mapper.DishesMapper">
+    <resultMap id="DishesResultMap" type="dishesTypes">
+        <id column="dishesTypes_id" property="id"/>
+        <result column="dishesTypes_name" property="name"/>
+        <collection property="dishes" ofType="dishes">
+            <id column="id" property="id"/>
+            <result column="dishes_name" property="name"/>
+            <result column="price" property="price"/>
+            <result column="vipPrice" property="vipPrice"/>
+            <result column="imgUrl" property="imgUrl"/>
+            <result column="sales" property="sales"/>
+        </collection>
+    </resultMap>
+
+    <delete id="delDishesTypeById">
+        DELETE
+        FROM dishesTypes
+        WHERE id = #{dishTypeId}
+    </delete>
+
+    <delete id="delDishesById">
+        DELETE
+        FROM dishes
+        WHERE id = #{dishId}
+    </delete>
+
+
+    <select id="selectDishesByStoreId" resultMap="DishesResultMap">
+        SELECT d.id,
+               d.dishesTypes_id,
+               d.`name`  dishes_name,
+               d.price,
+               d.vipPrice,
+               d.imgUrl,
+               d.sales,
+               dt.`name` dishesTypes_name
+        FROM dishes d
+                 INNER JOIN dishestypes dt ON d.dishesTypes_id = dt.id
+        WHERE store_id = #{storeId}
+    </select>
+
+    <select id="selectDishesTypeByName" resultType="java.lang.Integer">
+        SELECT id
+        FROM dishestypes
+        WHERE name = #{name}
+    </select>
+
+    <select id="selectDishesTypes" resultMap="DishesResultMap">
+        SELECT dt.`name` dishesTypes_name,
+               dt.id     dishesTypes_id
+        FROM dishes d
+                 INNER JOIN dishestypes dt ON dt.id = d.dishesTypes_id
+        WHERE d.store_id = #{storeId}
+        UNION
+        SELECT dt.`name` dishesTypes_name,
+               dt.id     dishesTypes_id
+        FROM dishestypes dt
+    </select>
+
+    <select id="selectDishesStatus1ByStoreId" resultType="com.pojo.Dishes">
+        SELECT dishes_id id,
+               `name`,
+               num
+        FROM orderdetails od
+                 LEFT JOIN dishes d ON d.id = od.dishes_id
+        WHERE order_id IN (SELECT id
+                           FROM `order` o
+                           WHERE o.`status` = '1'
+                             AND o.store_id = #{storeId}
+                             AND o.orderTime > DATE_FORMAT(#{curTime}, '%Y-%m-%d'))
+    </select>
+
+    <select id="selectTotalPrice" resultType="java.lang.Integer">
+        SELECT SUM(totalPrice)
+        FROM `order`
+        WHERE store_id = #{storeId}
+    </select>
+
+    <insert id="insertDishesType" parameterType="dishesTypes" useGeneratedKeys="true" keyProperty="id">
+        insert into dishesTypes(name)
+        values (#{name})
+    </insert>
+
+    <insert id="insertDishes" parameterType="dishes" useGeneratedKeys="true" keyProperty="id">
+        insert into dishes(dishesTypes_id, `name`, price, vipPrice, imgUrl, store_id, sales)
+        values (#{dishesTypeId}, #{name}, #{price}, #{vipPrice}, #{imgUrl}, #{storeId}, 0)
+    </insert>
+
+    <update id="updateDishesSales">
+        update dishes
+        set sales = sales + 1
+        where id = #{id}
+    </update>
+</mapper>

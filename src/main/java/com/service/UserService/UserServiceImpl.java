@@ -3,10 +3,7 @@ package com.service.UserService;
 import com.alibaba.fastjson.JSON;
 import com.mapper.StoreMapper;
 import com.mapper.UserMapper;
-import com.pojo.Result;
-import com.pojo.Store;
-import com.pojo.StudentInfo;
-import com.pojo.User;
+import com.pojo.*;
 import com.util.JwtUtil;
 import com.util.SqlSessionFactoryUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -28,7 +25,7 @@ import java.util.List;
  * @date 2021/12/8 11:21
  * @TODO
  **/
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     /**
      * 创建SqlSessionFactory工厂
      */
@@ -116,12 +113,11 @@ public class UserServiceImpl implements UserService{
      * <p> 新增用户信息 </p>
      *
      * @param user  用户对象
-     * @param store 店铺对象
      * @return boolean
      * @since 2021/12/24
      */
     @Override
-    public boolean insertUser(User user, Store store) {
+    public boolean insertUser(User user) {
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()
         ) {
@@ -129,6 +125,13 @@ public class UserServiceImpl implements UserService{
             StoreMapper storeMapper = sqlSession.getMapper(StoreMapper.class);
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             // 执行sql并返回用户对象
+            // 构造店铺对象
+            Store store = new Store();
+            store.setName("默认店铺");
+            Canteen canteen = new Canteen();
+            canteen.setId(1);
+            canteen.setName("一食堂");
+            store.setCanteen(canteen);
             storeMapper.insertStore(store);
             Integer storeId = store.getId();
             User username = userMapper.selectByUsername(user.getUsername());

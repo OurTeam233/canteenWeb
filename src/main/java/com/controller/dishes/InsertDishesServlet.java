@@ -6,6 +6,7 @@ import com.pojo.Dishes;
 import com.pojo.Result;
 import com.service.DishesService.DishesServiceImpl;
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -32,13 +33,14 @@ public class InsertDishesServlet extends HttpServlet {
 
         //处理
         // 获取参数
-        BufferedReader reader = request.getReader();
-        String postBody = IOUtils.toString(reader);
-        JSONObject jsonObject = JSON.parseObject(postBody);
         String userId = request.getParameter("userId");
+        String dishesString = request.getParameter("dishes");
+        System.out.println(dishesString);
         // 将jsonObject转换为其他对象
-        Dishes dishes = JSON.toJavaObject(jsonObject.getJSONObject("dishes"), Dishes.class);
-        String dishesTypeName = jsonObject.getJSONObject("dishes").getString("dishesTypeName");
+        Dishes dishes = JSON.parseObject(dishesString, Dishes.class);
+        System.out.println(dishes);
+        String dishesTypeName = JSONObject.parseObject(dishesString).getString("dishesTypeName");
+        System.out.println(dishesTypeName);
         // 创建服务对象
         DishesServiceImpl dishesServiceImpl = new DishesServiceImpl();
         // 调用方法

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间为全类名-->
+<mapper namespace="com.mapper.StudentMapper">
+    <resultMap id="studentResultMap" type="student">
+        <id column="id" property="id"/>
+        <result column="sequence" property="sequence"/>
+        <result column="nickname" property="nickName"/>
+        <result column="phone" property="phone"/>
+        <result column="memberTypes" property="memberTypes"/>
+        <result column="openId" property="openid"/>
+        <result column="banTime" property="banTime"/>
+        <result column="avatarUrl" property="avatarUrl"/>
+    </resultMap>
+
+    <!--  useGeneratedKeys返回主键  parameterType映射的类-->
+    <insert id="insertStudent" useGeneratedKeys="true" keyProperty="id" parameterType="Student">
+        insert into student(id, sequence, nickname, phone, memberTypes, openId, banTime, avatarUrl)
+        values (null, #{Student.sequence}, #{Student.nickName}, #{Student.phone}, 0, #{Student.openid}, null,
+                #{Student.avatarUrl})
+    </insert>
+
+    <!--  useGeneratedKeys返回主键  parameterType映射的类-->
+    <update id="updateStudentById" parameterType="student">
+        update student
+        <set>
+            <if test="sequence != null">
+                sequence = #{Student.sequence},
+            </if>
+            <if test="nickname != null">
+                nickname = #{Student.nickName},
+            </if>
+            <if test="phone != null">
+                phone = #{Student.phone},
+            </if>
+            <if test="memberTypes != null">
+                memberTypes = #{Student.memberTypes},
+            </if>
+            <if test="openId != null">
+                openId = #{Student.openid},
+            </if>
+            <if test="banTime != null">
+                banTime = #{Student.banTime},
+            </if>
+            <if test="avatarUrl != null">
+                avatarUrl = #{Student.avatarUrl},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <select id="selectBySequence" resultMap="studentResultMap">
+        SELECT id, nickname, phone, avatarUrl, sequence, banTime, openId, memberTypes
+        FROM student
+        WHERE sequence = #{sequence}
+    </select>
+</mapper>

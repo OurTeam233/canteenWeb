@@ -36,10 +36,8 @@ public class InsertUserServlet extends HttpServlet {
         String postBody = IOUtils.toString(reader);
         // 获取店铺对象和用户对象
         // 将参数转换为JSON对象
-        JSONObject storeJsonObject = JSON.parseObject(postBody).getJSONObject("store");
         JSONObject userJsonObject = JSON.parseObject(postBody).getJSONObject("user");
         // 构造order对象
-        Store store = JSON.parseObject(JSON.toJSONString(storeJsonObject), Store.class);
         User user = JSON.parseObject(JSON.toJSONString(userJsonObject), User.class);
         // 如果是管理员，继续操作
         // 创建结果集
@@ -47,7 +45,7 @@ public class InsertUserServlet extends HttpServlet {
         result.setSuccess(false);
         if ("0".equals(userType)) {
             UserServiceImpl userServiceImpl = new UserServiceImpl();
-            boolean insertable = userServiceImpl.insertUser(user, store);
+            boolean insertable = userServiceImpl.insertUser(user);
             result.setSuccess(insertable);
         }
         // 返回结果

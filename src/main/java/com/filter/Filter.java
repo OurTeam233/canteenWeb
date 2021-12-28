@@ -1,4 +1,5 @@
 package com.filter;
+
 import com.util.JwtUtil;
 import com.util.RequestParameterWrapper;
 import io.jsonwebtoken.Claims;
@@ -33,7 +34,7 @@ public class Filter implements javax.servlet.Filter {
         RequestParameterWrapper requestParameterWrapper = new RequestParameterWrapper((HttpServletRequest) request);
         // 如果访问登录界面，直接放行
         String requestUri = requestParameterWrapper.getRequestURI();
-        if (requestUri.startsWith("/CanteenWeb/Login") || requestUri.startsWith("/CanteenWeb/Websocket")) {
+        if (requestUri.startsWith("/CanteenWeb/Login") || requestUri.startsWith("/CanteenWeb/Websocket") || requestUri.startsWith("/CanteenWeb/ImageServlet")) {
             chain.doFilter(request, response);
         } else {
             // 获取请求头中的token

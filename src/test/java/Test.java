@@ -1,4 +1,14 @@
-import java.util.Calendar;
+import com.util.QrCodeUtils;
+import org.apache.commons.io.IOUtils;
+
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * <p>  </p>
@@ -14,12 +24,34 @@ import java.util.Calendar;
 public class Test {
     @org.junit.Test
     public void test() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DATE, 1);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        System.out.println(calendar.getTime());
+        String content = "https://www.baidu.com";
+        try {
+            BufferedImage bufferedImage = QrCodeUtils.createImage(content, null, false);
+//            responseImage(response, bufferedImage);
+        } catch (Exception e) {
+            // 异常自行处理，应用程序切忌直接打印堆栈日志，难定位
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 设置 可通过postman 或者浏览器直接浏览
+     *
+     * @param response      response
+     * @param bufferedImage bufferedImage
+     * @throws Exception e
+     */
+    public void responseImage(HttpServletResponse response, BufferedImage bufferedImage) throws Exception {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ImageOutputStream imageOutput = ImageIO.createImageOutputStream(byteArrayOutputStream);
+        ImageIO.write(bufferedImage, "jpeg", imageOutput);
+        InputStream inputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+
+        OutputStream outputStream = response.getOutputStream();
+        response.setContentType("image/jpeg");
+        response.setCharacterEncoding("UTF-8");
+        IOUtils.copy(inputStream, outputStream);
+        outputStream.flush();
     }
 
 }

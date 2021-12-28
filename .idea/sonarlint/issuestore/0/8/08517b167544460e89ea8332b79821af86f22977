@@ -1,15 +1,11 @@
 
 ‚
-java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(ï‡‹ê
+java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(ï‡‹ê
 k
-java:S1989 "PHandle the following exception that could be thrown by "getWriter": IOException.(ïô†úÿÿÿÿ
+java:S1989"PHandle the following exception that could be thrown by "getWriter": IOException.(ïô†úÿÿÿÿ
 f
-java:S1989%"PHandle the following exception that could be thrown by "getReader": IOException.(Âá‚ 
+java:S1989#"PHandle the following exception that could be thrown by "getReader": IOException.(Âá‚ 
 j
-java:S1989&"OHandle the following exception that could be thrown by "toString": IOException.(ş”»”ÿÿÿÿÿ
+java:S1989$"OHandle the following exception that could be thrown by "toString": IOException.(ş”»”ÿÿÿÿÿ
 z
-java:S1989="_Handle the following exceptions that could be thrown by "doGet": ServletException, IOException.(®Ó‘ûÿÿÿÿÿ
-M
-java:S1128"+Remove this unused import 'com.pojo.Order'.(°Í–©üÿÿÿÿ8®¨ÑèŞ/
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8®¨ÑèŞ/
+java:S19899"_Handle the following exceptions that could be thrown by "doGet": ServletException, IOException.(®Ó‘ûÿÿÿÿÿ

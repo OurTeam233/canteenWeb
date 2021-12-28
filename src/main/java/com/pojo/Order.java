@@ -1,5 +1,6 @@
 package com.pojo;
 
+import java.io.OutputStream;
 import java.util.Date;
 import java.io.Serializable;
 import java.util.List;
@@ -72,6 +73,18 @@ public class Order implements Serializable {
      * 新增订单
      */
     private Integer status;
+    /**
+     * 二维码
+     */
+    private OutputStream QCStream;
+
+    public OutputStream getQCStream() {
+        return QCStream;
+    }
+
+    public void setQCStream(OutputStream QCStream) {
+        this.QCStream = QCStream;
+    }
 
     public Integer getStatus() {
         return status;
@@ -211,6 +224,7 @@ public class Order implements Serializable {
                 ", canteenName='" + canteenName + '\'' +
                 ", address='" + address + '\'' +
                 ", status=" + status +
+                ", QCStream=" + QCStream +
                 '}';
     }
 }
