@@ -1,4 +1,17 @@
 
 M
 java:S1135"2Complete the task associated to this TODO comment.(Ø–Èûÿÿÿÿ
+N
+java:S1481"2Remove this unused "existsStoreId" local variable.(¥‹ªüÿÿÿÿ
+M
+java:S1481"6Remove this unused "notExistsUsername" local variable.(»ùã¤
+W	java:S125•"<This block of commented-out lines of code should be removed.(İÁ½äüÿÿÿÿ
+K
+java:S1128"6Remove this unused import 'com.alibaba.fastjson.JSON'.(Ö¢å$
+C
+java:S1128"-Remove this unused import 'com.util.JwtUtil'.(ÿÌêª
+B
+java:S1128"-Remove this unused import 'org.slf4j.Logger'.(íØ®6
+J
+java:S1128"4Remove this unused import 'org.slf4j.LoggerFactory'.(–ÿÚŞ
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(’Ä

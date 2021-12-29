@@ -1,0 +1,14 @@
+
+h	java:S112†"FDefine and throw a dedicated exception instead of using a generic one.(³ïÈÿüÿÿÿÿ8’Ÿ¸åß/
+h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¶Ğº‘ûÿÿÿÿ8“Ÿ¸åß/
+h	java:S112µ"FDefine and throw a dedicated exception instead of using a generic one.(¼ğŒÀøÿÿÿÿ8”Ÿ¸åß/
+s
+java:S11498"VReplace the synchronized class "Hashtable" by an unsynchronized one such as "HashMap".(ñšÕæ8ãÃ¸åß/
+y
+java:S1149¾"VReplace the synchronized class "Hashtable" by an unsynchronized one such as "HashMap".(Ë× ‡úÿÿÿÿ8äÃ¸åß/
+W
+java:S1118":Add a private constructor to hide the implicit public one.(ÒõŒı8›Ÿ¸åß/
+T
+java:S1135"2Complete the task associated to this TODO comment.(Ø–Èûÿÿÿÿ8œÛ¶åß/
+|
+java:S2293¾"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ë× ‡úÿÿÿÿ8µŸ¸åß/

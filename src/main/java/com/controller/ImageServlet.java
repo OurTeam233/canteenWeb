@@ -28,6 +28,7 @@ public class ImageServlet extends HttpServlet {
         try {
             BufferedImage bufferedImage = QrCodeUtils.createImage(content, null, false);
             responseImage(response, bufferedImage);
+
         } catch (Exception e) {
             // 异常自行处理，应用程序切忌直接打印堆栈日志，难定位
             e.printStackTrace();

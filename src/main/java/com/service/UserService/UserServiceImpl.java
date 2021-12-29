@@ -132,6 +132,9 @@ public class UserServiceImpl implements UserService {
             canteen.setId(1);
             canteen.setName("一食堂");
             store.setCanteen(canteen);
+            store.setAddress("默认地址");
+            store.setDescription("");
+            store.setPhone("");
             storeMapper.insertStore(store);
             Integer storeId = store.getId();
             User username = userMapper.selectByUsername(user.getUsername());
@@ -140,11 +143,12 @@ public class UserServiceImpl implements UserService {
             // 不存在用户名
             boolean notExistsUsername = username == null;
 
-            if (existsStoreId && notExistsUsername) {
-                boolean insertable = userMapper.insertUser(user.getUsername(), user.getPassword(), storeId + "") > 0;
-                sqlSession.commit();
-                return insertable;
-            }
+            boolean insertable = userMapper.insertUser(user.getUsername(), user.getPassword(), storeId + "") > 0;
+            sqlSession.commit();
+            return insertable;
+//            if (existsStoreId && notExistsUsername) {
+//
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

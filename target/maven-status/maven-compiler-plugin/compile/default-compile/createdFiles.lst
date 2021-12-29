@@ -23,6 +23,7 @@ com\controller\statistics\SelectTotalPriceServlet.class
 com\controller\studentClass\SelectClassServlet.class
 com\controller\store\UpdateStoreTypeServlet.class
 com\controller\user\InsertUserServlet.class
+com\util\ImageUtil.class
 com\pojo\Collections.class
 com\controller\store\RecommendStoreServlet.class
 com\pojo\Tags.class
@@ -56,6 +57,7 @@ com\controller\picture\SelectSlideshowServlet.class
 com\service\PictureService\PictureServiceImpl.class
 com\controller\dishes\InsertDishesServlet.class
 com\mapper\StoreMapper.class
+com\util\HttpUtil.class
 com\service\ClassService\ClassService.class
 com\service\UserService\UserServiceImpl.class
 com\controller\dishes\SelectDishesTypesServlet.class
@@ -65,6 +67,7 @@ com\util\RequestParameterWrapper.class
 com\service\DishesService\DishesService.class
 com\pojo\StudentClass.class
 com\service\StatisticsService\StatisticsService.class
+com\controller\statistics\SelectTodayDishesServlet.class
 com\util\JwtUtil.class
 com\controller\order\InsertOrderServlet.class
 com\pojo\StudentInfo.class

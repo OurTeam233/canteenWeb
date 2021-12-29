@@ -30,12 +30,8 @@ public class UpdateUserServlet extends HttpServlet {
 
         //处理
         String userType = request.getParameter("userType");
-        // 获取请求体内信息
-        BufferedReader reader = request.getReader();
-        String postBody = IOUtils.toString(reader);
-        JSONObject userObject = JSON.parseObject(postBody).getJSONObject("user");
-        // 构造user对象
-        User user = JSON.parseObject(JSON.toJSONString(userObject), User.class);
+        String userString = request.getParameter("user");
+        User user = JSON.parseObject(userString, User.class);
         // 如果是管理员，继续操作
         // 创建结果集
         Result result = new Result();

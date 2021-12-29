@@ -18,6 +18,7 @@
         <result column="store_id" property="storeId"/>
         <result column="type" property="type"/>
         <result column="status" property="status"/>
+        <result column="qrcode" property="qrCode"/>
         <collection property="orderDetailsList" ofType="orderDetails">
             <id column="dishesId" property="dishesId"/>
             <result column="name" property="name"/>
@@ -35,6 +36,7 @@
                o.note,
                o.totalPrice,
                o.status,
+               o.qrcode,
                d.id dishesId,
                d.`name`,
                d.price,
@@ -59,6 +61,7 @@
                o.totalPrice,
                o.student_id,
                o.status,
+               o.qrcode,
                d.id dishesId,
                d.`name`,
                d.price,
@@ -91,6 +94,7 @@
                o.student_id,
                o.store_id,
                o.status,
+               o.qrcode,
                d.id dishesId,
                d.`name`,
                d.price,
@@ -103,10 +107,10 @@
     </select>
 
     <insert id="insertOrder" parameterType="order" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO `order` (student_id, store_id, orderNumber, orderTime, time, type, note, totalPrice, status)
+        INSERT INTO `order` (student_id, store_id, orderNumber, orderTime, time, type, note, totalPrice, status, qrcode)
         VALUES (#{order.studentId}, #{order.storeId}, #{order.orderNumber}, #{order.orderTime}, #{order.time},
                 0,
-                #{order.note}, #{order.totalPrice}, #{order.status})
+                #{order.note}, #{order.totalPrice}, #{order.status}, #{order.qrCode})
     </insert>
 
     <insert id="insertOrderDetails" parameterType="orderDetails" useGeneratedKeys="true" keyProperty="id">

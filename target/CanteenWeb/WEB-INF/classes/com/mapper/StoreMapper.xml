@@ -30,9 +30,9 @@
 
     <insert id="insertStore" parameterType="store" useGeneratedKeys="true" keyProperty="id">
         insert into store(name, address, phone, score, logoUrl, attention, sales, description, status, canteen_id,
-                          canteen_name)
+                          canteen_name, per)
         values (#{name}, #{address}, #{phone}, 0, #{logoUrl}, 0, 0, #{description}, 0,
-                #{canteen.id}, #{canteen.name})
+                #{canteen.id}, #{canteen.name}, 0)
     </insert>
 
     <delete id="deleteById">

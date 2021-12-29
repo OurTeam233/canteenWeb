@@ -1,5 +1,6 @@
 package com.pojo;
 
+import java.awt.image.BufferedImage;
 import java.io.OutputStream;
 import java.util.Date;
 import java.io.Serializable;
@@ -76,14 +77,14 @@ public class Order implements Serializable {
     /**
      * 二维码
      */
-    private OutputStream QCStream;
+    private String qrCode;
 
-    public OutputStream getQCStream() {
-        return QCStream;
+    public String getQrCode() {
+        return qrCode;
     }
 
-    public void setQCStream(OutputStream QCStream) {
-        this.QCStream = QCStream;
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
     }
 
     public Integer getStatus() {
@@ -224,7 +225,7 @@ public class Order implements Serializable {
                 ", canteenName='" + canteenName + '\'' +
                 ", address='" + address + '\'' +
                 ", status=" + status +
-                ", QCStream=" + QCStream +
+                ", qrCode='" + qrCode + '\'' +
                 '}';
     }
 }

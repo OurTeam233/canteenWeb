@@ -1,0 +1,12 @@
+
+U
+java:S1118":Add a private constructor to hide the implicit public one.(Š­Á„üÿÿÿÿ
+M
+java:S1135"2Complete the task associated to this TODO comment.(Ø–Èûÿÿÿÿ
+S
+java:S1128
+"=Remove this unused import 'org.apache.http.util.EntityUtils'.(Å‹»
+B
+java:S1128"-Remove this unused import 'org.slf4j.Logger'.(íØ®6
+J
+java:S1128"4Remove this unused import 'org.slf4j.LoggerFactory'.(–ÿÚŞ

@@ -1,18 +1,16 @@
 package com.service.OrderService;
 
-import com.mapper.DishesMapper;
 import com.mapper.OrderMapper;
-import com.pojo.Dishes;
 import com.pojo.Order;
 import com.pojo.OrderDetails;
-import com.pojo.Student;
+import com.util.ImageUtil;
+import com.util.QrCodeUtils;
 import com.util.SqlSessionFactoryUtils;
 import org.apache.commons.lang3.time.DateUtils;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import java.nio.charset.StandardCharsets;
+import java.awt.image.BufferedImage;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -104,6 +102,11 @@ public class OrderServiceImpl implements OrderService{
             // 构造order
             order.setOrderNumber(String.format("%03d", order.getStoreId()) + "-" + String.format("%04d", orderCount + 1));
             order.setStatus(DateUtils.isSameDay(order.getOrderTime(), order.getTime()) ? 0 : 1);
+            // 生成二维码，并设置二维码路径
+            String content = order.getId() + "";
+            BufferedImage bufferedImage = QrCodeUtils.createImage(content, null, false);
+            ImageUtil imageUtil = new ImageUtil();
+            order.setQrCode(imageUtil.bufferedImageToUrl(bufferedImage));
             // 存入订单
             int insertOrder = orderMapper.insertOrder(order);
             // 存入订单细节
@@ -203,4 +206,5 @@ public class OrderServiceImpl implements OrderService{
         }
         return false;
     }
+
 }

@@ -52,8 +52,6 @@ public class SelectAllOrderServlet extends HttpServlet {
             orderList = orderServiceImpl.selectOrderByStoreId(userId);
             // 更新订单状态
             updateOrderType(orderList);
-            // 添加订单二维码
-//            addOrderQrCode(orderList);
         }
         // 返回结果集
         if (orderList != null) {
@@ -110,46 +108,5 @@ public class SelectAllOrderServlet extends HttpServlet {
                 order.setType(0);
             }
         }
-    }
-
-    /**
-     * <p> 添加二维码 </p>
-     *
-     * @param orderList 订单列表
-     * @return void
-     * @since 2021/12/28
-     */
-    public void addOrderQrCode(List<Order> orderList) {
-        for (Order order : orderList) {
-            String content = "https://121.43.56.241/CanteenWeb/Order/Update?orderId=" + order.getId() + "&type=" + 2;
-            try {
-                BufferedImage bufferedImage = QrCodeUtils.createImage(content, null, false);
-                OutputStream QrCode = responseImage(bufferedImage);
-                System.out.println(QrCode);
-                order.setQCStream(QrCode);
-                System.out.println(order);
-            } catch (Exception e) {
-                // 异常自行处理，应用程序切忌直接打印堆栈日志，难定位
-                e.printStackTrace();
-            }
-        }
-    }
-
-
-
-    /**
-     *
-     * @param bufferedImage bufferedImage
-     * @throws Exception e
-     */
-    public OutputStream responseImage(BufferedImage bufferedImage) throws Exception {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ImageOutputStream imageOutput = ImageIO.createImageOutputStream(byteArrayOutputStream);
-        ImageIO.write(bufferedImage, "jpeg", imageOutput);
-        InputStream inputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
-        OutputStream outputStream = new BufferedOutputStream(byteArrayOutputStream);
-        IOUtils.copy(inputStream, outputStream);
-        outputStream.flush();
-        return outputStream;
     }
 }

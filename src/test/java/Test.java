@@ -1,14 +1,9 @@
+import com.google.zxing.WriterException;
+import com.util.ImageUtil;
 import com.util.QrCodeUtils;
-import org.apache.commons.io.IOUtils;
 
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageOutputStream;
-import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.IOException;
 
 /**
  * <p>  </p>
@@ -22,36 +17,18 @@ import java.io.OutputStream;
  * @TODO
  **/
 public class Test {
-    @org.junit.Test
+//    @org.junit.Test
     public void test() {
-        String content = "https://www.baidu.com";
+        String content = "37";
+        BufferedImage bufferedImage = null;
         try {
-            BufferedImage bufferedImage = QrCodeUtils.createImage(content, null, false);
-//            responseImage(response, bufferedImage);
-        } catch (Exception e) {
-            // 异常自行处理，应用程序切忌直接打印堆栈日志，难定位
+            bufferedImage = QrCodeUtils.createImage(content, null, false);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
+        ImageUtil imageUtil = new ImageUtil();
+        System.out.println((imageUtil.bufferedImageToUrl(bufferedImage)));
     }
-
-    /**
-     * 设置 可通过postman 或者浏览器直接浏览
-     *
-     * @param response      response
-     * @param bufferedImage bufferedImage
-     * @throws Exception e
-     */
-    public void responseImage(HttpServletResponse response, BufferedImage bufferedImage) throws Exception {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ImageOutputStream imageOutput = ImageIO.createImageOutputStream(byteArrayOutputStream);
-        ImageIO.write(bufferedImage, "jpeg", imageOutput);
-        InputStream inputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
-
-        OutputStream outputStream = response.getOutputStream();
-        response.setContentType("image/jpeg");
-        response.setCharacterEncoding("UTF-8");
-        IOUtils.copy(inputStream, outputStream);
-        outputStream.flush();
-    }
-
 }

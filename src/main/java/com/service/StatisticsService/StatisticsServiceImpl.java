@@ -2,7 +2,6 @@ package com.service.StatisticsService;
 
 import com.mapper.DishesMapper;
 import com.pojo.Dishes;
-import com.pojo.DishesTypes;
 import com.util.SqlSessionFactoryUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -37,7 +36,7 @@ public class StatisticsServiceImpl implements StatisticsService{
      * @since 2021/12/25
      */
     @Override
-    public List<Dishes> selectDishesStatus1ByStoreId(String storeId) {
+    public List<Dishes> selectDishesNextDayStatus1ByStoreId(String storeId) {
         try (// 创建连接
              SqlSession sqlSession = sqlSessionFactory.openSession()
         ) {
@@ -51,7 +50,7 @@ public class StatisticsServiceImpl implements StatisticsService{
             calendar.set(Calendar.SECOND, 0);
             Date time = calendar.getTime();
             // 执行sql并返回结果
-            return dishesMapper.selectDishesStatus1ByStoreId(storeId, time);
+            return dishesMapper.selectDishesNextDayStatus1ByStoreId(storeId, time);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,5 +78,35 @@ public class StatisticsServiceImpl implements StatisticsService{
             e.printStackTrace();
         }
         return -1;
+    }
+
+    /**
+     * <p> 查询昨天预定今天的菜品数量 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.util.List<com.pojo.Dishes>
+     * @since 2021/12/28
+     */
+    @Override
+    public List<Dishes> selectDishesTodayStatue1ByStoreId(String storeId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
+            // 创建date为第二天早上
+            Calendar calendar = Calendar.getInstance();
+            Date curTime = calendar.getTime();
+            calendar.add(Calendar.DATE, 1);
+            calendar.set(Calendar.HOUR_OF_DAY, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            Date nextTime = calendar.getTime();
+            // 执行sql并返回结果
+            return dishesMapper.selectDishesTodayStatus1ByStoreId(storeId, curTime, nextTime);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
     }
 }

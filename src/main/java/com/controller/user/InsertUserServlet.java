@@ -31,14 +31,9 @@ public class InsertUserServlet extends HttpServlet {
 
         //处理
         String userType = request.getParameter("userType");
-        // 获取请求体内信息
-        BufferedReader reader = request.getReader();
-        String postBody = IOUtils.toString(reader);
-        // 获取店铺对象和用户对象
-        // 将参数转换为JSON对象
-        JSONObject userJsonObject = JSON.parseObject(postBody).getJSONObject("user");
-        // 构造order对象
-        User user = JSON.parseObject(JSON.toJSONString(userJsonObject), User.class);
+        // 获取参数信息
+        String userString = request.getParameter("user");
+        User user = JSON.parseObject(userString, User.class);
         // 如果是管理员，继续操作
         // 创建结果集
         Result result = new Result();

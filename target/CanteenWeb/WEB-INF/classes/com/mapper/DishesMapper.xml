@@ -62,10 +62,11 @@
         FROM dishestypes dt
     </select>
 
-    <select id="selectDishesStatus1ByStoreId" resultType="com.pojo.Dishes">
-        SELECT dishes_id id,
-               `name`,
-               num
+    <select id="selectDishesNextDayStatus1ByStoreId" resultType="com.pojo.Dishes">
+        SELECT distinct dishes_id id,
+                        `name`,
+                        SUM(num)  num,
+                        d.imgUrl  imgUrl
         FROM orderdetails od
                  LEFT JOIN dishes d ON d.id = od.dishes_id
         WHERE order_id IN (SELECT id
@@ -73,12 +74,30 @@
                            WHERE o.`status` = '1'
                              AND o.store_id = #{storeId}
                              AND o.orderTime > DATE_FORMAT(#{curTime}, '%Y-%m-%d'))
+        GROUP BY dishes_id
+        ORDER BY num DESC
     </select>
 
     <select id="selectTotalPrice" resultType="java.lang.Integer">
         SELECT SUM(totalPrice)
         FROM `order`
         WHERE store_id = #{storeId}
+    </select>
+
+    <select id="selectDishesTodayStatus1ByStoreId" resultType="com.pojo.Dishes">
+        SELECT distinct dishes_id id,
+                        `name`,
+                        SUM(num)  num,
+                        d.imgUrl  imgUrl
+        FROM orderdetails od
+                 LEFT JOIN dishes d ON d.id = od.dishes_id
+        WHERE order_id IN (SELECT id
+                           FROM `order` o
+                           WHERE o.`status` = '1'
+                             AND o.store_id = #{storeId}
+                             AND o.orderTime BETWEEN DATE_FORMAT(#{curTime}, '%Y-%m-%d') AND DATE_FORMAT(#{nextTime}, '%Y-%m-%d'))
+        GROUP BY dishes_id
+        ORDER BY num DESC
     </select>
 
     <insert id="insertDishesType" parameterType="dishesTypes" useGeneratedKeys="true" keyProperty="id">

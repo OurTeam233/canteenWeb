@@ -23,7 +23,7 @@ public interface StatisticsService {
      * @return java.util.List<com.pojo.Dishes>
      * @since 2021/12/25
      */
-    List<Dishes> selectDishesStatus1ByStoreId(String storeId);
+    List<Dishes> selectDishesNextDayStatus1ByStoreId(String storeId);
 
     /**
      * <p> 根据店铺id查询总销售额 </p>
@@ -33,4 +33,13 @@ public interface StatisticsService {
      * @since 2021/12/25
      */
     Integer selectTotalPrice(String storeId);
+
+    /**
+     * <p> 查询昨天预定今天的菜品数量 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.util.List<com.pojo.Dishes>
+     * @since 2021/12/28
+     */
+    List<Dishes> selectDishesTodayStatue1ByStoreId(String storeId);
 }

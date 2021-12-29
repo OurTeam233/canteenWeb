@@ -1,0 +1,15 @@
+
+
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Οϋ©Φϋÿÿÿÿ
+‚
+java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(ο‡‹κ
+k
+java:S1989 "PHandle the following exception that could be thrown by "getWriter": IOException.(οτ†ϊÿÿÿÿ
+`
+java:S3252*"EUse static access with "com.alibaba.fastjson.JSON" for "parseObject".(²δ…ϊÿÿÿÿ
+W
+java:S1128":Remove this unused import 'org.apache.commons.io.IOUtils'.(Μ–’8Ά…‘φί/
+I
+java:S1128	"-Remove this unused import 'org.slf4j.Logger'.(νΨ®68Ά…‘φί/
+P
+java:S1128"3Remove this unused import 'java.io.BufferedReader'.(€ι²Ε8£…‘φί/

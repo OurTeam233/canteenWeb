@@ -92,12 +92,24 @@ public interface DishesMapper {
      * @return java.util.List<com.pojo.DishesTypes>
      * @since 2021/12/25
      */
-    List<Dishes> selectDishesStatus1ByStoreId(@Param("storeId") String storeId,
-                                              @Param("curTime") Date curTime);
+    List<Dishes> selectDishesNextDayStatus1ByStoreId(@Param("storeId") String storeId,
+                                                     @Param("curTime") Date curTime);
 
     /**
      * 根据店铺id查询总销售额
      * @param storeId 店铺id
      */
     Integer selectTotalPrice(String storeId);
+
+    /**
+     * <p> 查询昨天下今天的订单 </p>
+     *
+     * @param storeId 店铺id
+     * @param curTime 时间
+     * @return java.util.List<com.pojo.Dishes>
+     * @since 2021/12/28
+     */
+    List<Dishes> selectDishesTodayStatus1ByStoreId(@Param("storeId") String storeId,
+                                                   @Param("curTime") Date curTime,
+                                                   @Param("nextTime") Date nextTime);
 }
