@@ -97,6 +97,7 @@ public interface DishesMapper {
 
     /**
      * 根据店铺id查询总销售额
+     *
      * @param storeId 店铺id
      */
     Integer selectTotalPrice(String storeId);
@@ -112,4 +113,22 @@ public interface DishesMapper {
     List<Dishes> selectDishesTodayStatus1ByStoreId(@Param("storeId") String storeId,
                                                    @Param("curTime") Date curTime,
                                                    @Param("nextTime") Date nextTime);
+
+    /**
+     * <p> 查询店铺菜品数量的统计 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/29
+     */
+    List<Dishes> selectStoreDishes(String storeId);
+
+    /**
+     * <p> 查询所有菜品数量 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/29
+     */
+    Integer selectTotalDishes(String storeId);
 }

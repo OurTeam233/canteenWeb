@@ -106,6 +106,25 @@
         WHERE o.id = #{orderId}
     </select>
 
+    <select id="selectIllegalOrder" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `order`
+        WHERE type = 3
+          AND store_id = #{storeId}
+    </select>
+
+    <select id="selectOrderTotal" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM `order`
+        WHERE store_id = #{storeId}
+    </select>
+
+    <select id="selectTotalStudent" resultType="java.lang.Integer">
+        SELECT COUNT(DISTINCT student_id)
+        FROM `order`
+    </select>
+
+
     <insert id="insertOrder" parameterType="order" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO `order` (student_id, store_id, orderNumber, orderTime, time, type, note, totalPrice, status, qrcode)
         VALUES (#{order.studentId}, #{order.storeId}, #{order.orderNumber}, #{order.orderTime}, #{order.time},
@@ -121,6 +140,12 @@
     <update id="updateOrderById">
         UPDATE `order`
         SET type = #{type}
+        WHERE id = #{orderId}
+    </update>
+
+    <update id="updateOrderQrCodeById">
+        UPDATE `order`
+        SET qrcode = #{qrCode}
         WHERE id = #{orderId}
     </update>
 </mapper>

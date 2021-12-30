@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间为全类名-->
+<mapper namespace="com.mapper.LostFoundMapper">
+    <resultMap id="LostFoundResultMap" type="lostFound">
+        <id column="id" property="id"/>
+        <result column="student_id" property="studentId"/>
+        <result column="types" property="types"/>
+        <result column="itemName" property="itemName"/>
+        <result column="description" property="description"/>
+        <result column="startDate" property="startDate"/>
+        <result column="address" property="address"/>
+        <result column="phone" property="phone"/>
+        <result column="wechat" property="wechat"/>
+        <result column="endDate" property="endDate"/>
+        <collection property="pictureList" ofType="picture">
+            <id column="picture_id" property="id"/>
+            <result column="picture_url" property="pictureUrl"/>
+        </collection>
+    </resultMap>
+
+    <insert id="insertLostFound" parameterType="lostFound" useGeneratedKeys="true" keyProperty="id">
+        insert into lostfound(student_id, types, itemName, description, startDate, address, phone, wechat, endDate)
+        values (#{studentId}, #{types}, #{itemName}, #{description}, #{startDate}, #{address}, #{phone}, #{wechat},
+                #{endDate})
+    </insert>
+
+    <select id="selectLostFound" resultMap="LostFoundResultMap">
+        SELECT lf.id,
+               lf.student_id,
+               lf.itemName,
+               lf.description,
+               lf.startDate,
+               lf.address,
+               lf.phone,
+               lf.wechat,
+               lf.types,
+               p.id         picture_id,
+               p.pictureUrl picture_url
+        FROM lostfound lf
+                 LEFT JOIN picture p ON p.relationTable_id = lf.id
+        WHERE (p.relationTable = 2 OR p.relationTable is NULL)
+          AND types = #{types}
+    </select>
+
+    <select id="selectLostFoundByKeyword" resultMap="LostFoundResultMap">
+        <bind name="keyword" value="'%' + keyword + '%'"/>
+        SELECT
+            lf.id,
+            lf.student_id,
+            lf.itemName,
+            lf.description,
+            lf.startDate,
+            lf.address,
+            lf.phone,
+            lf.wechat,
+            lf.types,
+            p.id picture_id,
+            p.pictureUrl picture_url
+        FROM
+            lostfound lf
+                LEFT JOIN picture p ON p.relationTable_id = lf.id
+        WHERE
+            ( p.relationTable = 2 OR p.relationTable IS NULL )
+          AND itemName like #{keyword}
+    </select>
+</mapper>

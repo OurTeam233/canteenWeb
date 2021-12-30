@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间为全类名-->
+<mapper namespace="com.mapper.PostMapper">
+    <resultMap id="PostResultMapper" type="post">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="types" property="types"/>
+        <result column="time" property="time"/>
+        <!--     将多个字段封装成一个对象 property为store的属性 JavaType为要封装成的实体类   -->
+        <association property="student" javaType="student">
+            <id column="student_id" property="id"/>
+            <result column="nickname" property="nickName"/>
+            <result column="sequence" property="sequence"/>
+            <result column="avatarUrl" property="avatarUrl"/>
+        </association>
+        <collection property="pictureList" ofType="picture">
+            <id column="picture_id" property="id"/>
+            <result column="picture_url" property="pictureUrl"/>
+        </collection>
+    </resultMap>
+
+    <insert id="insertPost" parameterType="post" useGeneratedKeys="true" keyProperty="id">
+        insert into post(content, types, time, student_id)
+        values (#{content}, #{types}, NOW(), #{studentId})
+    </insert>
+
+    <select id="selectPost" resultMap="PostResultMapper">
+        SELECT p.id,
+               p.student_id,
+               p.content,
+               p.types,
+               p.time,
+               s.sequence,
+               s.nickname,
+               s.avatarUrl,
+               pi.id         picture_id,
+               pi.pictureUrl picture_url
+        FROM post p
+                 LEFT JOIN student s ON s.id = p.student_id
+                 LEFT JOIN picture pi ON pi.relationTable_id = p.id
+        WHERE pi.relationTable = 1
+          AND p.types = #{type}
+        ORDER BY p.time DESC
+    </select>
+
+    <select id="SelectPostById" resultMap="PostResultMapper">
+        SELECT p.id,
+               p.student_id,
+               p.content,
+               p.types,
+               p.time,
+               s.sequence,
+               s.nickname,
+               s.avatarUrl,
+               pi.id         picture_id,
+               pi.pictureUrl picture_url
+        FROM post p
+                 LEFT JOIN student s ON s.id = p.student_id
+                 LEFT JOIN picture pi ON pi.relationTable_id = p.id
+        WHERE pi.relationTable = 1
+          AND s.id = #{userId}
+        ORDER BY p.time DESC
+    </select>
+</mapper>

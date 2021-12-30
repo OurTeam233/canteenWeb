@@ -1,6 +1,7 @@
 package com.service.StatisticsService;
 
 import com.mapper.DishesMapper;
+import com.mapper.OrderMapper;
 import com.pojo.Dishes;
 import com.util.SqlSessionFactoryUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -108,5 +109,110 @@ public class StatisticsServiceImpl implements StatisticsService{
             e.printStackTrace();
         }
         return Collections.emptyList();
+    }
+
+    /**
+     * <p> 查询违规订单数量 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/29
+     */
+    public Integer selectIllegalOrder(String storeId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+            // 执行sql并返回结果
+            return orderMapper.selectIllegalOrder(storeId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * <p> 查询所有订单数量 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/29
+     */
+    public Integer selectOrderTotal(String storeId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+            // 执行sql并返回结果
+            return orderMapper.selectOrderTotal(storeId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * <p> 查询店铺菜品数量的统计 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/29
+     */
+    public List<Dishes> selectStoreDishes(String storeId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
+            // 执行sql并返回结果
+            return dishesMapper.selectStoreDishes(storeId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
+
+    /**
+     * <p> 查询店铺的总客户数量 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/29
+     */
+    public Integer totalStudent(String storeId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+            // 执行sql并返回结果
+            return orderMapper.selectTotalStudent(storeId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * <p> 查询所有菜品数量 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/29
+     */
+    public Integer TotalDishes(String storeId) {
+        try (// 创建连接
+             SqlSession sqlSession = sqlSessionFactory.openSession()
+        ) {
+            // 创建映射关系
+            DishesMapper dishesMapper = sqlSession.getMapper(DishesMapper.class);
+            // 执行sql并返回结果
+            return dishesMapper.selectTotalDishes(storeId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

@@ -1,0 +1,18 @@
+
+œ
+java:S1186""€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ïû©Öûÿÿÿÿ
+‚
+java:S1989("lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(ï‡‹ê
+k
+java:S1989*"PHandle the following exception that could be thrown by "getWriter": IOException.(ïô†úÿÿÿÿ
+f
+java:S19890"PHandle the following exception that could be thrown by "getReader": IOException.(Âá‚ 
+j
+java:S19891"OHandle the following exception that could be thrown by "toString": IOException.(ş”»”ÿÿÿÿÿ
+V	java:S125;"<This block of commented-out lines of code should be removed.(÷Ó“şÿÿÿÿ
+H
+java:S1135:"2Complete the task associated to this TODO comment.(£ğÀÖ
+G
+java:S1135I"2Complete the task associated to this TODO comment.(•¹Š
+@
+java:S1068"*Remove this unused "logger" private field.(áÎ‹û

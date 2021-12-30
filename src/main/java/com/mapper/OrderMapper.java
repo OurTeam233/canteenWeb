@@ -80,4 +80,41 @@ public interface OrderMapper {
      * @since 2021/12/19
      */
     int updateOrderById(@Param("orderId") String orderId,@Param("type") String type);
+
+    /**
+     * <p> 更新二维码 </p>
+     *
+     * @param orderId 订单id
+     * @return java.lang.Integer
+     * @since 2021/12/29
+     */
+    Integer updateOrderQrCodeById(@Param("orderId") String orderId,
+                                  @Param("qrCode") String qrCode);
+
+    /**
+     * <p> 查询违规订单数量 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/29
+     */
+    Integer selectIllegalOrder(String storeId);
+
+    /**
+     * <p> 查询所有订单数量 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/29
+     */
+    Integer selectOrderTotal(String storeId);
+
+    /**
+     * <p> 查询店铺的总客户数量 </p>
+     *
+     * @param storeId 店铺id
+     * @return java.lang.Integer
+     * @since 2021/12/29
+     */
+    Integer selectTotalStudent(String storeId);
 }

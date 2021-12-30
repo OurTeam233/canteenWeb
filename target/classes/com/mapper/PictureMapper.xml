@@ -11,6 +11,11 @@
         <result property="relationTableId" column="relationTable_id"/>
     </resultMap>
 
+    <insert id="insertPicture" parameterType="picture" useGeneratedKeys="true" keyProperty="id">
+        insert into picture(pictureUrl, relationTable, relationTable_id)
+        values (#{pictureUrl}, #{relationTable}, #{relationTableId})
+    </insert>
+
     <!--    查询所有轮播图    -->
     <select id="selectAllSlideshow" resultMap="PictureResultMap">
         SELECT id, relationTable_id, pictureUrl, relationTable

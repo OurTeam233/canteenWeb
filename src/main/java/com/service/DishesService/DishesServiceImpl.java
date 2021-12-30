@@ -4,10 +4,10 @@ import com.mapper.DishesMapper;
 import com.pojo.Dishes;
 import com.pojo.DishesTypes;
 import com.util.SqlSessionFactoryUtils;
-import java.util.Collections;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -100,6 +100,8 @@ public class DishesServiceImpl implements DishesService{
             // 完善菜品信息
             dishes.setDishesTypeId(dishesTypeId);
             dishes.setStoreId(Integer.valueOf(storeId));
+            dishes.setPrice(dishes.getPrice() * 100);
+            dishes.setVipPrice(dishes.getVipPrice() * 100);
             // 执行sql并返回结果
             int insertId = dishesMapper.insertDishes(dishes);
             sqlSession.commit();

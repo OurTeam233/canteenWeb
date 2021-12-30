@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PostDao">
+
+    <resultMap type="com.entity.Post" id="PostMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="studentId" column="student_id" jdbcType="INTEGER"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="types" column="types" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="PostMap">
+        select
+          id, student_id, content, types
+        from post
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="PostMap">
+        select
+          id, student_id, content, types
+        from post
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="studentId != null">
+                and student_id = #{studentId}
+            </if>
+            <if test="content != null and content != ''">
+                and content = #{content}
+            </if>
+            <if test="types != null">
+                and types = #{types}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from post
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="studentId != null">
+                and student_id = #{studentId}
+            </if>
+            <if test="content != null and content != ''">
+                and content = #{content}
+            </if>
+            <if test="types != null">
+                and types = #{types}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into post(student_id, content, types)
+        values (#{studentId}, #{content}, #{types})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into post(student_id, content, types)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.studentId}, #{entity.content}, #{entity.types})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into post(student_id, content, types)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.studentId}, #{entity.content}, #{entity.types})
+        </foreach>
+        on duplicate key update
+        student_id = values(student_id),
+        content = values(content),
+        types = values(types)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update post
+        <set>
+            <if test="studentId != null">
+                student_id = #{studentId},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="types != null">
+                types = #{types},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from post where id = #{id}
+    </delete>
+
+</mapper>
+

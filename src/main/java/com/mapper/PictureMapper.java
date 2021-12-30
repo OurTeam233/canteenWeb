@@ -19,4 +19,9 @@ public interface PictureMapper {
      * 查询所有轮播图
      */
     List<Picture> selectAllSlideshow();
+
+    /**
+     * 插入新图片
+     */
+    Integer insertPicture(Picture picture);
 }

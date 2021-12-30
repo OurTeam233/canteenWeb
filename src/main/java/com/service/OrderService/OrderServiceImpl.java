@@ -102,13 +102,13 @@ public class OrderServiceImpl implements OrderService{
             // 构造order
             order.setOrderNumber(String.format("%03d", order.getStoreId()) + "-" + String.format("%04d", orderCount + 1));
             order.setStatus(DateUtils.isSameDay(order.getOrderTime(), order.getTime()) ? 0 : 1);
+            // 存入订单
+            int insertOrder = orderMapper.insertOrder(order);
             // 生成二维码，并设置二维码路径
             String content = order.getId() + "";
             BufferedImage bufferedImage = QrCodeUtils.createImage(content, null, false);
             ImageUtil imageUtil = new ImageUtil();
-            order.setQrCode(imageUtil.bufferedImageToUrl(bufferedImage));
-            // 存入订单
-            int insertOrder = orderMapper.insertOrder(order);
+            orderMapper.updateOrderQrCodeById(order.getId() + "", imageUtil.bufferedImageToUrl(bufferedImage));
             // 存入订单细节
             for (OrderDetails orderDetails : dishesList) {
                 orderDetails.setOrderId(order.getId());
